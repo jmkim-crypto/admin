@@ -96,7 +96,7 @@ function MobileShowcase() {
       setActiveSlide((prev) => (prev + 1) % carouselSlides.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [activeSlide, carouselSlides.length]);
 
   return (
     <motion.div

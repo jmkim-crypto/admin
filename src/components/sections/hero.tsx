@@ -48,7 +48,7 @@ function HeroMobileShowcase() {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 5000); // 5초로 미세 조정
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, [activeSlide, slides.length]);
 
   return (
     <motion.div

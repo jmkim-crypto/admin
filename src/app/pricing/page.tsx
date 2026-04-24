@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
 import {
   CheckCircle2,
   X,
@@ -120,39 +118,92 @@ export default function PricingPage() {
               모든 플랜에 14일 무료 체험이 포함됩니다. 언제든 취소할 수 있습니다.
             </p>
 
-            {/* Toggle */}
-            <div className="flex items-center justify-center gap-3">
-              <Label
-                htmlFor="billing-toggle"
-                className={`text-sm cursor-pointer transition-colors ${
-                  !isYearly ? "text-[#e8e8e8] font-semibold" : "text-[#555555]"
-                }`}
-              >
-                월간 결제
-              </Label>
-              <Switch
-                id="billing-toggle"
-                checked={isYearly}
-                onCheckedChange={setIsYearly}
-                className="data-[state=checked]:bg-[#3b82f6]"
-              />
-              <Label
-                htmlFor="billing-toggle"
-                className={`text-sm cursor-pointer transition-colors ${
-                  isYearly ? "text-[#e8e8e8] font-semibold" : "text-[#555555]"
-                }`}
-              >
-                연간 결제
-              </Label>
-              {isYearly && (
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="ml-1 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20"
+            {/* Improved Toggle */}
+            <div className="flex flex-col items-center gap-6 mt-4">
+              <div className="relative flex items-center p-1 bg-white/[0.03] border border-white/[0.08] rounded-full backdrop-blur-md">
+                {/* Sliding Background */}
+                <div className="absolute inset-0 flex p-1">
+                  <div className="relative w-full h-full flex">
+                    <motion.div
+                      className="h-full w-1/2 rounded-full bg-[#3b82f6] shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                      initial={false}
+                      animate={{
+                        x: isYearly ? "100%" : "0%",
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 30,
+                        mass: 1,
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Monthly Button */}
+                <button
+                  onClick={() => setIsYearly(false)}
+                  className="relative z-10 px-6 py-2.5 text-sm font-bold min-w-[110px] outline-none transition-colors duration-300"
                 >
-                  20% 할인
-                </motion.span>
-              )}
+                  <motion.span
+                    animate={{ color: !isYearly ? "#ffffff" : "#555555" }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    월간 결제
+                  </motion.span>
+                </button>
+
+                {/* Yearly Button */}
+                <button
+                  onClick={() => setIsYearly(true)}
+                  className="relative z-10 px-6 py-2.5 text-sm font-bold min-w-[110px] outline-none transition-colors duration-300"
+                >
+                  <motion.span
+                    animate={{ color: isYearly ? "#ffffff" : "#555555" }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    연간 결제
+                  </motion.span>
+                </button>
+
+                {/* Discount Badge - Positioned absolutely to avoid layout shift */}
+                <div className="absolute left-full ml-5 hidden sm:block">
+                  <AnimatePresence mode="wait">
+                    {isYearly && (
+                      <motion.span
+                        initial={{ opacity: 0, x: -12, filter: "blur(4px)" }}
+                        animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, x: -12, filter: "blur(4px)" }}
+                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                        className="inline-flex items-center px-3.5 py-1 rounded-full text-[11px] font-bold bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20 whitespace-nowrap shadow-[0_0_25px_rgba(16,185,129,0.2)]"
+                      >
+                        <span className="relative flex h-2 w-2 mr-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10b981]"></span>
+                        </span>
+                        최대 20% 할인 혜택
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* Mobile Discount Badge */}
+              <div className="sm:hidden h-8 flex items-center">
+                <AnimatePresence mode="wait">
+                  {isYearly && (
+                    <motion.span
+                      initial={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+                      transition={{ duration: 0.4 }}
+                      className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20"
+                    >
+                      연간 결제 시 20% 할인
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </motion.div>
         </div>
