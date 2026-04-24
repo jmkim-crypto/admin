@@ -6,6 +6,8 @@ import {
   Banknote,
   Smartphone,
   Zap,
+  XCircle,
+  CheckCircle2,
   ArrowRight,
   X,
   Check,
@@ -190,56 +192,124 @@ export function ValueProps() {
         </div>
 
         {/* Before / After */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.65 }}
-          className="mt-20 lg:mt-28"
-        >
-          <div className="grid md:grid-cols-2 gap-5">
+        <div className="mt-20 lg:mt-28">
+          <div className="grid md:grid-cols-2 gap-5 relative">
             {/* Before */}
-            <div className="relative rounded-2xl p-7 overflow-hidden" style={{ background: "rgba(255,255,255,0.015)", border: "1px solid rgba(239,68,68,0.15)" }}>
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ef4444]/60 to-transparent" />
-              <span className="text-[10px] font-bold text-[#ef4444] uppercase tracking-[0.15em]">
-                Before — 기존 수동 관리
-              </span>
-              <ul className="mt-5 space-y-3.5">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-[#121212]/70 border border-red-500/10 group transition-all duration-700"
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
+              
+              <div className="flex items-center gap-3 mb-8">
+                <XCircle className="w-5 h-5 text-red-500/60" />
+                <span className="text-xs font-bold text-red-500/80 uppercase tracking-[0.2em]">
+                  BEFORE — 기존 수동 관리
+                </span>
+              </div>
+
+              <ul className="space-y-5">
                 {[
-                  "월 평균 12시간 비계획 정지",
-                  "정비 이력 수기 기록 — 분석 불가",
-                  "고장 후 대응 → 비용 폭증",
-                  "설비별 상태 파악에 30분 소요",
+                  "현장에 직접 가야만 확인 가능한 설비 상태",
+                  "구두 지시와 종이 서류로 인한 정보 누락 및 혼선",
+                  "작업 종료 후 뒤늦게 수기 입력하는 불확실한 실적",
+                  "엑셀 수식과 씨름하는 시간 소모적 통계 작업",
+                  "사고 발생 후 한참 뒤에야 인지되는 현장 상황",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-4 text-base text-[#888888]">
-                    <X className="w-4 h-4 text-[#ef4444] shrink-0 mt-1" />
+                  <li key={item} className="flex items-start gap-4 text-[15px] text-white/60 leading-relaxed font-medium group-hover:text-white/80 transition-colors duration-300">
+                    <X className="w-4 h-4 text-red-500/40 shrink-0 mt-1" />
                     {item}
                   </li>
                 ))}
               </ul>
-            </div>
+
+              {/* Subtle Red Ambient Glow */}
+              <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-red-500/5 rounded-full blur-[80px] pointer-events-none" />
+            </motion.div>
 
             {/* After */}
-            <div className="relative rounded-2xl p-7 overflow-hidden" style={{ background: "rgba(255,255,255,0.015)", border: "1px solid rgba(16,185,129,0.15)" }}>
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#10b981]/60 to-transparent" />
-              <span className="text-[10px] font-bold text-[#10b981] uppercase tracking-[0.15em]">
-                After — Handy MES 도입 후
-              </span>
-              <ul className="mt-5 space-y-3.5">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+              className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-[#16171D]/60 border border-[#00A3FF]/20 shadow-[0_0_50px_rgba(0,163,255,0.05)] group"
+            >
+              {/* Scanline Effect - Smoother and faster */}
+              <motion.div 
+                animate={{ y: ["-100%", "250%"] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#00A3FF]/10 to-transparent pointer-events-none z-0"
+              />
+
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/40 to-transparent" />
+              
+              <div className="relative z-10 flex items-center gap-3 mb-8">
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <CheckCircle2 className="w-5 h-5 text-[#00A3FF]" />
+                </motion.div>
+                <span className="text-xs font-bold text-[#00A3FF] uppercase tracking-[0.2em]">
+                  AFTER — HANDY MES 도입 후
+                </span>
+              </div>
+
+              <motion.ul 
+                className="relative z-10 space-y-5"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.15,
+                      delayChildren: 1.0
+                    }
+                  }
+                }}
+              >
                 {[
-                  "비계획 정지 80% 감소 (월 2.4시간)",
-                  "모든 이력 자동 기록 & AI 분석",
-                  "고장 예측 → 사전 정비로 비용 절감",
-                  "1초 내 전체 설비 상태 파악",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-4 text-base text-[#e8e8e8]">
-                    <Check className="w-4 h-4 text-[#10b981] shrink-0 mt-1" />
-                    {item}
-                  </li>
+                  { text: "24시간 어디서나 실시간 모바일 모니터링", highlights: ["24시간"] },
+                  { text: "클릭 한 번으로 끝나는 체계적 작업 지시", highlights: ["체계적"] },
+                  { text: "현장에서 즉시 등록하는 누락 없는 실적 관리", highlights: ["누락 없는"] },
+                  { text: "인사이트를 제공하는 지능형 통계 대시보드", highlights: ["지능형"] },
+                  { text: "이상 징후 즉시 대응하는 초고속 스마트 알림", highlights: ["초고속"] },
+                ].map((item, i) => (
+                  <motion.li 
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, x: 20 },
+                      visible: { opacity: 1, x: 0 }
+                    }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="flex items-start gap-4 text-base text-[#e8e8e8] leading-relaxed font-medium hover:translate-x-1 transition-transform duration-300"
+                  >
+                    <Check className="w-4 h-4 text-[#00A3FF] shrink-0 mt-1" />
+                    <span>
+                      {item.text.split(new RegExp(`(${item.highlights.join('|')})`, 'g')).map((part, j) => (
+                        item.highlights.includes(part) ? (
+                          <span key={j} className="text-[#00A3FF] font-bold" style={{ textShadow: "0 0 10px rgba(0, 163, 255, 0.4)" }}>
+                            {part}
+                          </span>
+                        ) : (part)
+                      ))}
+                    </span>
+                  </motion.li>
                 ))}
-              </ul>
-            </div>
+              </motion.ul>
+
+              {/* Ambient Glow */}
+              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#00A3FF]/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#00A3FF]/15 transition-colors duration-700" />
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
 
 
       </div>

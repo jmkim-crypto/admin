@@ -2,7 +2,7 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Wifi, Zap, Activity, Network, ChevronDown, Signal, Cpu, ChevronRight } from "lucide-react";
+import { Wifi, Zap, Activity, Network, ChevronDown, Signal, Cpu, ChevronRight, Gauge } from "lucide-react";
 import Image from "next/image";
 
 // ── Data ────────────────────────────────────────────────────────────────────
@@ -10,82 +10,101 @@ const devices = [
   {
     id: "shap-1000",
     name: "SHAP-1000",
-    tagline: "Wireless Relay",
-    badge: "Data Acquisition",
+    tagline: "NETWORK HUB",
+    badge: "Wireless Relay",
     image: "/images/hardware/shap-1000.png",
-    color: "#00A3FF", // Brand Electric Cyan
+    color: "#00A3FF",
     statusColor: "#3b82f6",
     glow: "rgba(0, 163, 255, 0.6)",
-    description: "산업용 무선 데이터 수집 장치. PLC/센서 신호를 실시간으로 클라우드로 전송합니다.",
-    specs: ["저전력 설계", "Wi-Fi 6 지원", "실시간 전송", "ARM Cortex-M7"],
+    description: "공장 환경 내 다수의 무선 단말기를 통합 관리합니다. 현장의 데이터를 수집 컴퓨터로 전달하고 제어 메시지를 실시간 중계하는 안정적인 네트워크 인프라 역할을 수행합니다.",
+    specs: ["1:N 무선 네트워크 구축", "양방향 데이터 릴레이", "실시간 서버 동기화"],
+    icon: Network,
     ports: [
-      { name: "RS-232/485", desc: "시리얼 통신 × 2포트" },
-      { name: "LAN", desc: "RJ45 기가비트 이더넷" },
-      { name: "DI/DO", desc: "디지털 입출력 × 8채널" },
+      { name: "무선 네트워크", desc: "1:N 다중 무선 네트워크 구성 (다수의 WIT-1000 장치와 무선 연결망 구축)" },
+      { name: "양방향 중계", desc: "서버-단말 간 데이터 릴레이 (WIT-1000의 취득 데이터 수신 및 서버 제어 메시지 전달)" },
+      { name: "중계 자동화", desc: "무선 데이터 브릿지 (필드 단말 장치와 수집 컴퓨터 간의 끊김 없는 통신 경로 확보)" },
     ],
   },
   {
     id: "wit-1000",
     name: "WIT-1000",
-    tagline: "IoT Gateway",
-    badge: "Edge Computing",
+    tagline: "DATA TERMINAL",
+    badge: "Data Acquisition",
     image: "/images/hardware/wit-1000.png",
-    color: "#00A3FF", // Brand Electric Cyan
-    statusColor: "#fb923c", // Original orange as status only
+    color: "#00A3FF",
+    statusColor: "#fb923c",
     glow: "rgba(0, 163, 255, 0.6)",
-    description: "멀티 프로토콜 IoT 게이트웨이. OPC-UA, Modbus, MQTT를 동시에 처리합니다.",
-    specs: ["OPC-UA 지원", "500+ 태그 처리", "이중화 네트워크", "엣지 AI 내장"],
+    description: "현장의 전기 신호를 수집하여 디지털 데이터로 변환합니다. 생산량 및 설비 상태 등 실시간 현황을 기록하여 관리자가 보다 쉽게 관리할 수 있도록 지원합니다.",
+    specs: ["생산 수량 및 설비 상태 취득", "고속 설비 Cycle Time 측정", "RS-232 바코드/RFID 연동"],
+    icon: Activity,
     ports: [
-      { name: "OPC-UA", desc: "산업용 표준 프로토콜" },
-      { name: "Modbus TCP", desc: "레거시 PLC 연동" },
-      { name: "MQTT", desc: "클라우드 브로커 연결" },
+      { name: "생산 신호 취득", desc: "전기적 상태 값 포착 (생산완료 신호 인터페이스를 통한 실시간 수량 및 가동 상태 확인)" },
+      { name: "시리얼 인터페이스", desc: "RS-232 포트 연동 (바코드 스캐너, RFID 리더 등 외부 장치 데이터 수신 지원)" },
+      { name: "정밀 시간 측정", desc: "Cycle Time 및 카운팅 (생산 신호 간 시간 간격 측정 및 고속 타발 설비의 카운터 값 취득)" },
     ],
   },
   {
     id: "wizter-5100",
     name: "Wizter-5100",
-    tagline: "Smart Sensor Hub",
-    badge: "Predictive",
+    tagline: "INTELLIGENT SENSING",
+    badge: "Intelligent Node",
     image: "/images/hardware/wizter-5100.png",
-    color: "#00A3FF", // Brand Electric Cyan
-    statusColor: "#10b981", // Original green as status only
+    color: "#00A3FF",
+    statusColor: "#10b981",
     glow: "rgba(0, 163, 255, 0.6)",
-    description: "통합 스마트 센서 허브. 진동·온도·전류를 단일 장치로 동시 모니터링합니다.",
-    specs: ["3-in-1 센서", "1kHz 샘플링", "무선 메쉬망", "이상 감지 AI"],
+    description: "0.001초 단위의 인터럽트 기술로 설비의 상태 변화를 포착합니다. 센서의 물리적 신호를 실시간 데이터화하여 설비의 상태값과 이상 징후를 지연 없이 서버로 전송합니다.",
+    highlights: ["CPU 인터럽트", "실시간"],
+    specs: ["CPU 인터럽트 기반 즉시 인지", "상태값 및 누적 Count 전송", "디지털/아날로그 센서 통합 수집"],
+    icon: Gauge,
     ports: [
-      { name: "진동 센서", desc: "3축 MEMS 가속도계" },
-      { name: "온도 센서", desc: "PT100 RTD 지원" },
-      { name: "전류 센서", desc: "CT 클램프 인터페이스" },
+      { name: "실시간 변화 인지", desc: "CPU 내부 인터럽트 활용 (센서의 미세한 변화를 지연 없이 즉각적으로 인지하고 KST 적용)" },
+      { name: "상태 값 전송", desc: "디지털/아날로그 모니터링 (연결된 센서의 현재 On/Off 상태 및 실시간 변화값 전송)" },
+      { name: "누적 카운팅", desc: "상태 변화 횟수 합산 (상태가 변화된 횟수를 누적 합산하여 정확한 Count 데이터 제공)" },
     ],
   },
 ];
 
 // ── Background Components ──────────────────────────────────────────────────
 
+function WaveformBg() {
+  return (
+    <div className="absolute inset-0 pointer-events-none opacity-20">
+      <svg width="100%" height="100%" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 400C100 350 200 450 300 400C400 350 500 450 600 400C700 350 800 450 900 400C1000 350 1100 450 1200 400C1300 350 1440 400 1440 400" stroke="#00A3FF" strokeWidth="1" strokeDasharray="5 5" />
+        <path d="M0 450C120 400 240 500 360 450C480 400 600 500 720 450C840 400 960 500 1080 450C1200 400 1320 500 1440 450" stroke="#00A3FF" strokeWidth="0.5" opacity="0.3" />
+      </svg>
+    </div>
+  );
+}
+
 function DataStreamBg() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Dot Matrix Grid */}
-      <div className="absolute inset-0 grid-bg opacity-20" />
+      <div className="absolute inset-0 grid-bg opacity-15" />
 
-      {/* Vertical Data Stream Lines */}
-      {Array.from({ length: 8 }).map((_, i) => (
+      {/* Bit Particles */}
+      {mounted && Array.from({ length: 12 }).map((_, i) => (
         <motion.div
           key={i}
-          className="absolute top-0 w-px bg-gradient-to-b from-transparent via-[#00A3FF]/10 to-transparent"
+          className="absolute w-1 h-1 bg-[#00A3FF]/40 rounded-full"
           style={{
-            left: `${(i / 8) * 100}%`,
-            height: "100%",
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
           }}
           animate={{
-            opacity: [0.01, 0.05, 0.01],
-            y: ["-100%", "100%"],
+            y: [-20, 20],
+            opacity: [0.1, 0.4, 0.1],
           }}
           transition={{
-            duration: 15 + Math.random() * 10,
+            duration: 3 + Math.random() * 2,
             repeat: Infinity,
-            ease: "linear",
-            delay: Math.random() * 5,
+            ease: "easeInOut",
           }}
         />
       ))}
@@ -96,7 +115,7 @@ function DataStreamBg() {
 function AmbientGlow() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#1a1a2e]/30 rounded-full blur-[140px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#1a1a2e]/20 rounded-full blur-[140px]" />
       <div className="absolute -top-[10%] left-1/2 -translate-x-1/2 w-[50%] h-[50%] bg-[#00A3FF]/5 rounded-full blur-[120px]" />
     </div>
   );
@@ -121,47 +140,30 @@ function SectionBoundary() {
 function DeviceVisual({ device, isHovered }: { device: typeof devices[0]; isHovered: boolean }) {
   return (
     <div className="relative w-full h-64 mb-10 flex items-center justify-center">
-      {/* Halo Effect Around Hardware (Cyan) */}
+      {/* Subdued Halo Effect */}
       <motion.div
-        className="absolute w-56 h-56 rounded-full blur-[70px] z-0"
+        className="absolute w-48 h-48 rounded-full blur-[60px] z-0"
         style={{
-          background: `radial-gradient(circle, #00A3FF33 0%, transparent 70%)`
+          background: `radial-gradient(circle, #00A3FF15 0%, transparent 70%)`
         }}
         animate={{
-          scale: isHovered ? 1.4 : 1.1,
-          opacity: isHovered ? 0.9 : 0.5,
+          opacity: isHovered ? 0.6 : 0.3,
         }}
         transition={{ duration: 0.8 }}
       />
 
-      {/* Base Cyan Shadow */}
-      <motion.div
-        className="absolute w-40 h-10 bottom-12 rounded-full blur-[35px] z-0"
-        style={{ background: "#00A3FF" }}
-        animate={{
-          scale: isHovered ? 1.3 : 1,
-          opacity: isHovered ? 0.3 : 0.15,
-        }}
-        transition={{ duration: 0.5 }}
-      />
-
-      {/* Floating Device Image */}
-      <motion.div
-        className="relative z-10 w-full h-full flex items-center justify-center"
-        animate={{ y: [0, -15, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="relative w-48 h-48 sm:w-56 sm:h-56">
+      {/* Static Device Image */}
+      <div className="relative z-10 w-full h-full flex items-center justify-center">
+        <div className="relative w-44 h-44 sm:w-48 sm:h-48">
           <Image
             src={device.image}
             alt={device.name}
             fill
-            className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+            className="object-contain transition-transform duration-700 group-hover:scale-110"
             priority
           />
-
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -184,22 +186,20 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
     >
       {/* Card Content */}
       <div
-        className="relative flex flex-col p-8 rounded-2xl transition-all duration-700 cursor-pointer overflow-hidden border border-white/5 bg-[#16171D]/50 backdrop-blur-xl"
+        className={`relative flex flex-col p-7 lg:p-8 rounded-2xl transition-all duration-500 cursor-pointer overflow-hidden border backdrop-blur-md ${isExpanded
+          ? "bg-[#16171D]/80 border-[#00A3FF]/40 shadow-[0_20px_50px_rgba(0,163,255,0.15)]"
+          : "bg-[#16171D]/40 border-white/[0.06] hover:border-[#00A3FF]/40 hover:bg-[#16171D]/60"
+          }`}
         onClick={() => setIsExpanded(!isExpanded)}
         style={{
-          boxShadow: isHovered
-            ? `0 30px 60px rgba(0,0,0,0.6), 0 0 0 1px #00A3FF30`
-            : "0 15px 40px rgba(0,0,0,0.3)",
+          boxShadow: isHovered && !isExpanded
+            ? `0 20px 40px rgba(0,0,0,0.4)`
+            : undefined,
         }}
       >
-        {/* Title & Badge */}
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="text-2xl font-extrabold text-white tracking-tighter uppercase">{device.name}</h3>
-          <span
-            className="px-3 py-1 rounded-sm text-[10px] font-extrabold uppercase tracking-[0.2em] bg-[#00A3FF]/10 text-[#00A3FF] border border-[#00A3FF]/20"
-          >
-            {device.badge}
-          </span>
+        {/* Title */}
+        <div className="mb-2">
+          <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tighter uppercase whitespace-nowrap">{device.name}</h3>
         </div>
         <p className="text-sm text-white/40 mb-10 font-bold uppercase tracking-widest">{device.tagline}</p>
 
@@ -207,10 +207,12 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
         <DeviceVisual device={device} isHovered={isHovered} />
 
         {/* Description & Specs */}
-        <div>
-          <p className="text-[17px] text-white/70 mb-8 font-medium leading-relaxed">
-            {device.description}
-          </p>
+        <div className="flex-grow flex flex-col">
+          <div className="min-h-[100px] mb-8">
+            <p className="text-[17px] text-white/70 font-medium leading-[1.7]">
+              {device.description}
+            </p>
+          </div>
 
           <ul className="space-y-3 mb-10">
             {device.specs.map((spec, i) => (
@@ -221,9 +223,15 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
             ))}
           </ul>
 
-          <div className="flex items-center justify-between text-[11px] text-[#00A3FF] uppercase tracking-[0.3em] font-extrabold border-t border-white/5 pt-6">
-            <span>Engineering Specs</span>
-            <ChevronDown className={`w-4 h-4 transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`} />
+          <div
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between text-xs uppercase tracking-[0.2em] font-extrabold cursor-pointer group/spec"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-[#00A3FF]">Engineering Specs</span>
+              <span className="text-white/20 tracking-normal font-medium normal-case transition-colors group-hover/spec:text-white/40">Actual Device Data</span>
+            </div>
+            <ChevronDown className={`w-4 h-4 text-[#00A3FF] transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`} />
           </div>
         </div>
 
@@ -239,8 +247,8 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
             >
               {device.ports.map((port, i) => (
                 <div key={i} className="p-4 rounded-lg bg-white/[0.03] border border-white/5">
-                  <p className="text-[11px] font-extrabold text-white uppercase mb-1 tracking-widest">{port.name}</p>
-                  <p className="text-[11px] text-white/40 leading-snug">{port.desc}</p>
+                  <p className="text-[13px] font-bold text-white uppercase mb-1.5 tracking-wider">{port.name}</p>
+                  <p className="text-[13px] text-white/50 leading-relaxed font-medium">{port.desc}</p>
                 </div>
               ))}
             </motion.div>
@@ -265,31 +273,31 @@ export function HardwareEcosystem() {
       <SectionBoundary />
 
       {/* Background Effects */}
-      <DataStreamBg />
-      <AmbientGlow />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00A3FF]/[0.02] blur-[120px]" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         {/* Section Header */}
-        <div className="text-center mb-28">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+        <div className="text-center mb-20">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1.5 rounded-sm bg-[#00A3FF]/10 border border-[#00A3FF]/20 mb-8"
+            className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5"
           >
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.4em] text-[#00A3FF]">
-              Hardware system
-            </p>
-          </motion.div>
+            Hardware System
+          </motion.p>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-5xl lg:text-7xl font-extrabold text-white mb-8 tracking-tighter"
+            className="text-3xl sm:text-4xl lg:text-[48px] font-extrabold tracking-tighter mb-6"
           >
-            현장을 연결하는 <span className="text-[#00A3FF]">물리적 엔진</span>
+            <span className="text-[#e8e8e8]">현장의 본질을 </span>
+            <span className="gradient-text">왜곡 없이 전달하는 기술</span>
           </motion.h2>
 
           <motion.p
@@ -297,10 +305,11 @@ export function HardwareEcosystem() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-white/50 max-w-3xl mx-auto text-xl font-light leading-relaxed"
+            className="text-[#666666] max-w-3xl mx-auto text-[15px] mb-10 leading-relaxed"
           >
-            실시간 데이터 수집과 안정적인 전송을 위한 전용 하드웨어 라인업.
-            현장의 모든 신호를 스마트 소프트웨어와 하나로 결합합니다.
+            화려한 수식어보다 현장의 진실된 데이터를 담는 데 집중했습니다. <br className="hidden md:block" />
+            Handy MES의 하드웨어는 보이지 않는 공정의 틈 사이에서 묵묵히 신호를 읽어내며, <br className="hidden md:block" />
+            단 하나의 누락 없이 경영을 뒷받침할 명확한 근거를 제시합니다.
           </motion.p>
         </div>
 

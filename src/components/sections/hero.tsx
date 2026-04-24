@@ -14,9 +14,10 @@ import { DemoDialog } from "@/components/demo-dialog";
 import {
   DashboardScreen,
   TaskListScreen,
+  TaskDetailScreen,
   ManagementScreen,
   SettingsScreen,
-  TaskDetailScreen,
+
 } from "./mobile-screens";
 
 function LambdaA({ children }: { children: string }) {
@@ -34,15 +35,18 @@ function HeroMobileShowcase() {
   const slides = [
     { label: "대시보드", sub: "Dashboard", Component: DashboardScreen },
     { label: "작업지시 조회", sub: "Task List", Component: TaskListScreen },
+    { label: "작업 상세", sub: "Task Detail", Component: TaskDetailScreen },
     { label: "관리", sub: "Management", Component: ManagementScreen },
     { label: "설정", sub: "Settings", Component: SettingsScreen },
-    { label: "작업 상세", sub: "Task Detail", Component: TaskDetailScreen },
   ];
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 5000); // 5초로 미세 조정
     return () => clearInterval(timer);
   }, [slides.length]);
 
@@ -59,7 +63,7 @@ function HeroMobileShowcase() {
       </div>
 
       {/* Floating Particles */}
-      {[...Array(8)].map((_, i) => (
+      {mounted && [...Array(8)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 rounded-full bg-[#00A3FF]"
@@ -198,17 +202,17 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-5"
           >
             <DemoDialog>
-              <button className="group inline-flex items-center justify-center gap-4 px-10 py-5 text-lg font-extrabold bg-[#00A3FF] text-white rounded-sm hover:bg-[#0082cc] transition-all duration-300 shadow-[0_0_30px_rgba(0,163,255,0.4)] hover:shadow-[0_0_50px_rgba(0,163,255,0.7)] hover:-translate-y-1 w-full sm:w-auto uppercase tracking-widest">
+              <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-[#00A3FF] text-white rounded-sm hover:bg-[#0082cc] transition-all duration-300 shadow-[0_0_25px_rgba(0,163,255,0.3)] hover:shadow-[0_0_45px_rgba(0,163,255,0.6)] hover:-translate-y-1 w-full sm:w-auto uppercase tracking-widest">
                 시작하기
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </DemoDialog>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center gap-4 px-10 py-5 text-lg font-extrabold bg-white/[0.03] text-white/80 rounded-sm border border-white/[0.08] hover:bg-white/[0.06] hover:border-[#00A3FF]/40 transition-all duration-300 w-full sm:w-auto uppercase tracking-widest"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-white/[0.03] text-white/80 rounded-sm border border-white/[0.08] hover:bg-white/[0.06] hover:border-[#00A3FF]/40 transition-all duration-300 w-full sm:w-auto uppercase tracking-widest"
             >
               요금제 안내
-              <ArrowRight className="w-6 h-6 text-white/20" />
+              <ArrowRight className="w-5 h-5 text-white/20" />
             </Link>
           </motion.div>
 

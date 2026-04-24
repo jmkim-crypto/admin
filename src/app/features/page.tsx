@@ -1,445 +1,432 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import {
-  Zap,
-  Wifi,
-  Smartphone,
+  Activity,
+  SearchCheck,
+  Layers,
   BarChart3,
-  Bell,
-  Database,
-  Cpu,
   ArrowRight,
   CheckCircle2,
-  Layers,
-  Shield,
   Clock,
-  Settings,
-  LineChart,
-  Activity,
-  MonitorDot,
+  Database,
+  Smartphone,
+  ChevronRight,
+  Zap,
+  Gauge,
+  TrendingUp,
+  HelpCircle,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { DemoDialog } from "@/components/demo-dialog";
+import { PricingPreview } from "@/components/sections/pricing-preview";
 
-const featureBlocks = [
-  {
-    id: "connectivity",
-    badge: "연동성",
-    badgeColor: "#0ea5e9",
-    title: "PLC, IoT 센서와의\n간편한 연결",
-    description:
-      "기존 설비에 별도의 하드웨어 교체 없이 즉시 연동 가능합니다. OPC-UA, Modbus, MQTT 등 표준 프로토콜을 지원하며, 5분 내 설정이 완료됩니다.",
-    features: [
-      { icon: Cpu, text: "OPC-UA / Modbus / MQTT 프로토콜 지원" },
-      { icon: Wifi, text: "무선 IoT 게이트웨이 자동 탐색" },
-      { icon: Layers, text: "레거시 PLC 호환 어댑터 제공" },
-      { icon: Settings, text: "플러그 앤 플레이 — 5분 내 설정 완료" },
-    ],
-    visual: "connectivity",
-  },
-  {
-    id: "mobile",
-    badge: "모바일 최적화",
-    badgeColor: "#10b981",
-    title: "현장 어디서든\n실시간 알림",
-    description:
-      "현장 작업자의 스마트폰으로 이상 징후를 즉시 전달합니다. 임계값 기반 자동 알림과 에스컬레이션 체계를 지원하여 대응 시간을 최소화합니다.",
-    features: [
-      { icon: Smartphone, text: "iOS / Android 네이티브 앱" },
-      { icon: Bell, text: "실시간 푸시 알림 (3초 이내)" },
-      { icon: Shield, text: "역할별 알림 에스컬레이션" },
-      { icon: Clock, text: "오프라인 모드 — 연결 복구 시 자동 동기화" },
-    ],
-    visual: "mobile",
-  },
-  {
-    id: "analytics",
-    badge: "데이터 분석",
-    badgeColor: "#8b5cf6",
-    title: "과거 이력 기반\n통계 분석 리포트",
-    description:
-      "수집된 설비 데이터를 AI가 분석하여 의미 있는 인사이트로 전환합니다. 일별/주별/월별 자동 리포트와 이상 패턴 탐지 기능을 제공합니다.",
-    features: [
-      { icon: BarChart3, text: "커스텀 대시보드 & 리포트 빌더" },
-      { icon: LineChart, text: "트렌드 분석 & 이상 패턴 탐지" },
-      { icon: Database, text: "최대 5년 데이터 저장 & 조회" },
-      { icon: Activity, text: "OEE / MTBF / MTTR 자동 계산" },
-    ],
-    visual: "analytics",
-  },
-];
+// ── Components ──────────────────────────────────────────────────────────────
 
-function ConnectivityVisual() {
+/**
+ * Section Header Component (Unified with Pricing sub-headers)
+ */
+function SectionHeader({
+  badge,
+  title,
+  description,
+  centered = false
+}: {
+  badge: string;
+  title: string | React.ReactNode;
+  description: string;
+  centered?: boolean;
+}) {
   return (
-    <div className="relative w-full h-64 sm:h-80">
-      {/* Central hub */}
+    <div className={`mb-12 ${centered ? "text-center max-w-4xl mx-auto" : "max-w-2xl"}`}>
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-2xl bg-gradient-to-br from-[#0ea5e9] to-[#003366] flex items-center justify-center shadow-xl shadow-[#0ea5e9]/30 z-10"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5"
       >
-        <MonitorDot className="w-8 h-8 text-white" />
+        {badge}
       </motion.div>
-
-      {/* Orbiting nodes */}
-      {[
-        { label: "PLC", angle: 0, delay: 0.5 },
-        { label: "IoT", angle: 72, delay: 0.6 },
-        { label: "MQTT", angle: 144, delay: 0.7 },
-        { label: "센서", angle: 216, delay: 0.8 },
-        { label: "SCADA", angle: 288, delay: 0.9 },
-      ].map((node) => {
-        const radius = 100;
-        const rad = (node.angle * Math.PI) / 180;
-        const x = Math.cos(rad) * radius;
-        const y = Math.sin(rad) * radius;
-        return (
-          <motion.div
-            key={node.label}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: node.delay }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{ transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))` }}
-          >
-            <div className="w-14 h-14 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center">
-              <span className="text-xs font-bold text-[#0ea5e9]">
-                {node.label}
-              </span>
-            </div>
-          </motion.div>
-        );
-      })}
-
-      {/* Pulse rings */}
-      {[1, 2, 3].map((ring) => (
-        <motion.div
-          key={ring}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#0ea5e9]/10"
-          style={{
-            width: ring * 80 + 60,
-            height: ring * 80 + 60,
-          }}
-          animate={{ opacity: [0.3, 0.1, 0.3] }}
-          transition={{ duration: 3, repeat: Infinity, delay: ring * 0.5 }}
-        />
-      ))}
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="text-3xl sm:text-4xl lg:text-[48px] font-extrabold text-[#e8e8e8] mb-6 tracking-tighter leading-tight"
+      >
+        {title}
+      </motion.h2>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="text-[#666666] text-[15px] leading-relaxed font-medium"
+      >
+        {description}
+      </motion.p>
     </div>
   );
 }
 
-function MobileVisual() {
+/**
+ * Smartphone Mockup Component (Unified styling)
+ */
+function PhoneMockup({ src, alt, delay = 0 }: { src: string; alt: string; delay?: number }) {
   return (
-    <div className="relative w-full flex justify-center py-4">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="w-48 sm:w-56"
-      >
-        {/* Phone frame */}
-        <div className="bg-[#1a1f2e] rounded-[2rem] p-2 border border-white/10 shadow-2xl">
-          <div className="bg-[#0a0f1a] rounded-[1.5rem] overflow-hidden">
-            {/* Status bar */}
-            <div className="flex items-center justify-between px-4 py-2 text-[10px] text-[#64748b]">
-              <span>9:41</span>
-              <div className="w-16 h-4 rounded-full bg-black" />
-              <span>100%</span>
-            </div>
-            {/* Notification */}
-            <div className="px-3 py-2 space-y-2">
-              <motion.div
-                initial={{ x: 60, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.8 }}
-                className="p-3 rounded-xl bg-[#ef4444]/10 border border-[#ef4444]/20"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <AlertIcon className="w-3 h-3 text-[#ef4444]" />
-                  <span className="text-[10px] font-bold text-[#ef4444]">긴급 알림</span>
-                </div>
-                <p className="text-[9px] text-[#94a3b8]">
-                  CNC-07 진동 임계값 초과
-                </p>
-              </motion.div>
-              <motion.div
-                initial={{ x: 60, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 1.0 }}
-                className="p-3 rounded-xl bg-[#f59e0b]/10 border border-[#f59e0b]/20"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <Bell className="w-3 h-3 text-[#f59e0b]" />
-                  <span className="text-[10px] font-bold text-[#f59e0b]">주의</span>
-                </div>
-                <p className="text-[9px] text-[#94a3b8]">
-                  프레스-03 온도 상승 감지
-                </p>
-              </motion.div>
-              <motion.div
-                initial={{ x: 60, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 1.2 }}
-                className="p-3 rounded-xl bg-[#10b981]/10 border border-[#10b981]/20"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <CheckCircle2 className="w-3 h-3 text-[#10b981]" />
-                  <span className="text-[10px] font-bold text-[#10b981]">정비 완료</span>
-                </div>
-                <p className="text-[9px] text-[#94a3b8]">
-                  로봇팔-12 윤활유 교체 완료
-                </p>
-              </motion.div>
-            </div>
-            {/* Bottom nav */}
-            <div className="flex items-center justify-around px-4 py-3 border-t border-white/5 mt-4">
-              {[Activity, Bell, BarChart3, Settings].map((Icon, i) => (
-                <Icon key={i} className={`w-4 h-4 ${i === 1 ? "text-[#0ea5e9]" : "text-[#475569]"}`} />
-              ))}
-            </div>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay }}
+      className="relative w-[280px] sm:w-[320px] mx-auto group"
+    >
+      {/* Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#3b82f6]/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+
+      {/* Phone Frame */}
+      <div className="relative p-2 bg-white/[0.02] border border-white/[0.06] backdrop-blur-xl rounded-[42px] shadow-2xl">
+        <div className="relative rounded-[36px] overflow-hidden bg-black aspect-[9/19.5]">
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-full z-30" />
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 280px, 320px"
+            priority
+          />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/**
+ * Visual Widget Wrapper (Unified with Pricing card styling)
+ */
+function VisualWidget({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div
+      className={`rounded-2xl p-7 lg:p-8 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-300 hover:border-[#3b82f6]/20 shadow-2xl ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+/**
+ * Real-time Flow Visual
+ */
+function RealTimeFlowVisual() {
+  return (
+    <div className="w-full max-w-lg mx-auto space-y-5">
+      <VisualWidget>
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <p className="text-base font-bold text-[#555555] uppercase tracking-widest mb-1">Live Efficiency</p>
+            <h4 className="text-xl font-bold text-[#e8e8e8]">Shift A-1 Output</h4>
           </div>
+          <Activity className="w-5 h-5 text-[#3b82f6] animate-pulse" />
         </div>
-      </motion.div>
-    </div>
-  );
-}
+        <div className="relative h-2.5 bg-white/[0.05] rounded-full overflow-hidden mb-4">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "84.2%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute inset-y-0 left-0 bg-[#3b82f6]"
+          />
+        </div>
+        <div className="flex justify-between items-center text-base font-semibold text-[#555555] uppercase tracking-wider">
+          <span>Target: 10,000</span>
+          <span className="text-[#3b82f6]">Current: 8,420 (84.2%)</span>
+        </div>
+      </VisualWidget>
 
-function AlertIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-      <line x1="12" y1="9" x2="12" y2="13" />
-      <line x1="12" y1="17" x2="12.01" y2="17" />
-    </svg>
-  );
-}
-
-function AnalyticsVisual() {
-  return (
-    <div className="relative w-full px-4 py-6">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="glass rounded-xl p-4 space-y-4"
-      >
-        {/* Mini chart header */}
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold text-[#94a3b8]">OEE 트렌드 (30일)</span>
-          <span className="text-xs text-[#10b981] font-bold">+12.4%</span>
-        </div>
-        {/* Bar chart */}
-        <div className="flex items-end gap-1 h-28">
-          {[45, 52, 48, 60, 55, 63, 58, 70, 65, 72, 68, 75, 78, 82, 80].map((v, i) => (
-            <motion.div
-              key={i}
-              initial={{ height: 0 }}
-              animate={{ height: `${v}%` }}
-              transition={{ delay: 0.5 + i * 0.05, duration: 0.4 }}
-              className="flex-1 rounded-t-sm"
-              style={{
-                background: v >= 70
-                  ? "linear-gradient(to top, #003366, #10b981)"
-                  : "linear-gradient(to top, #1e293b, #475569)",
-              }}
-            />
-          ))}
-        </div>
-        {/* Stats row */}
-        <div className="grid grid-cols-3 gap-2 pt-2 border-t border-white/5">
+      <VisualWidget>
+        <span className="text-base font-bold text-[#555555] uppercase tracking-widest mb-6 block">Equipment Status</span>
+        <div className="space-y-3.5">
           {[
-            { label: "OEE", value: "82.4%", color: "#10b981" },
-            { label: "MTBF", value: "340h", color: "#0ea5e9" },
-            { label: "MTTR", value: "1.2h", color: "#8b5cf6" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-lg font-bold" style={{ color: stat.color }}>
-                {stat.value}
-              </p>
-              <p className="text-[10px] text-[#64748b]">{stat.label}</p>
+            { name: "CNC-A01", status: "Running", color: "#10b981" },
+            { name: "Press-B04", status: "Maintenance", color: "#ef4444" },
+            { name: "Robot-C12", status: "Idle", color: "#f59e0b" },
+          ].map((m) => (
+            <div key={m.name} className="flex items-center justify-between py-2 border-b border-white/[0.03] last:border-0">
+              <span className="text-base font-medium text-[#e8e8e8]">{m.name}</span>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: m.color }} />
+                <span className="text-base font-bold uppercase tracking-widest" style={{ color: m.color }}>{m.status}</span>
+              </div>
             </div>
           ))}
         </div>
-      </motion.div>
+      </VisualWidget>
     </div>
   );
 }
 
-function FeatureVisual({ type }: { type: string }) {
-  switch (type) {
-    case "connectivity":
-      return <ConnectivityVisual />;
-    case "mobile":
-      return <MobileVisual />;
-    case "analytics":
-      return <AnalyticsVisual />;
-    default:
-      return null;
-  }
+/**
+ * Advanced Analysis Visual
+ */
+function AdvancedAnalysisVisual() {
+  return (
+    <div className="w-full max-w-2xl mx-auto rounded-2xl p-8 lg:p-10 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] shadow-2xl relative group">
+      <div className="mb-10">
+        <p className="text-base font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-4">Analytics Dashboard</p>
+        <h4 className="text-3xl font-extrabold text-[#e8e8e8] tracking-tighter">Production vs Revenue</h4>
+      </div>
+
+      <div className="flex items-end justify-between h-48 gap-3 px-2 relative mb-12">
+        <div className="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-5">
+          {[...Array(5)].map((_, i) => <div key={i} className="w-full h-px bg-white" />)}
+        </div>
+        {[40, 65, 45, 80, 55, 90, 75, 60, 85, 50, 70, 95].map((h, i) => (
+          <motion.div
+            key={i}
+            initial={{ height: 0 }}
+            whileInView={{ height: `${h}%` }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: i * 0.05 }}
+            className="flex-1 bg-[#3b82f6]/60 rounded-t-sm hover:bg-[#3b82f6] transition-colors"
+          />
+        ))}
+      </div>
+
+      <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/[0.06]">
+        {[
+          { label: "Revenue", value: "₩1.2B" },
+          { label: "Yield Rate", value: "99.8%" },
+          { label: "Efficiency", value: "94.2%" },
+        ].map((stat, i) => (
+          <div key={i}>
+            <p className="text-base font-bold text-[#555555] uppercase tracking-widest mb-1.5">{stat.label}</p>
+            <p className="text-2xl font-bold text-[#e8e8e8] tracking-tight">{stat.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
+
+// ── Main Page Component ─────────────────────────────────────────────────────
 
 export default function FeaturesPage() {
   return (
-    <div className="pt-20">
-      {/* Page Hero */}
-      <section className="relative py-16 lg:py-24 overflow-hidden">
-        <div className="absolute inset-0 grid-bg" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#003366]/20 rounded-full blur-[120px]" />
+    <div className="bg-[#0B0C10] text-[#e8e8e8] min-h-screen">
+      {/* Background Elements */}
+      <div className="fixed inset-0 grid-bg opacity-30 pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+      {/* Hero Section (Unified with Pricing Hero) */}
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div className="absolute inset-0 ambient-blue pointer-events-none opacity-40" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#3b82f6]/5 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 relative text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <p className="text-sm font-semibold text-[#0ea5e9] tracking-wider uppercase mb-3">
+            <p className="text-base font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">
               Features
             </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6">
-              하나의 플랫폼으로
-              <br />
-              <span className="gradient-text">모든 설비를 관리하세요</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter mb-8 leading-tight">
+              <span className="text-[#e8e8e8]">현장의 목소리를 담은{" "}</span>
+              <span className="gradient-text">본질적 기능의 집약</span>
             </h1>
-            <p className="text-[#94a3b8] max-w-2xl mx-auto text-base sm:text-lg">
-              연동부터 분석까지, FactoryPulse의 핵심 기능을 상세히 살펴보세요.
+            <p className="text-[#666666] max-w-3xl mx-auto text-[16px] md:text-lg mb-12 leading-relaxed">
+              화려함 뒤에 숨겨진 복잡함을 걷어내고, 경영에 확신을 줄 수 있는 <br className="hidden md:block" />
+              데이터와 도구만을 엄선했습니다. 모든 공정의 진실을 마주하세요.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Feature Blocks */}
-      {featureBlocks.map((block, index) => (
-        <FeatureBlock key={block.id} block={block} index={index} />
-      ))}
+      {/* Feature Sections (Unified Z-Pattern) */}
+      <div className="relative z-10">
 
-      {/* CTA */}
-      <section className="py-20 lg:py-32 border-t border-white/5">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-              지금 바로 시작하세요
-            </h2>
-            <p className="text-[#94a3b8] mb-8">
-              14일 무료 체험으로 모든 기능을 직접 경험해 보세요.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <DemoDialog>
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-[#0ea5e9] to-[#003366] text-white font-semibold px-8 shadow-lg shadow-[#0ea5e9]/20 w-full sm:w-auto"
-                >
-                  <Zap className="w-4 h-4 mr-2" />
-                  무료 데모 신청
-                </Button>
-              </DemoDialog>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white/10 hover:bg-white/5 text-white w-full sm:w-auto"
-                render={
-                  <Link href="/pricing">
-                    요금제 보기 <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
-                }
+        {/* Section 1: Real-time Flow */}
+        <section className="py-20 lg:py-32 relative border-t border-white/[0.04]">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              <div>
+                <SectionHeader
+                  badge="01. Visualization"
+                  title={<>공장 전체 흐름을<br />실시간으로 파악합니다</>}
+                  description="현장에 가지 않아도 작업자, 설비, 제품별 공정 흐름을 한눈에 인지할 수 있습니다. 수집된 모든 데이터는 지연 없이 동기화됩니다."
+                />
+                <div className="space-y-4 mb-10">
+                  {[
+                    "작업자/설비별 실시간 가동 현황 모니터링",
+                    "이상 징후 발생 시 즉각적인 알림 및 시각화",
+                    "표준 공정 대비 진행률 실시간 트래킹",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3.5 text-base font-medium text-[#888888]">
+                      <CheckCircle2 className="w-4 h-4 text-[#10b981] shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex gap-10 pt-8 border-t border-white/[0.06]">
+                  <div>
+                    <p className="text-xs font-bold text-[#555555] uppercase tracking-widest mb-1">Latency</p>
+                    <p className="text-xl font-bold text-[#e8e8e8]">&lt; 0.001s</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-[#555555] uppercase tracking-widest mb-1">Sync Rate</p>
+                    <p className="text-xl font-bold text-[#e8e8e8]">100%</p>
+                  </div>
+                </div>
+              </div>
+              <RealTimeFlowVisual />
+            </div>
+          </div>
+        </section>
+
+        {/* Section 2: Work Order Management */}
+        <section className="py-20 lg:py-32 relative border-t border-white/[0.04] bg-white/[0.01]">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              <div className="lg:order-2">
+                <SectionHeader
+                  badge="02. Digital Workflow"
+                  title={<>종이 없는 현장,<br />정밀한 작업 지시</>}
+                  description="과거의 수기 작업 지시서로 인한 오해와 누락을 원천 차단합니다. 디지털로 하달되는 명확한 지시는 현장의 효율을 극대화합니다."
+                />
+                <div className="space-y-4 mb-10">
+                  {[
+                    "모바일 앱을 통한 즉각적인 작업 지시 조회",
+                    "작업 진행 상태의 투명한 관리",
+                    "도면 및 작업 가이드 실시간 참조",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3.5 text-base font-medium text-[#888888]">
+                      <CheckCircle2 className="w-4 h-4 text-[#10b981] shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <DemoDialog>
+                  <button className="inline-flex items-center gap-2 text-base font-bold text-[#e8e8e8] hover:text-[#3b82f6] transition-colors group">
+                    View Workflow Guide
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </DemoDialog>
+              </div>
+              <div className="lg:order-1">
+                <PhoneMockup src="/images/mobile-screens/tasklist.png" alt="작업지시 조회" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Digital Management */}
+        <section className="py-20 lg:py-32 relative border-t border-white/[0.04]">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              <div>
+                <SectionHeader
+                  badge="03. Mobile Management"
+                  title={<>비효율을 덜어낸<br />정직한 실적 관리</>}
+                  description="작업자가 현장에서 즉시 등록하는 실적 데이터는 경영의 근거가 됩니다. 복잡한 보고 체계를 걷어내고 데이터의 진실성을 확보하세요."
+                />
+                <div className="space-y-4 mb-10">
+                  {[
+                    "터치 몇 번으로 완료되는 생산 실적 등록",
+                    "비가동 사유 실시간 선택 및 분석 연동",
+                    "작업자와 관리자 간의 실시간 피드백",
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3.5 text-base font-medium text-[#888888]">
+                      <CheckCircle2 className="w-4 h-4 text-[#10b981] shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="p-6 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Clock className="w-4 h-4 text-[#3b82f6]" />
+                    <p className="text-base font-bold text-[#e8e8e8]">현장 보고 시간 74% 단축</p>
+                  </div>
+                  <p className="text-base text-[#555555] leading-relaxed">
+                    수기 보고서 작성 및 취합에 소요되던 시간을 걷어내고, <br />
+                    실제 생산 활동에 집중할 수 있는 환경을 제공합니다.
+                  </p>
+                </div>
+              </div>
+              <PhoneMockup src="/images/mobile-screens/management.png" alt="관리 메뉴" />
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Advanced Analysis */}
+        <section className="py-24 lg:py-32 relative border-t border-white/[0.04] bg-white/[0.01]">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-20">
+              <SectionHeader
+                badge="04. Intelligence"
+                centered
+                title={<>데이터가 제시하는 성장의 인사이트</>}
+                description="단순한 수치를 넘어 생산량, 가동률, 매출액 등 핵심 지표를 체계적으로 분석합니다. 우리 공장의 현재 위치를 정확한 통계로 확인하고 미래를 설계하세요."
               />
             </div>
-          </motion.div>
-        </div>
-      </section>
-    </div>
-  );
-}
+            <AdvancedAnalysisVisual />
 
-function FeatureBlock({
-  block,
-  index,
-}: {
-  block: (typeof featureBlocks)[number];
-  index: number;
-}) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const isReversed = index % 2 === 1;
-
-  return (
-    <section
-      ref={ref}
-      className={`relative py-16 lg:py-24 ${index > 0 ? "border-t border-white/5" : ""}`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
-            isReversed ? "lg:direction-rtl" : ""
-          }`}
-          style={isReversed ? { direction: "rtl" } : {}}
-        >
-          {/* Text */}
-          <motion.div
-            initial={{ opacity: 0, x: isReversed ? 40 : -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            style={{ direction: "ltr" }}
-          >
-            <span
-              className="inline-block text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full mb-4"
-              style={{
-                color: block.badgeColor,
-                background: `${block.badgeColor}15`,
-              }}
-            >
-              {block.badge}
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 whitespace-pre-line leading-tight">
-              {block.title}
-            </h2>
-            <p className="text-[#94a3b8] mb-8 leading-relaxed">
-              {block.description}
-            </p>
-
-            <div className="space-y-4">
-              {block.features.map((feature) => (
-                <div
-                  key={feature.text}
-                  className="flex items-start gap-3 group"
+            {/* Unified FAQ-style grid */}
+            <div className="mt-20 grid md:grid-cols-3 gap-5 lg:gap-6">
+              {[
+                { title: "정밀한 원가 분석", desc: "생산량 대비 자원 소모량을 분석하여 정확한 제품별 원가를 산출합니다.", icon: BarChart3 },
+                { title: "병목 구간 탐지", desc: "공정 간 리드 타임을 분석하여 생산성을 저해하는 병목 구간을 자동으로 탐지합니다.", icon: Activity },
+                { title: "가동률 최적화", desc: "비가동 사유 빈도 분석을 통해 설비 가동률을 극대화할 수 있는 인사이트를 제공합니다.", icon: Zap },
+              ].map((box, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="rounded-xl p-7 lg:p-8 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300"
                 >
-                  <div
-                    className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:scale-110"
-                    style={{ background: `${block.badgeColor}10` }}
-                  >
-                    <feature.icon
-                      className="w-4 h-4"
-                      style={{ color: block.badgeColor }}
-                    />
-                  </div>
-                  <span className="text-sm text-[#c8d0da] pt-2">
-                    {feature.text}
-                  </span>
-                </div>
+                  <box.icon className="w-4 h-4 text-[#3b82f6] mb-5" />
+                  <h5 className="text-base font-bold text-[#e8e8e8] mb-3 tracking-tight">{box.title}</h5>
+                  <p className="text-base text-[#666666] leading-relaxed font-medium">{box.desc}</p>
+                </motion.div>
               ))}
             </div>
-          </motion.div>
-
-          {/* Visual */}
-          <motion.div
-            initial={{ opacity: 0, x: isReversed ? -40 : 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ direction: "ltr" }}
-            className="glass rounded-2xl overflow-hidden"
-          >
-            <FeatureVisual type={block.visual} />
-          </motion.div>
-        </div>
+          </div>
+        </section>
       </div>
-    </section>
+
+      {/* FAQ Section (Added to match Pricing page structure) */}
+      <section className="py-20 lg:py-32 border-t border-white/[0.04]">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+          <SectionHeader
+            badge="Common Questions"
+            centered
+            title="자주 묻는 질문"
+            description="Handy MES의 주요 기능에 대해 궁금해하시는 점들을 정리했습니다."
+          />
+          <div className="space-y-3 mt-12 text-left">
+            {[
+              { q: "모든 설비와 실시간 연동이 가능한가요?", a: "네, OPC-UA, Modbus, MQTT 등 표준 프로토콜을 지원하는 모든 설비와 즉시 연동됩니다. 레거시 장비의 경우 전용 어댑터를 통해 해결 가능합니다." },
+              { q: "데이터 보안은 어떻게 보장되나요?", a: "모든 데이터는 전송 및 저장 시 AES-256 암호화 처리를 거치며, ISO 27001 인증을 받은 보안 환경에서 관리됩니다." },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="rounded-xl p-6 bg-white/[0.02] border border-white/[0.06] backdrop-blur-md"
+              >
+                <h3 className="text-base font-bold text-[#e8e8e8] mb-3">{item.q}</h3>
+                <p className="text-[15px] text-[#666666] leading-relaxed">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Preview Section */}
+      <PricingPreview />
+    </div>
   );
 }

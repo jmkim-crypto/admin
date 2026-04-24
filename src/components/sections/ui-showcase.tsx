@@ -88,8 +88,10 @@ function FiberLines() {
 /* ── iPhone Mockup with Carousel ──────────────────────────────────────── */
 function MobileShowcase() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % carouselSlides.length);
     }, 4000);
@@ -122,7 +124,7 @@ function MobileShowcase() {
         />
 
         {/* Floating cyan particles */}
-        {[...Array(6)].map((_, i) => (
+        {mounted && [...Array(6)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 rounded-full bg-[#00A3FF]"

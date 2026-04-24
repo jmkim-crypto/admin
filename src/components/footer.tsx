@@ -24,10 +24,7 @@ const footerLinks = {
     { label: "FAQ", href: "#" },
   ],
   회사: [
-    { label: "회사 소개", href: "#" },
-    { label: "채용", href: "#" },
-    { label: "블로그", href: "#" },
-    { label: "문의하기", href: "#" },
+    { label: "회사 소개", href: "http://moornmo.com/intro/" },
   ],
 };
 
@@ -67,13 +64,18 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 lg:gap-14">
           {/* Brand */}
           <div className="col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-6 group">
+            <Link 
+              href="http://moornmo.com/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 mb-6 group"
+            >
               <Image
-                src="/images/brand/logo.png"
-                alt="Handy MES Logo"
-                width={120}
+                src="/images/brand/soonsoft.png"
+                alt="Soonsoft Logo"
+                width={130}
                 height={32}
-                className="h-7 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                className="h-8 w-auto object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300"
               />
             </Link>
             <p className="text-sm text-[#444444] mb-7 max-w-xs leading-relaxed">
@@ -81,22 +83,21 @@ export function Footer() {
             </p>
             <div className="space-y-3">
               <a
-                href="mailto:contact@factorypulse.io"
+
                 className="flex items-center gap-2 text-sm text-[#444444] hover:text-[#888888] transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />
-                contact@factorypulse.io
+                support@ilts.co.kr
               </a>
               <a
-                href="tel:1588-0000"
                 className="flex items-center gap-2 text-sm text-[#444444] hover:text-[#888888] transition-colors"
               >
                 <Phone className="w-3.5 h-3.5" />
-                1588-0000
+                02-1544-0538
               </a>
               <div className="flex items-center gap-2 text-sm text-[#333333]">
                 <MapPin className="w-3.5 h-3.5" />
-                서울시 강남구 테헤란로 521
+                서울특별시 구로구 디지털로31길 20 (구로동) 에이스테크노타워 5차 302호
               </div>
             </div>
           </div>
@@ -126,7 +127,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/[0.04] mt-14 pt-7 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[#333333]">
-            © 2024 Handy MES. All rights reserved.
+            © 2026 Handy MES. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             <Link href="#" className="text-xs text-[#333333] hover:text-[#555555] transition-colors">
