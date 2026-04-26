@@ -48,8 +48,8 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  --font-size-xs: 1rem;
-  --font-size-sm: 1rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
 
   /* Handy MES Master Brand Colors */
@@ -138,6 +138,10 @@
     /* 16px */
     line-height: 1.6;
   }
+  
+  .text-xs { font-size: var(--font-size-xs); }
+  .text-sm { font-size: var(--font-size-sm); }
+  .text-base { font-size: var(--font-size-base); }
 }
 
 /* ─── Keyframes ─── */

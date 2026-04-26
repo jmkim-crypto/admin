@@ -40,7 +40,7 @@ export default function RootLayout({
     <html lang="ko" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Navigation />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 w-full">{children}</main>
         <Footer />
       </body>
     </html>

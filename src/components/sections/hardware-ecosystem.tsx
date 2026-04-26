@@ -34,7 +34,7 @@ const devices = [
     color: "#00A3FF",
     statusColor: "#fb923c",
     glow: "rgba(0, 163, 255, 0.6)",
-    description: "현장의 전기 신호를 수집하여 디지털 데이터로 변환합니다. 생산량 및 설비 상태 등 실시간 현황을 기록하여 관리자가 보다 쉽게 관리할 수 있도록 지원합니다.",
+    description: "현장의 전기 신호를 수집하여 디지털 데이터로 변환합니다. 생산량 및 설비 상태 등 실시간 현황을 기록하여 관리자가 현장 밖에서도 편리하게 관리할 수 있도록 지원합니다.",
     specs: ["생산 수량 및 설비 상태 취득", "고속 설비 Cycle Time 측정", "RS-232 바코드/RFID 연동"],
     icon: Activity,
     ports: [
@@ -186,9 +186,9 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
     >
       {/* Card Content */}
       <div
-        className={`relative flex flex-col p-7 lg:p-8 rounded-2xl transition-all duration-500 cursor-pointer overflow-hidden border backdrop-blur-md ${isExpanded
-          ? "bg-[#16171D]/80 border-[#00A3FF]/40 shadow-[0_20px_50px_rgba(0,163,255,0.15)]"
-          : "bg-[#16171D]/40 border-white/[0.06] hover:border-[#00A3FF]/40 hover:bg-[#16171D]/60"
+        className={`relative flex flex-col min-h-[750px] p-8 lg:p-10 rounded-2xl transition-all duration-500 cursor-pointer overflow-hidden border backdrop-blur-md glass hover-glow-cyan ${isExpanded
+          ? "bg-[#16171D]/90 border-[#00A3FF]/40 shadow-[0_32px_64px_rgba(0,163,255,0.2)]"
+          : "bg-[#16171D]/40 border-white/[0.08] hover:border-[#00A3FF]/40 hover:bg-[#16171D]/60"
           }`}
         onClick={() => setIsExpanded(!isExpanded)}
         style={{
