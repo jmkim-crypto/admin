@@ -49,7 +49,7 @@ export function PricingPreview() {
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3b82f6]/60 to-transparent" />
 
             <div className="flex items-baseline justify-center gap-2 mb-2">
-              <span className="text-5xl lg:text-6xl font-bold tracking-tighter gradient-text">
+              <span className="text-4xl lg:text-5xl font-bold tracking-tighter gradient-text">
                 월 49만원
               </span>
               <span className="text-[#555555] text-base">부터</span>
