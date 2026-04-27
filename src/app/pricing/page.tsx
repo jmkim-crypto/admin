@@ -106,7 +106,7 @@ export default function PricingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">
+            <p className="text-base font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-5">
               Pricing
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter mb-6">
@@ -125,7 +125,7 @@ export default function PricingPage() {
                 <div className="absolute inset-0 flex p-1">
                   <div className="relative w-full h-full flex">
                     <motion.div
-                      className="h-full w-1/2 rounded-full bg-[#3b82f6] shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                      className="h-full w-1/2 rounded-full bg-[#00a3ff] shadow-[0_0_20px_rgba(59,130,246,0.4)]"
                       initial={false}
                       animate={{
                         x: isYearly ? "100%" : "0%",
@@ -227,13 +227,12 @@ export default function PricingPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
                   whileHover={{ y: -4 }}
-                  className={`relative group ${
-                    plan.highlighted ? "md:-mt-4 md:mb-4" : ""
-                  }`}
+                  className={`relative group ${plan.highlighted ? "md:-mt-4 md:mb-4" : ""
+                    }`}
                 >
                   {plan.highlighted && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold bg-[#3b82f6] text-white shadow-lg shadow-blue-500/30">
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold bg-[#00a3ff] text-white shadow-lg shadow-[#00a3ff]/30">
                         <Star className="w-2.5 h-2.5" />
                         Most Popular
                       </span>
@@ -255,7 +254,7 @@ export default function PricingPage() {
                   >
                     {/* Top accent line on highlighted card */}
                     {plan.highlighted && (
-                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3b82f6]/80 to-transparent" />
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00a3ff]/80 to-transparent" />
                     )}
 
                     <h3 className="text-[17px] font-bold text-[#e8e8e8] mb-1 tracking-tight">
@@ -291,11 +290,10 @@ export default function PricingPage() {
                     {/* CTA */}
                     <DemoDialog>
                       <button
-                        className={`w-full mb-7 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                          plan.highlighted
-                            ? "bg-[#3b82f6] text-white hover:bg-[#2563eb] shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]"
-                            : "bg-white/[0.04] text-[#888888] border border-white/[0.07] hover:bg-white/[0.07] hover:text-[#e8e8e8]"
-                        }`}
+                        className={`w-full mb-7 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${plan.highlighted
+                          ? "bg-[#00a3ff] text-white hover:bg-[#2563eb] shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]"
+                          : "bg-white/[0.04] text-[#888888] border border-white/[0.07] hover:bg-white/[0.07] hover:text-[#e8e8e8]"
+                          }`}
                       >
                         {price !== null ? (
                           <span className="flex items-center justify-center gap-1.5">
@@ -371,9 +369,8 @@ export default function PricingPage() {
                   {plans.map((plan) => (
                     <th
                       key={plan.name}
-                      className={`py-4 px-6 text-center text-sm font-bold ${
-                        plan.highlighted ? "text-[#3b82f6]" : "text-[#888888]"
-                      }`}
+                      className={`py-4 px-6 text-center text-sm font-bold ${plan.highlighted ? "text-[#00a3ff]" : "text-[#888888]"
+                        }`}
                     >
                       {plan.name}
                     </th>
@@ -422,7 +419,7 @@ export default function PricingPage() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <p className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">FAQ</p>
+            <p className="text-xs font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-5">FAQ</p>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter text-[#e8e8e8]">
               자주 묻는 질문
             </h2>
@@ -462,7 +459,7 @@ export default function PricingPage() {
                 }}
               >
                 <div className="flex items-start gap-4">
-                  <HelpCircle className="w-4 h-4 text-[#3b82f6] shrink-0 mt-0.5" />
+                  <HelpCircle className="w-4 h-4 text-[#00a3ff] shrink-0 mt-0.5" />
                   <div>
                     <h3 className="text-sm font-semibold text-[#e8e8e8] mb-2 tracking-tight">
                       {item.q}

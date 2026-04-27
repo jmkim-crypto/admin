@@ -46,7 +46,7 @@ function SectionHeader({
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5"
+        className="text-xs font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-5"
       >
         {badge}
       </motion.div>
@@ -64,7 +64,7 @@ function SectionHeader({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
-        className="text-[#666666] text-[15px] leading-relaxed font-medium"
+        className="text-[#666666] text-[16px] leading-relaxed font-medium"
       >
         {description}
       </motion.p>
@@ -85,7 +85,7 @@ function PhoneMockup({ src, alt, delay = 0 }: { src: string; alt: string; delay?
       className="relative w-[280px] sm:w-[320px] mx-auto group"
     >
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#3b82f6]/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00a3ff]/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
       {/* Phone Frame */}
       <div className="relative p-2 bg-white/[0.02] border border-white/[0.06] backdrop-blur-xl rounded-[42px] shadow-2xl">
@@ -111,7 +111,7 @@ function PhoneMockup({ src, alt, delay = 0 }: { src: string; alt: string; delay?
 function VisualWidget({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={`rounded-2xl p-7 lg:p-8 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-300 hover:border-[#3b82f6]/20 shadow-2xl ${className}`}
+      className={`rounded-2xl p-7 lg:p-8 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-300 hover:border-[#00a3ff]/20 shadow-2xl ${className}`}
     >
       {children}
     </div>
@@ -130,7 +130,7 @@ function RealTimeFlowVisual() {
             <p className="text-base font-bold text-[#555555] uppercase tracking-widest mb-1">Live Efficiency</p>
             <h4 className="text-xl font-bold text-[#e8e8e8]">Shift A-1 Output</h4>
           </div>
-          <Activity className="w-5 h-5 text-[#3b82f6] animate-pulse" />
+          <Activity className="w-5 h-5 text-[#00a3ff] animate-pulse" />
         </div>
         <div className="relative h-2.5 bg-white/[0.05] rounded-full overflow-hidden mb-4">
           <motion.div
@@ -138,12 +138,12 @@ function RealTimeFlowVisual() {
             whileInView={{ width: "84.2%" }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="absolute inset-y-0 left-0 bg-[#3b82f6]"
+            className="absolute inset-y-0 left-0 bg-[#00a3ff]"
           />
         </div>
         <div className="flex justify-between items-center text-base font-semibold text-[#555555] uppercase tracking-wider">
           <span>Target: 10,000</span>
-          <span className="text-[#3b82f6]">Current: 8,420 (84.2%)</span>
+          <span className="text-[#00a3ff]">Current: 8,420 (84.2%)</span>
         </div>
       </VisualWidget>
 
@@ -176,7 +176,7 @@ function AdvancedAnalysisVisual() {
   return (
     <div className="w-full max-w-2xl mx-auto rounded-2xl p-8 lg:p-10 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] shadow-2xl relative group">
       <div className="mb-10">
-        <p className="text-base font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-4">Analytics Dashboard</p>
+        <p className="text-base font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-4">Analytics Dashboard</p>
         <h4 className="text-3xl font-bold text-[#e8e8e8] tracking-tighter">Production vs Revenue</h4>
       </div>
 
@@ -191,7 +191,7 @@ function AdvancedAnalysisVisual() {
             whileInView={{ height: `${h}%` }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: i * 0.05 }}
-            className="flex-1 bg-[#3b82f6]/60 rounded-t-sm hover:bg-[#3b82f6] transition-colors"
+            className="flex-1 bg-[#00a3ff]/60 rounded-t-sm hover:bg-[#00a3ff] transition-colors"
           />
         ))}
       </div>
@@ -223,7 +223,7 @@ export default function FeaturesPage() {
       {/* Hero Section (Unified with Pricing Hero) */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 ambient-blue pointer-events-none opacity-40" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#3b82f6]/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#00a3ff]/5 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative text-center">
           <motion.div
@@ -231,7 +231,7 @@ export default function FeaturesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-base font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">
+            <p className="text-base font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-5">
               Features
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter mb-8 leading-tight">
@@ -310,7 +310,7 @@ export default function FeaturesPage() {
                   ))}
                 </div>
                 <DemoDialog>
-                  <button className="inline-flex items-center gap-2 text-base font-bold text-[#e8e8e8] hover:text-[#3b82f6] transition-colors group">
+                  <button className="inline-flex items-center gap-2 text-base font-bold text-[#e8e8e8] hover:text-[#00a3ff] transition-colors group">
                     View Workflow Guide
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -347,7 +347,7 @@ export default function FeaturesPage() {
                 </div>
                 <div className="p-6 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
                   <div className="flex items-center gap-3 mb-3">
-                    <Clock className="w-4 h-4 text-[#3b82f6]" />
+                    <Clock className="w-4 h-4 text-[#00a3ff]" />
                     <p className="text-base font-bold text-[#e8e8e8]">현장 보고 시간 74% 단축</p>
                   </div>
                   <p className="text-base text-[#555555] leading-relaxed">
@@ -389,7 +389,7 @@ export default function FeaturesPage() {
                   transition={{ delay: i * 0.1 }}
                   className="rounded-xl p-7 lg:p-8 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300"
                 >
-                  <box.icon className="w-4 h-4 text-[#3b82f6] mb-5" />
+                  <box.icon className="w-4 h-4 text-[#00a3ff] mb-5" />
                   <h5 className="text-base font-bold text-[#e8e8e8] mb-3 tracking-tight">{box.title}</h5>
                   <p className="text-base text-[#666666] leading-relaxed font-medium">{box.desc}</p>
                 </motion.div>

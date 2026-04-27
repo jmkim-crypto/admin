@@ -79,7 +79,7 @@ export function Navigation() {
                 {pathname === link.href && (
                   <motion.div
                     layoutId="nav-indicator"
-                    className="absolute bottom-1 left-3 right-3 h-px bg-gradient-to-r from-transparent via-[#3b82f6] to-transparent"
+                    className="absolute bottom-1 left-3 right-3 h-px bg-gradient-to-r from-transparent via-[#00a3ff] to-transparent"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}

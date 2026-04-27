@@ -170,9 +170,9 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.2] mb-8"
           >
-            <span className="text-white/30">내 손 안의 생산관리 시스템</span>
+            <span className="text-white/30">1/40 비용으로 내일 당장 시작하는</span>
             <br />
-            <span className="gradient-text">Handy MES</span>
+            <span className="gradient-text">Handy MES 스마트 팩토리</span>
           </motion.h1>
 
           {/* Sub */}
@@ -180,18 +180,17 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg sm:text-2xl font-bold tracking-tight text-[#d1d5db]/70 max-w-4xl mx-auto mb-16 leading-relaxed"
+            className="text-lg sm:text-2xl font-medium tracking-tight text-[#d1d5db]/70 max-w-4xl mx-auto mb-16 leading-relaxed"
           >
-            투자가 아닌{" "}
+            복잡한 대면 상담과 비싼 인건비를 걷어내고
+            <br className="hidden sm:block" />
             <span
               className="text-[#00A3FF]"
               style={{ textShadow: "0 0 8px rgba(0, 163, 255, 0.4)" }}
             >
-              성장
+              현장의 실질적 데이터
             </span>
-            에 집중할 수 있도록,
-            <br className="hidden sm:block" />
-            비용의 패러다임을 바꿉니다.
+            에만 집중했습니다.
           </motion.p>
 
           {/* CTAs */}

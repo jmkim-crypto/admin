@@ -18,10 +18,10 @@ const values = [
   {
     icon: Banknote,
     tag: "ECONOMY",
-    title: "압도적인 비용 절감",
+    title: "획기적인 비용 절감",
     description: "대면 상담과 불필요한 인건비를 제거하여 스마트 팩토리 도입의 문턱을 낮췄습니다.",
     footerHighlight: "평균 대비 1/40의 비용",
-    microCopy: "(스마트팩토리 평균 6,000만원 기준)",
+    microCopy: "(기존 MES 평균 6,000만원 대비)",
   },
   {
     icon: Smartphone,
@@ -96,16 +96,17 @@ export function ValueProps() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">
+          <p className="text-xs font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-5">
             Core Values
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter mb-5">
-            <span className="text-[#e8e8e8]">3대 핵심 가치로</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8">
+            <span className="text-[#e8e8e8]">정직한 기술로</span>
             <br />
-            <span className="gradient-text">공장 운영을 혁신합니다</span>
+            <span className="gradient-text">현장의 가치를 증명합니다</span>
           </h2>
-          <p className="text-[#666666] max-w-xl mx-auto text-[15px] leading-relaxed">
-            수동 관리에서 벗어나, 데이터 기반의 스마트한 설비 관리로 전환하세요.
+          <p className="text-[#666666] max-w-xl mx-auto text-lg leading-relaxed">
+            비싼 비용과 긴 구축 기간이라는 기존 MES의 한계를 넘어, <br />
+            데이터 기반의 실무 중심 관리를 제안합니다.
           </p>
         </motion.div>
 
@@ -136,8 +137,8 @@ export function ValueProps() {
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center mb-8 transition-transform duration-500 group-hover:scale-110 bg-[#00A3FF]/10 border border-[#00A3FF]/20"
                   >
-                    <value.icon 
-                      className="w-6 h-6 text-[#00A3FF]" 
+                    <value.icon
+                      className="w-6 h-6 text-[#00A3FF]"
                       strokeWidth={1.5}
                     />
                   </div>
@@ -165,7 +166,7 @@ export function ValueProps() {
                           {value.microCopy}
                         </span>
                       )}
-                      <span 
+                      <span
                         className="text-[15px] font-bold text-white tracking-tight"
                         style={{ textShadow: "0 0 12px rgba(255,255,255,0.1)" }}
                       >
@@ -173,8 +174,8 @@ export function ValueProps() {
                         {value.footerHighlight.split(' ').map((word, idx) => {
                           const isHighlighted = /^[0-9/]+/.test(word) || word.includes('제로') || word.includes('24시간') || word.includes('즉시');
                           return (
-                            <span 
-                              key={idx} 
+                            <span
+                              key={idx}
                               className={isHighlighted ? "text-[#00A3FF]" : ""}
                               style={isHighlighted ? { textShadow: "0 0 15px rgba(0, 163, 255, 0.5)" } : {}}
                             >
@@ -203,7 +204,7 @@ export function ValueProps() {
               className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-[#121212]/70 border border-red-500/10 group transition-all duration-700"
             >
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent" />
-              
+
               <div className="flex items-center gap-3 mb-8">
                 <XCircle className="w-5 h-5 text-red-500/60" />
                 <span className="text-xs font-bold text-red-500/80 uppercase tracking-[0.2em]">
@@ -239,14 +240,14 @@ export function ValueProps() {
               className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-[#16171D]/60 border border-[#00A3FF]/20 shadow-[0_0_50px_rgba(0,163,255,0.05)] group"
             >
               {/* Scanline Effect - Smoother and faster */}
-              <motion.div 
+              <motion.div
                 animate={{ y: ["-100%", "250%"] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#00A3FF]/10 to-transparent pointer-events-none z-0"
               />
 
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/40 to-transparent" />
-              
+
               <div className="relative z-10 flex items-center gap-3 mb-8">
                 <motion.div
                   animate={{ scale: [1, 1.1, 1] }}
@@ -259,7 +260,7 @@ export function ValueProps() {
                 </span>
               </div>
 
-              <motion.ul 
+              <motion.ul
                 className="relative z-10 space-y-5"
                 initial="hidden"
                 whileInView="visible"
@@ -282,7 +283,7 @@ export function ValueProps() {
                   { text: "인사이트를 제공하는 지능형 통계 대시보드", highlights: ["지능형"] },
                   { text: "이상 징후 즉시 대응하는 초고속 스마트 알림", highlights: ["초고속"] },
                 ].map((item, i) => (
-                  <motion.li 
+                  <motion.li
                     key={i}
                     variants={{
                       hidden: { opacity: 0, x: 20 },

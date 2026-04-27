@@ -14,7 +14,7 @@ const devices = [
     badge: "Wireless Relay",
     image: "/images/hardware/shap-1000.png",
     color: "#00A3FF",
-    statusColor: "#3b82f6",
+    statusColor: "#00a3ff",
     glow: "rgba(0, 163, 255, 0.6)",
     description: "공장 환경 내 다수의 무선 단말기를 통합 관리합니다. 현장의 데이터를 수집 컴퓨터로 전달하고 제어 메시지를 실시간 중계하는 안정적인 네트워크 인프라 역할을 수행합니다.",
     specs: ["1:N 무선 네트워크 구축", "양방향 데이터 릴레이", "실시간 서버 동기화"],
@@ -199,7 +199,7 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
       >
         {/* Title */}
         <div className="mb-2">
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tighter uppercase whitespace-nowrap">{device.name}</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight uppercase whitespace-nowrap">{device.name}</h3>
         </div>
         <p className="text-sm text-white/40 mb-10 font-bold uppercase tracking-widest">{device.tagline}</p>
 
@@ -284,7 +284,7 @@ export function HardwareEcosystem() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5"
+            className="text-xs font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-5"
           >
             Hardware System
           </motion.p>
@@ -294,10 +294,10 @@ export function HardwareEcosystem() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-3xl sm:text-4xl lg:text-[48px] font-bold tracking-tighter mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8"
           >
             <span className="text-[#e8e8e8]">현장의 본질을 </span>
-            <span className="gradient-text">왜곡 없이 전달하는 기술</span>
+            <span className="gradient-text">왜곡 없이 전달하는 하드웨어</span>
           </motion.h2>
 
           <motion.p
@@ -305,7 +305,7 @@ export function HardwareEcosystem() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-[#666666] max-w-3xl mx-auto text-[15px] mb-10 leading-relaxed"
+            className="text-[#666666] max-w-3xl mx-auto text-lg mb-10 leading-relaxed"
           >
             화려한 수식어보다 현장의 진실된 데이터를 담는 데 집중했습니다. <br className="hidden md:block" />
             Handy MES의 하드웨어는 보이지 않는 공정의 틈 사이에서 묵묵히 신호를 읽어내며, <br className="hidden md:block" />

@@ -1,3 +1,4 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -75,19 +76,19 @@
   --card-foreground: #f8fafc;
   --popover: #0B0C10;
   --popover-foreground: #f8fafc;
-  --primary: #3b82f6;
+  --primary: #00a3ff;
   --primary-foreground: #ffffff;
   --secondary: #111111;
   --secondary-foreground: #e8e8e8;
   --muted: #0f0f0f;
   --muted-foreground: #888888;
-  --accent: #3b82f6;
+  --accent: #00a3ff;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --border: rgba(255, 255, 255, 0.06);
   --input: rgba(255, 255, 255, 0.06);
-  --ring: #3b82f6;
-  --chart-1: #3b82f6;
+  --ring: #00a3ff;
+  --chart-1: #00a3ff;
   --chart-2: #10b981;
   --chart-3: #f59e0b;
   --chart-4: #8b5cf6;
@@ -95,12 +96,12 @@
   --radius: 0.75rem;
   --sidebar: #0d0d0d;
   --sidebar-foreground: #e8e8e8;
-  --sidebar-primary: #3b82f6;
+  --sidebar-primary: #00a3ff;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #111111;
   --sidebar-accent-foreground: #e8e8e8;
   --sidebar-border: rgba(255, 255, 255, 0.06);
-  --sidebar-ring: #3b82f6;
+  --sidebar-ring: #00a3ff;
 }
 
 /* ─── Base Styles ─── */
@@ -111,7 +112,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-inter), var(--font-noto-sans-kr), system-ui, -apple-system, sans-serif;
+    font-family: 'Pretendard', var(--font-inter), system-ui, -apple-system, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -341,9 +342,9 @@
   background-clip: text;
 }
 
-/* Blue accent text */
+/* Blue accent text — now Cyan */
 .gradient-text-blue {
-  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #33b5ff 0%, #00a3ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
