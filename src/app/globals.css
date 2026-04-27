@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -112,10 +111,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-feature-settings: 'cv11', 'ss01';
+    font-family: var(--font-inter), var(--font-noto-sans-kr), system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    font-feature-settings: 'cv11', 'ss01';
   }
 
   html {
@@ -128,7 +129,7 @@
   h4,
   h5,
   h6 {
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.05em;
   }
 

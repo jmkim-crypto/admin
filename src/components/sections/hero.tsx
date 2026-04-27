@@ -126,7 +126,7 @@ function HeroMobileShowcase() {
                 boxShadow: idx === activeSlide ? "0 0 15px #00A3FF" : "none",
               }}
             />
-            <span className={`text-[8px] mt-2 font-extrabold uppercase tracking-widest transition-colors duration-300 ${idx === activeSlide ? "text-[#00A3FF]" : "text-white/20"}`}>
+            <span className={`text-[8px] mt-2 font-bold uppercase tracking-widest transition-colors duration-300 ${idx === activeSlide ? "text-[#00A3FF]" : "text-white/20"}`}>
               {slide.sub}
             </span>
           </button>
@@ -157,7 +157,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-sm bg-[#00A3FF]/5 border border-[#00A3FF]/10 text-[10px] text-[#00A3FF] mb-12 font-extrabold uppercase tracking-[0.4em]"
+            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-sm bg-[#00A3FF]/5 border border-[#00A3FF]/10 text-[10px] text-[#00A3FF] mb-12 font-bold uppercase tracking-[0.4em]"
           >
             <Activity className="w-4 h-4" />
             Factory Synchronization
@@ -168,7 +168,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.2] mb-8"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.2] mb-8"
           >
             <span className="text-white/30">내 손 안의 생산관리 시스템</span>
             <br />

@@ -99,7 +99,7 @@ export function ValueProps() {
           <p className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">
             Core Values
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter mb-5">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter mb-5">
             <span className="text-[#e8e8e8]">3대 핵심 가치로</span>
             <br />
             <span className="gradient-text">공장 운영을 혁신합니다</span>

@@ -25,7 +25,7 @@ export function PricingPreview() {
           <p className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">
             Pricing
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter mb-5">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter mb-5">
             <span className="text-[#e8e8e8]">합리적인 </span>
             <span className="gradient-text">구독형 요금제</span>
           </h2>
@@ -49,7 +49,7 @@ export function PricingPreview() {
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3b82f6]/60 to-transparent" />
 
             <div className="flex items-baseline justify-center gap-2 mb-2">
-              <span className="text-5xl lg:text-6xl font-extrabold tracking-tighter gradient-text">
+              <span className="text-5xl lg:text-6xl font-bold tracking-tighter gradient-text">
                 월 49만원
               </span>
               <span className="text-[#555555] text-base">부터</span>

@@ -56,7 +56,7 @@ export function SuccessStories() {
           <p className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">
             Success Stories
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tighter mb-5">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tighter mb-5">
             <span className="text-[#e8e8e8]">현장에서 검증된 </span>
             <span className="gradient-text">성공 사례</span>
           </h2>

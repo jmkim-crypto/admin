@@ -199,7 +199,7 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
       >
         {/* Title */}
         <div className="mb-2">
-          <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tighter uppercase whitespace-nowrap">{device.name}</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tighter uppercase whitespace-nowrap">{device.name}</h3>
         </div>
         <p className="text-sm text-white/40 mb-10 font-bold uppercase tracking-widest">{device.tagline}</p>
 
@@ -225,7 +225,7 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
 
           <div
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between text-xs uppercase tracking-[0.2em] font-extrabold cursor-pointer group/spec"
+            className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between text-xs uppercase tracking-[0.2em] font-bold cursor-pointer group/spec"
           >
             <div className="flex items-center gap-3">
               <span className="text-[#00A3FF]">Engineering Specs</span>
@@ -294,7 +294,7 @@ export function HardwareEcosystem() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-3xl sm:text-4xl lg:text-[48px] font-extrabold tracking-tighter mb-6"
+            className="text-3xl sm:text-4xl lg:text-[48px] font-bold tracking-tighter mb-6"
           >
             <span className="text-[#e8e8e8]">현장의 본질을 </span>
             <span className="gradient-text">왜곡 없이 전달하는 기술</span>

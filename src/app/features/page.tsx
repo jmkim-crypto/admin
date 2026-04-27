@@ -55,7 +55,7 @@ function SectionHeader({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
-        className="text-3xl sm:text-4xl lg:text-[48px] font-extrabold text-[#e8e8e8] mb-6 tracking-tighter leading-tight"
+        className="text-3xl sm:text-4xl lg:text-[48px] font-bold text-[#e8e8e8] mb-6 tracking-tighter leading-tight"
       >
         {title}
       </motion.h2>
@@ -177,7 +177,7 @@ function AdvancedAnalysisVisual() {
     <div className="w-full max-w-2xl mx-auto rounded-2xl p-8 lg:p-10 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] shadow-2xl relative group">
       <div className="mb-10">
         <p className="text-base font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-4">Analytics Dashboard</p>
-        <h4 className="text-3xl font-extrabold text-[#e8e8e8] tracking-tighter">Production vs Revenue</h4>
+        <h4 className="text-3xl font-bold text-[#e8e8e8] tracking-tighter">Production vs Revenue</h4>
       </div>
 
       <div className="flex items-end justify-between h-48 gap-3 px-2 relative mb-12">
@@ -234,7 +234,7 @@ export default function FeaturesPage() {
             <p className="text-base font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">
               Features
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter mb-8 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter mb-8 leading-tight">
               <span className="text-[#e8e8e8]">현장의 목소리를 담은{" "}</span>
               <span className="gradient-text">본질적 기능의 집약</span>
             </h1>

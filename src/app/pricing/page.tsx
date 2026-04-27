@@ -109,7 +109,7 @@ export default function PricingPage() {
             <p className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">
               Pricing
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter mb-6">
               <span className="text-[#e8e8e8]">규모에 맞는{" "}</span>
               <span className="gradient-text">최적의 플랜</span>
               <span className="text-[#e8e8e8]">을 선택하세요</span>
@@ -267,14 +267,14 @@ export default function PricingPage() {
                     <div className="mb-7">
                       {price !== null ? (
                         <div className="flex items-baseline gap-1">
-                          <span className="text-3xl lg:text-4xl font-extrabold text-[#e8e8e8] tracking-tighter">
+                          <span className="text-3xl lg:text-4xl font-bold text-[#e8e8e8] tracking-tighter">
                             ₩{formatPrice(price)}
                           </span>
                           <span className="text-sm text-[#555555]">/월</span>
                         </div>
                       ) : (
                         <div>
-                          <span className="text-3xl lg:text-4xl font-extrabold text-[#e8e8e8] tracking-tighter">
+                          <span className="text-3xl lg:text-4xl font-bold text-[#e8e8e8] tracking-tighter">
                             문의
                           </span>
                           <p className="text-sm text-[#555555] mt-1">맞춤 견적을 받아보세요</p>
@@ -347,7 +347,7 @@ export default function PricingPage() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tighter mb-3 text-[#e8e8e8]">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-3 text-[#e8e8e8]">
               상세 기능 비교
             </h2>
             <p className="text-[#555555] text-[15px]">
@@ -423,7 +423,7 @@ export default function PricingPage() {
             className="text-center mb-14"
           >
             <p className="text-xs font-semibold text-[#3b82f6] tracking-[0.2em] uppercase mb-5">FAQ</p>
-            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tighter text-[#e8e8e8]">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter text-[#e8e8e8]">
               자주 묻는 질문
             </h2>
           </motion.div>

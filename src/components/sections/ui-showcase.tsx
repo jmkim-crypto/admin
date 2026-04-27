@@ -107,7 +107,7 @@ function MobileShowcase() {
       className="relative flex flex-col items-center"
     >
       {/* Title */}
-      <h3 className="text-xl lg:text-2xl font-extrabold text-white mb-2 tracking-tight text-center w-full">
+      <h3 className="text-xl lg:text-2xl font-bold text-white mb-2 tracking-tight text-center w-full">
         Handy MES <span className="text-[#00A3FF]">Mobile App</span>
       </h3>
       <p className="text-[11px] text-white/40 font-bold uppercase tracking-[0.3em] mb-8 text-center">
@@ -248,7 +248,7 @@ export function UIShowcase() {
             viewport={{ once: true }}
             className="inline-block px-4 py-1.5 rounded-sm bg-[#00A3FF]/10 border border-[#00A3FF]/20 mb-8"
           >
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.4em] text-[#00A3FF]">
+            <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-[#00A3FF]">
               <MonitorSmartphone className="inline w-3.5 h-3.5 mr-2 -mt-0.5" />
               All-Encompassing UI
             </p>
@@ -259,7 +259,7 @@ export function UIShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.8 }}
-            className="text-4xl lg:text-6xl font-extrabold text-white mb-6 tracking-tighter"
+            className="text-4xl lg:text-6xl font-bold text-white mb-6 tracking-tighter"
           >
             어디서든 <span className="text-[#00A3FF]">완벽한 제어</span>
           </motion.h2>
@@ -290,7 +290,7 @@ export function UIShowcase() {
           className="flex justify-center mt-20"
         >
           <button
-            className="group inline-flex items-center gap-4 px-10 py-5 text-lg font-extrabold bg-[#10b981] text-white rounded-sm hover:bg-[#0d9668] transition-all duration-300 uppercase tracking-widest hover:-translate-y-1"
+            className="group inline-flex items-center gap-4 px-10 py-5 text-lg font-bold bg-[#10b981] text-white rounded-sm hover:bg-[#0d9668] transition-all duration-300 uppercase tracking-widest hover:-translate-y-1"
             style={{
               boxShadow: "0 0 30px rgba(0,163,255,0.3), 0 10px 40px rgba(0,0,0,0.4)",
             }}
@@ -315,7 +315,7 @@ export function UIShowcase() {
                 transition={{ duration: 2, repeat: Infinity }}
                 className="w-2 h-2 rounded-full bg-[#00A3FF] shadow-[0_0_10px_#00A3FF]"
               />
-              <span className="text-[11px] font-extrabold text-white/40 uppercase tracking-widest">Cross-Platform Synchronized</span>
+              <span className="text-[11px] font-bold text-white/40 uppercase tracking-widest">Cross-Platform Synchronized</span>
             </div>
             <div className="w-px h-4 bg-white/10" />
             <span className="text-[11px] text-white/20 font-bold uppercase tracking-widest">Desktop · Tablet · Mobile</span>
