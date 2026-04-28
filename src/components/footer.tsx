@@ -1,15 +1,5 @@
 import Link from "next/link";
-import {
-  Activity,
-  Mail,
-  Phone,
-  MapPin,
-  Shield,
-  Lock,
-  Award,
-  Globe,
-  Video,
-} from "lucide-react";
+import { Mail, Phone, MapPin, Globe, Video } from "lucide-react";
 import Image from "next/image";
 
 const footerLinks = {
@@ -21,83 +11,63 @@ const footerLinks = {
   리소스: [
     { label: "기술 문서", href: "#" },
     { label: "API 가이드", href: "#" },
-    { label: "FAQ", href: "#" },
+    { label: "FAQ", href: "/support" },
   ],
   회사: [
     { label: "회사 소개", href: "http://moornmo.com/intro/" },
   ],
 };
 
-const certifications = [
-  { icon: Shield, label: "ISO 27001" },
-  { icon: Lock, label: "AES-256 암호화" },
-  { icon: Award, label: "ISMS 인증" },
-];
-
 export function Footer() {
   return (
-    <footer className="relative bg-[#F8FAFC] border-t border-[#E2E8F0]">
+    <footer className="bg-white border-t border-[#E5E7EB]">
       {/* Security Banner */}
-      <div className="border-b border-[#E2E8F0]">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-7">
-          <div className="flex flex-wrap items-center justify-center gap-10 lg:gap-20">
-            {certifications.map((cert) => (
-              <div
-                key={cert.label}
-                className="flex items-center gap-3 text-[#64748B]"
-              >
-                <div className="w-9 h-9 rounded-lg bg-white border border-[#F1F5F9] flex items-center justify-center shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-                  <cert.icon className="w-4 h-4 text-[#64748B]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#64748B]">{cert.label}</p>
-                  <p className="text-xs text-[#94A3B8]">인증 완료</p>
-                </div>
-              </div>
-            ))}
+      <div className="border-b border-[#F3F4F6]">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 py-5">
+          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-14 text-sm text-[#9CA3AF]">
+            <span>ISO 27001 인증</span>
+            <span className="hidden sm:block text-[#E5E7EB]">·</span>
+            <span>AES-256 암호화</span>
+            <span className="hidden sm:block text-[#E5E7EB]">·</span>
+            <span>ISMS 인증</span>
           </div>
         </div>
       </div>
 
-      {/* Main footer */}
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-14 lg:py-20">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 lg:gap-14">
+      {/* Main */}
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="col-span-2">
-            <Link 
-              href="http://moornmo.com/" 
+            <Link
+              href="http://moornmo.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 mb-6 group"
+              className="inline-block mb-5"
             >
               <Image
                 src="/images/brand/soonsoft.png"
-                alt="Soonsoft Logo"
-                width={130}
-                height={32}
-                className="h-8 w-auto object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300"
+                alt="Soonsoft"
+                width={100}
+                height={28}
+                className="h-6 w-auto object-contain opacity-40 hover:opacity-70 transition-opacity"
               />
             </Link>
-            <p className="text-sm text-[#94A3B8] mb-7 max-w-xs leading-[1.8]">
-              데이터 기반의 설비 관리 솔루션으로 제조 현장의 디지털 전환을 선도합니다.
+            <p className="text-sm text-[#9CA3AF] mb-5 max-w-[260px] leading-relaxed">
+              데이터 기반 설비 관리 솔루션으로 제조 현장의 디지털 전환을 선도합니다.
             </p>
-            <div className="space-y-3">
-              <a
-
-                className="flex items-center gap-2 text-sm text-[#94A3B8] hover:text-[#475569] transition-colors duration-300"
-              >
+            <div className="space-y-2">
+              <a className="flex items-center gap-2 text-sm text-[#9CA3AF] hover:text-[#6B7280] transition-colors">
                 <Mail className="w-3.5 h-3.5" />
                 support@ilts.co.kr
               </a>
-              <a
-                className="flex items-center gap-2 text-sm text-[#94A3B8] hover:text-[#475569] transition-colors duration-300"
-              >
+              <a className="flex items-center gap-2 text-sm text-[#9CA3AF] hover:text-[#6B7280] transition-colors">
                 <Phone className="w-3.5 h-3.5" />
                 02-1544-0538
               </a>
-              <div className="flex items-center gap-2 text-sm text-[#64748B]">
-                <MapPin className="w-3.5 h-3.5" />
-                서울특별시 구로구 디지털로31길 20 (구로동) 에이스테크노타워 5차 302호
+              <div className="flex items-center gap-2 text-sm text-[#9CA3AF]">
+                <MapPin className="w-3.5 h-3.5 shrink-0" />
+                서울특별시 구로구 디지털로31길 20 에이스테크노타워 5차 302호
               </div>
             </div>
           </div>
@@ -105,16 +75,11 @@ export function Footer() {
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="text-[11px] font-bold text-[#64748B] uppercase tracking-[0.15em] mb-5">
-                {category}
-              </h3>
-              <ul className="space-y-3.5">
+              <h3 className="text-xs font-semibold text-[#6B7280] mb-4">{category}</h3>
+              <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-[#94A3B8] hover:text-[#475569] transition-colors duration-300"
-                    >
+                    <Link href={link.href} className="text-sm text-[#9CA3AF] hover:text-[#6B7280] transition-colors">
                       {link.label}
                     </Link>
                   </li>
@@ -124,26 +89,16 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-[#E2E8F0] mt-14 pt-7 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[#94A3B8]">
-            © 2026 Handy MES. All rights reserved.
-          </p>
-          <div className="flex items-center gap-5">
-            <Link href="#" className="text-xs text-[#94A3B8] hover:text-[#475569] transition-colors duration-300">
+        {/* Bottom */}
+        <div className="border-t border-[#F3F4F6] mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-[#D1D5DB]">© 2026 Handy MES. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <Link href="#" className="text-xs text-[#9CA3AF] hover:text-[#6B7280] transition-colors">
               개인정보처리방침
             </Link>
-            <Link href="#" className="text-xs text-[#94A3B8] hover:text-[#475569] transition-colors duration-300">
+            <Link href="#" className="text-xs text-[#9CA3AF] hover:text-[#6B7280] transition-colors">
               이용약관
             </Link>
-            <div className="flex items-center gap-3 ml-2">
-              <a href="#" className="text-[#94A3B8] hover:text-[#475569] transition-colors duration-300" aria-label="LinkedIn">
-                <Globe className="w-4 h-4" />
-              </a>
-              <a href="#" className="text-[#94A3B8] hover:text-[#475569] transition-colors duration-300" aria-label="YouTube">
-                <Video className="w-4 h-4" />
-              </a>
-            </div>
           </div>
         </div>
       </div>

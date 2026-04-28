@@ -3,13 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import {
-  Activity,
-  Cpu,
-  Gauge,
-  AlertTriangle,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { DemoDialog } from "@/components/demo-dialog";
 import {
   DashboardScreen,
@@ -17,27 +11,16 @@ import {
   TaskDetailScreen,
   ManagementScreen,
   SettingsScreen,
-
 } from "./mobile-screens";
-
-function LambdaA({ children }: { children: string }) {
-  return (
-    <span className="relative inline-block">
-      {children}
-      {/* Visual mask to hide the horizontal bar of 'A' */}
-      <span className="absolute inset-x-0 top-[55%] h-[12%] bg-[#F9FBFF] z-10" />
-    </span>
-  );
-}
 
 function HeroMobileShowcase() {
   const [activeSlide, setActiveSlide] = useState(0);
   const slides = [
-    { label: "대시보드", sub: "Dashboard", Component: DashboardScreen },
-    { label: "작업지시 조회", sub: "Task List", Component: TaskListScreen },
-    { label: "작업 상세", sub: "Task Detail", Component: TaskDetailScreen },
-    { label: "관리", sub: "Management", Component: ManagementScreen },
-    { label: "설정", sub: "Settings", Component: SettingsScreen },
+    { label: "대시보드", Component: DashboardScreen },
+    { label: "작업지시", Component: TaskListScreen },
+    { label: "작업 상세", Component: TaskDetailScreen },
+    { label: "관리", Component: ManagementScreen },
+    { label: "설정", Component: SettingsScreen },
   ];
 
   const [mounted, setMounted] = useState(false);
@@ -46,60 +29,33 @@ function HeroMobileShowcase() {
     setMounted(true);
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 5000); // 5초로 미세 조정
+    }, 5000);
     return () => clearInterval(timer);
   }, [activeSlide, slides.length]);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="relative w-full max-w-lg mx-auto mt-24 flex flex-col items-center"
+      transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      className="relative w-full max-w-lg mx-auto mt-20 flex flex-col items-center"
     >
-      {/* Subtle Cyan Radial Glow */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00A3FF]/8 blur-[160px] rounded-full" />
-      </div>
-
-      {/* Floating Particles */}
-      {mounted && [...Array(8)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 rounded-full bg-[#00A3FF]/40"
-          style={{
-            top: `${10 + Math.random() * 80}%`,
-            left: `${-20 + Math.random() * 140}%`,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0, 0.4, 0],
-            scale: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: 4 + Math.random() * 2,
-            repeat: Infinity,
-            delay: i * 0.4,
-          }}
-        />
-      ))}
-
-      {/* Phone Mockup Frame */}
-      <div className="relative p-[8px] bg-gradient-to-b from-[#2a2a2e] to-[#1a1a1e] rounded-[42px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.12)]">
-        {/* Inner bezel */}
-        <div className="relative w-[240px] sm:w-[280px] rounded-[36px] overflow-hidden bg-white shadow-inner" style={{ aspectRatio: "9/19.5" }}>
-          {/* Dynamic Island */}
+      {/* Phone Frame */}
+      <div className="relative p-[6px] bg-[#1D1D1F] rounded-[40px] shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+        <div
+          className="relative w-[240px] sm:w-[270px] rounded-[34px] overflow-hidden bg-white"
+          style={{ aspectRatio: "9/19.5" }}
+        >
           <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-full z-30" />
-
           <AnimatePresence mode="wait">
             {slides.map((slide, idx) =>
               idx === activeSlide ? (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
                   className="absolute inset-0"
                 >
                   <slide.Component />
@@ -110,108 +66,78 @@ function HeroMobileShowcase() {
         </div>
       </div>
 
-      {/* Slide Indicators */}
-      <div className="flex items-center gap-4 mt-12">
+      {/* Indicators */}
+      <div className="flex items-center gap-2 mt-8">
         {slides.map((slide, idx) => (
           <button
             key={idx}
             onClick={() => setActiveSlide(idx)}
-            className="group relative flex flex-col items-center"
+            className="group flex flex-col items-center"
           >
-            <motion.div
-              className="w-2.5 h-2.5 rounded-full"
-              animate={{
-                scale: idx === activeSlide ? 1.2 : 1,
-                backgroundColor: idx === activeSlide ? "#00A3FF" : "#E2E8F0",
-              }}
+            <div
+              className={`h-1 rounded-full transition-all duration-300 ${
+                idx === activeSlide
+                  ? "w-6 bg-[#0078D4]"
+                  : "w-1.5 bg-[#D1D5DB]"
+              }`}
             />
-            <span className={`text-[8px] mt-2 font-bold uppercase tracking-widest transition-colors duration-300 ${idx === activeSlide ? "text-[#00A3FF]" : "text-[#94A3B8]"}`}>
-              {slide.sub}
-            </span>
           </button>
         ))}
       </div>
-
-      {/* Reflection / bottom fade */}
-      <div className="absolute -bottom-20 left-10 right-10 h-32 bg-gradient-to-t from-[#F9FBFF] to-transparent opacity-80 blur-2xl pointer-events-none" />
     </motion.div>
   );
 }
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-40 bg-[#F9FBFF]">
-      {/* Brand Grid Background — Blue-Gray Dots */}
-      <div className="absolute inset-0 grid-bg pointer-events-none" />
-
-      {/* Master Brand Lighting — Subtle Cyan Radial */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[900px] ambient-center pointer-events-none" />
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-[#00A3FF]/3 rounded-full blur-[200px] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full relative z-10">
-        {/* Hero text block */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-28 pb-32 bg-[#FAFAFA]">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 w-full relative z-10">
         <div className="text-center">
-          {/* Badge */}
-          <motion.div
+          {/* Headline — 기존 uppercase badge 제거, 직접적인 헤드라인 */}
+          <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-sm bg-[#00A3FF]/5 border border-[#00A3FF]/10 text-[10px] text-[#00A3FF] mb-12 font-bold uppercase tracking-[0.4em]"
+            className="text-[2rem] sm:text-[2.75rem] md:text-[3.25rem] lg:text-[3.75rem] font-bold tracking-tight leading-[1.15] mb-6"
           >
-            <Activity className="w-4 h-4" />
-            Factory Synchronization
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.2] mb-8"
-          >
-            <span className="text-[#1E293B]/40">1/40 비용으로 내일 당장 시작하는</span>
+            <span className="text-[#9CA3AF]">1/40 비용으로 내일 당장 시작하는</span>
             <br />
-            <span className="text-[#1E293B]">Handy MES 스마트 팩토리</span>
+            <span className="text-[#111827]">Handy MES 스마트 팩토리</span>
           </motion.h1>
 
-          {/* Sub */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg sm:text-2xl font-medium tracking-tight text-[#475569] max-w-4xl mx-auto mb-16 leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg sm:text-xl text-[#6B7280] max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
           >
             복잡한 대면 상담과 비싼 인건비를 걷어내고
             <br className="hidden sm:block" />
-            <span className="text-[#00A3FF] font-bold">현장의 실질적 데이터</span>
-            에만 집중했습니다.
+            현장의 실질적 데이터에만 집중했습니다.
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs — 더 절제된 스타일, 큰 rounded 제거 */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-5"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3"
           >
             <DemoDialog>
-              <button className="btn-press group inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-[#00A3FF] text-white rounded-sm hover:bg-[#0082cc] transition-all duration-300 shadow-[0_4px_6px_-1px_rgba(0,163,255,0.2)] hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.15)] hover:-translate-y-1 w-full sm:w-auto uppercase tracking-widest">
+              <button className="btn-press group inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-semibold bg-[#0078D4] text-white rounded-lg hover:bg-[#106EBE] transition-colors duration-200 w-full sm:w-auto">
                 시작하기
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </DemoDialog>
             <Link
               href="/pricing"
-              className="btn-press inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-white text-[#1E293B] rounded-sm border border-[#E2E8F0] hover:border-[#00A3FF]/40 hover:bg-[#F8FAFC] transition-all duration-300 w-full sm:w-auto uppercase tracking-widest shadow-[0_4px_6px_-1px_rgba(0,0,0,0.03)]"
+              className="btn-press inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-semibold bg-white text-[#374151] rounded-lg border border-[#E5E7EB] hover:border-[#D1D5DB] hover:bg-[#F9FAFB] transition-colors duration-200 w-full sm:w-auto"
             >
               요금제 안내
-              <ArrowRight className="w-5 h-5 text-[#64748B]" />
             </Link>
           </motion.div>
-
         </div>
 
-        {/* Mobile App showcase */}
         <HeroMobileShowcase />
       </div>
     </section>

@@ -13,8 +13,8 @@ const devices = [
     tagline: "NETWORK HUB",
     badge: "Wireless Relay",
     image: "/images/hardware/shap-1000.png",
-    color: "#00A3FF",
-    statusColor: "#00a3ff",
+    color: "#0078D4",
+    statusColor: "#0078D4",
     glow: "rgba(0, 163, 255, 0.6)",
     description: "공장 환경 내 다수의 무선 단말기를 통합 관리합니다. 현장의 데이터를 수집 컴퓨터로 전달하고 제어 메시지를 실시간 중계하는 안정적인 네트워크 인프라 역할을 수행합니다.",
     specs: ["1:N 무선 네트워크 구축", "양방향 데이터 릴레이", "실시간 서버 동기화"],
@@ -31,7 +31,7 @@ const devices = [
     tagline: "DATA TERMINAL",
     badge: "Data Acquisition",
     image: "/images/hardware/wit-1000.png",
-    color: "#00A3FF",
+    color: "#0078D4",
     statusColor: "#fb923c",
     glow: "rgba(0, 163, 255, 0.6)",
     description: "현장의 전기 신호를 수집하여 디지털 데이터로 변환합니다. 생산량 및 설비 상태 등 실시간 현황을 기록하여 관리자가 현장 밖에서도 편리하게 관리할 수 있도록 지원합니다.",
@@ -49,7 +49,7 @@ const devices = [
     tagline: "INTELLIGENT SENSING",
     badge: "Intelligent Node",
     image: "/images/hardware/wizter-5100.png",
-    color: "#00A3FF",
+    color: "#0078D4",
     statusColor: "#10b981",
     glow: "rgba(0, 163, 255, 0.6)",
     description: "0.001초 단위의 인터럽트 기술로 설비의 상태 변화를 포착합니다. 센서의 물리적 신호를 실시간 데이터화하여 설비의 상태값과 이상 징후를 지연 없이 서버로 전송합니다.",
@@ -70,8 +70,8 @@ function WaveformBg() {
   return (
     <div className="absolute inset-0 pointer-events-none opacity-15">
       <svg width="100%" height="100%" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 400C100 350 200 450 300 400C400 350 500 450 600 400C700 350 800 450 900 400C1000 350 1100 450 1200 400C1300 350 1440 400 1440 400" stroke="#00A3FF" strokeWidth="1" strokeDasharray="5 5" />
-        <path d="M0 450C120 400 240 500 360 450C480 400 600 500 720 450C840 400 960 500 1080 450C1200 400 1320 500 1440 450" stroke="#00A3FF" strokeWidth="0.5" opacity="0.3" />
+        <path d="M0 400C100 350 200 450 300 400C400 350 500 450 600 400C700 350 800 450 900 400C1000 350 1100 450 1200 400C1300 350 1440 400 1440 400" stroke="#0078D4" strokeWidth="1" strokeDasharray="5 5" />
+        <path d="M0 450C120 400 240 500 360 450C480 400 600 500 720 450C840 400 960 500 1080 450C1200 400 1320 500 1440 450" stroke="#0078D4" strokeWidth="0.5" opacity="0.3" />
       </svg>
     </div>
   );
@@ -92,7 +92,7 @@ function DataStreamBg() {
       {mounted && Array.from({ length: 12 }).map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-[#00A3FF]/25 rounded-full"
+          className="absolute w-1 h-1 bg-[#0078D4]/25 rounded-full"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -115,8 +115,8 @@ function DataStreamBg() {
 function AmbientGlow() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#00A3FF]/3 rounded-full blur-[160px]" />
-      <div className="absolute -top-[10%] left-1/2 -translate-x-1/2 w-[50%] h-[50%] bg-[#00A3FF]/3 rounded-full blur-[140px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#0078D4]/3 rounded-full blur-[160px]" />
+      <div className="absolute -top-[10%] left-1/2 -translate-x-1/2 w-[50%] h-[50%] bg-[#0078D4]/3 rounded-full blur-[140px]" />
     </div>
   );
 }
@@ -187,16 +187,16 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
       {/* Card Content — white bg + thin cyan border + soft shadows */}
       <div
         className={`relative flex flex-col min-h-[750px] p-8 lg:p-10 rounded-2xl transition-all duration-300 ease-out cursor-pointer overflow-hidden border ${isExpanded
-          ? "bg-white border-[#00A3FF]/30 shadow-[0_20px_25px_-5px_rgba(0,163,255,0.1)]"
-          : "bg-white border-[#F1F5F9] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:border-[#00A3FF]/30 hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.1)] hover:-translate-y-1"
+          ? "bg-white border-[#0078D4]/30 shadow-[0_20px_25px_-5px_rgba(0,163,255,0.1)]"
+          : "bg-white border-[#F3F4F6] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:border-[#0078D4]/30 hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.1)] hover:-translate-y-1"
           }`}
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {/* Title */}
         <div className="mb-2">
-          <h3 className="text-xl sm:text-2xl font-bold text-[#1E293B] tracking-tight uppercase whitespace-nowrap">{device.name}</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-[#111827] tracking-tight uppercase whitespace-nowrap">{device.name}</h3>
         </div>
-        <p className="text-sm text-[#64748B] mb-10 font-bold uppercase tracking-widest">{device.tagline}</p>
+        <p className="text-sm text-[#6B7280] mb-10 font-bold uppercase tracking-widest">{device.tagline}</p>
 
         {/* Visual Area */}
         <DeviceVisual device={device} isHovered={isHovered} />
@@ -204,15 +204,15 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
         {/* Description & Specs */}
         <div className="flex-grow flex flex-col">
           <div className="min-h-[100px] mb-8">
-            <p className="text-[17px] text-[#475569] font-medium leading-[1.8]">
+            <p className="text-[17px] text-[#4B5563] font-medium leading-[1.8]">
               {device.description}
             </p>
           </div>
 
           <ul className="space-y-3 mb-10">
             {device.specs.map((spec, i) => (
-              <li key={i} className="flex items-center gap-3 text-sm text-[#1E293B]/80 font-bold tracking-tight">
-                <ChevronRight className="w-3 h-3 text-[#00A3FF]" />
+              <li key={i} className="flex items-center gap-3 text-sm text-[#111827]/80 font-bold tracking-tight">
+                <ChevronRight className="w-3 h-3 text-[#0078D4]" />
                 {spec}
               </li>
             ))}
@@ -220,13 +220,13 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
 
           <div
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-auto pt-6 border-t border-[#F1F5F9] flex items-center justify-between text-xs uppercase tracking-[0.2em] font-bold cursor-pointer group/spec"
+            className="mt-auto pt-6 border-t border-[#F3F4F6] flex items-center justify-between text-xs uppercase tracking-[0.2em] font-bold cursor-pointer group/spec"
           >
             <div className="flex items-center gap-3">
-              <span className="text-[#00A3FF]">Engineering Specs</span>
-              <span className="text-[#64748B] tracking-normal font-medium normal-case transition-colors group-hover/spec:text-[#475569]">Actual Device Data</span>
+              <span className="text-[#0078D4]">Engineering Specs</span>
+              <span className="text-[#6B7280] tracking-normal font-medium normal-case transition-colors group-hover/spec:text-[#4B5563]">Actual Device Data</span>
             </div>
-            <ChevronDown className={`w-4 h-4 text-[#00A3FF] transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+            <ChevronDown className={`w-4 h-4 text-[#0078D4] transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
           </div>
         </div>
 
@@ -241,9 +241,9 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
               className="mt-6 space-y-4"
             >
               {device.ports.map((port, i) => (
-                <div key={i} className="p-4 rounded-lg bg-[#F8FAFC] border border-[#F1F5F9]">
-                  <p className="text-[13px] font-bold text-[#1E293B] uppercase mb-1.5 tracking-wider">{port.name}</p>
-                  <p className="text-[13px] text-[#475569] leading-[1.8] font-medium">{port.desc}</p>
+                <div key={i} className="p-4 rounded-lg bg-[#F5F5F5] border border-[#F3F4F6]">
+                  <p className="text-[13px] font-bold text-[#111827] uppercase mb-1.5 tracking-wider">{port.name}</p>
+                  <p className="text-[13px] text-[#4B5563] leading-[1.8] font-medium">{port.desc}</p>
                 </div>
               ))}
             </motion.div>
@@ -263,13 +263,13 @@ export function HardwareEcosystem() {
     <section
       id="hardware-ecosystem"
       ref={containerRef}
-      className="relative py-32 lg:py-52 bg-[#F8FAFC] overflow-hidden"
+      className="relative py-32 lg:py-52 bg-[#F5F5F5] overflow-hidden"
     >
       <SectionBoundary />
 
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00A3FF]/[0.02] blur-[140px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#0078D4]/[0.02] blur-[140px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
@@ -279,7 +279,7 @@ export function HardwareEcosystem() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-5"
+            className="text-xs font-semibold text-[#0078D4] tracking-[0.2em] uppercase mb-5"
           >
             Hardware System
           </motion.p>
@@ -291,8 +291,8 @@ export function HardwareEcosystem() {
             transition={{ delay: 0.1, duration: 0.8 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8"
           >
-            <span className="text-[#1E293B]">현장의 본질을 </span>
-            <span className="text-[#1E293B]">왜곡 없이 전달하는 하드웨어</span>
+            <span className="text-[#111827]">현장의 본질을 </span>
+            <span className="text-[#111827]">왜곡 없이 전달하는 하드웨어</span>
           </motion.h2>
 
           <motion.p
@@ -300,7 +300,7 @@ export function HardwareEcosystem() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-[#475569] max-w-3xl mx-auto text-lg mb-10 leading-[1.8]"
+            className="text-[#4B5563] max-w-3xl mx-auto text-lg mb-10 leading-[1.8]"
           >
             화려한 수식어보다 현장의 진실된 데이터를 담는 데 집중했습니다. <br className="hidden md:block" />
             Handy MES의 하드웨어는 보이지 않는 공정의 틈 사이에서 묵묵히 신호를 읽어내며, <br className="hidden md:block" />

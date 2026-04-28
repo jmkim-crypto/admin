@@ -8,9 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Pretendard', system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono);
-  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Pretendard', system-ui, -apple-system, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -52,70 +52,70 @@
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
 
-  /* ═══ Handy MES Master Brand Colors ═══ */
-  --color-cyan: #00A3FF;
-  --color-cyan-soft: rgba(0, 163, 255, 0.08);
-  --color-cyan-hover: rgba(0, 163, 255, 0.1);
+  /* ═══ Brand Colors ═══ */
+  --color-cyan: #0078D4;
+  --color-cyan-soft: rgba(0, 120, 212, 0.06);
+  --color-cyan-hover: rgba(0, 120, 212, 0.08);
 
   /* ═══ Typography Colors ═══ */
-  --color-heading: #1E293B;         /* 깊은 차콜 — 제목용 */
-  --color-body: #475569;            /* 슬레이트 그레이 — 본문용 */
-  --color-body-light: #64748B;      /* 연한 슬레이트 — 보조 텍스트 */
-  --color-muted-text: #94A3B8;      /* 뮤트 — 라벨/캡션 */
+  --color-heading: #111827;
+  --color-body: #4B5563;
+  --color-body-light: #6B7280;
+  --color-muted-text: #9CA3AF;
 
   /* ═══ Surface & Structure ═══ */
-  --color-bg-primary: #F9FBFF;      /* 눈부심 방지 오프화이트 (미세 푸른빛) */
-  --color-bg-white: #FFFFFF;        /* 카드/팝오버용 순백 */
-  --color-bg-section-alt: #F8FAFC;  /* 섹션 교차 배경 */
+  --color-bg-primary: #FAFAFA;
+  --color-bg-white: #FFFFFF;
+  --color-bg-section-alt: #F5F5F5;
   --color-surface: rgba(255, 255, 255, 0.7);
   --color-surface-hover: rgba(255, 255, 255, 0.9);
 
   /* ═══ Borders ═══ */
-  --color-border-subtle: #F1F5F9;
-  --color-border-dim: #E2E8F0;
-  --color-border-card: rgba(226, 232, 240, 0.6);
+  --color-border-subtle: #F3F4F6;
+  --color-border-dim: #E5E7EB;
+  --color-border-card: rgba(229, 231, 235, 0.6);
 
   /* Legacy compatibility */
   --color-blue: var(--color-cyan);
-  --color-text-primary: #1E293B;
-  --color-text-secondary: #475569;
-  --color-text-tertiary: #94A3B8;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-tertiary: #9CA3AF;
 }
 
-/* ─── Default Light Theme (Clean White) ─── */
+/* ─── Default Light Theme ─── */
 :root {
-  --background: #F9FBFF;
-  --foreground: #1E293B;
+  --background: #FAFAFA;
+  --foreground: #111827;
   --card: #ffffff;
-  --card-foreground: #1E293B;
+  --card-foreground: #111827;
   --popover: #ffffff;
-  --popover-foreground: #1E293B;
-  --primary: #00a3ff;
+  --popover-foreground: #111827;
+  --primary: #0078D4;
   --primary-foreground: #ffffff;
-  --secondary: #F8FAFC;
-  --secondary-foreground: #1E293B;
-  --muted: #F8FAFC;
-  --muted-foreground: #64748B;
-  --accent: #00a3ff;
+  --secondary: #F5F5F5;
+  --secondary-foreground: #111827;
+  --muted: #F5F5F5;
+  --muted-foreground: #6B7280;
+  --accent: #0078D4;
   --accent-foreground: #ffffff;
-  --destructive: #ef4444;
-  --border: #E2E8F0;
-  --input: #E2E8F0;
-  --ring: #00a3ff;
-  --chart-1: #00a3ff;
-  --chart-2: #10b981;
-  --chart-3: #f59e0b;
-  --chart-4: #8b5cf6;
-  --chart-5: #06b6d4;
-  --radius: 0.75rem;
-  --sidebar: #F8FAFC;
-  --sidebar-foreground: #1E293B;
-  --sidebar-primary: #00a3ff;
+  --destructive: #DC2626;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #0078D4;
+  --chart-1: #0078D4;
+  --chart-2: #059669;
+  --chart-3: #D97706;
+  --chart-4: #7C3AED;
+  --chart-5: #0891B2;
+  --radius: 0.625rem;
+  --sidebar: #F5F5F5;
+  --sidebar-foreground: #111827;
+  --sidebar-primary: #0078D4;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #F1F5F9;
-  --sidebar-accent-foreground: #1E293B;
-  --sidebar-border: #E2E8F0;
-  --sidebar-ring: #00a3ff;
+  --sidebar-accent: #F3F4F6;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #0078D4;
 }
 
 /* ─── Base Styles ─── */
@@ -126,44 +126,36 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Pretendard', var(--font-inter), system-ui, -apple-system, sans-serif;
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-synthesis: none;
-    font-feature-settings: 'cv11', 'ss01';
-    color: #475569; /* 본문 기본 = 슬레이트 그레이 */
+    color: #4B5563;
   }
 
   html {
     @apply scroll-smooth;
   }
 
-  /* ─── Typography: 제목 — 깊은 차콜 + 정밀 자간 ─── */
-  h1,
-  h2 {
+  h1, h2 {
     font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #1E293B;
+    letter-spacing: -0.025em;
+    color: #111827;
   }
 
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 700;
+  h3, h4, h5, h6 {
+    font-weight: 600;
     letter-spacing: -0.01em;
-    color: #1E293B;
+    color: #111827;
   }
 
-  /* ─── Typography: 본문 — 숨통 있는 줄간격 ─── */
-  p,
-  li {
+  p, li {
     font-size: 1rem;
-    line-height: 1.8;
-    color: #475569;
+    line-height: 1.75;
+    color: #4B5563;
   }
-  
+
   .text-xs { font-size: var(--font-size-xs); }
   .text-sm { font-size: var(--font-size-sm); }
   .text-base { font-size: var(--font-size-base); }
@@ -171,81 +163,33 @@
 
 /* ─── Keyframes ─── */
 @keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes pulse-soft {
-
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 163, 255, 0);
-  }
-
-  50% {
-    box-shadow: 0 0 20px 4px rgba(0, 163, 255, 0.08);
-  }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 120, 212, 0); }
+  50% { box-shadow: 0 0 20px 4px rgba(0, 120, 212, 0.06); }
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-
-  100% {
-    background-position: 200% 0;
-  }
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 @keyframes border-glow-rotate {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes grid-pulse {
-
-  0%,
-  100% {
-    opacity: 0.03;
-  }
-
-  50% {
-    opacity: 0.07;
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes dash-flow {
-  to {
-    stroke-dashoffset: -20;
-  }
+  to { stroke-dashoffset: -20; }
 }
 
 /* ─── Utilities ─── */
@@ -262,160 +206,83 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(0, 163, 255, 0.04), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 120, 212, 0.03), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s linear infinite;
 }
 
-/* ─── Glassmorphism (White Theme Refined) ─── */
+/* ─── Glass Effects ─── */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid #F1F5F9;
+  border: 1px solid #F3F4F6;
 }
 
 .glass-md {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #E2E8F0;
+  border: 1px solid #E5E7EB;
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid rgba(229, 231, 235, 0.8);
 }
 
-/* ─── Dot Matrix Background (Blue-Gray Dots) ─── */
+/* ─── Subtle Background ─── */
 .grid-bg {
-  background-image: radial-gradient(rgba(226, 232, 240, 0.4) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-/* ─── Connected Line (Handy Style) ─── */
-.connected-line {
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(90deg, transparent 0%, rgba(0, 163, 255, 0.2) 50%, transparent 100%);
-  opacity: 0.6;
-}
-
-/* ─── Ambient Center Glow (Soft Cyan Radial) ─── */
-.ambient-center {
-  background: radial-gradient(circle at center, rgba(0, 163, 255, 0.03) 0%, transparent 70%);
-  opacity: 0.8;
-}
-
-/* ─── Corner Guides ─── */
-.corner-guide {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-color: rgba(0, 163, 255, 0.15);
-}
-
-.corner-tl {
-  top: 0;
-  left: 0;
-  border-top: 1px solid;
-  border-left: 1px solid;
-}
-
-.corner-tr {
-  top: 0;
-  right: 0;
-  border-top: 1px solid;
-  border-right: 1px solid;
-}
-
-.corner-bl {
-  bottom: 0;
-  left: 0;
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-}
-
-.corner-br {
-  bottom: 0;
-  right: 0;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
-}
-
-/* ─── Radial ambient light (Subtle, white-friendly) ─── */
-.ambient-purple {
-  background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(139, 92, 246, 0.04) 0%, transparent 80%);
-}
-
-.ambient-blue {
-  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 163, 255, 0.04) 0%, transparent 70%);
+  background-image: none;
 }
 
 /* ─── Gradient Text ─── */
-.gradient-text {
-  color: #1E293B;
-}
+.gradient-text { color: #111827; }
+.gradient-text-blue { color: #0078D4; }
 
-/* Blue accent text — solid Cyan */
-.gradient-text-blue {
-  color: #00a3ff;
-}
-
-/* ─── Card Soft Shadow System ─── */
-/* 기본 상태 */
+/* ─── Card Shadows ─── */
 .card-shadow {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  transition: all 300ms ease-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 200ms ease, transform 200ms ease;
 }
-
-/* 호버 상태 — Cyan 틴트 소프트 쉐도우 */
 .card-shadow:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 163, 255, 0.1);
-  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* ─── Card Hover Glow ─── */
 .hover-glow-cyan {
-  transition: all 300ms ease-out;
+  transition: box-shadow 200ms ease;
 }
 .hover-glow-cyan:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 163, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* ─── Border Glow Cards ─── */
-.card-glow {
-  position: relative;
-}
-
+.card-glow { position: relative; }
 .card-glow::before {
   content: '';
   position: absolute;
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(0, 163, 255, 0.3), rgba(139, 92, 246, 0.1), rgba(0, 163, 255, 0.3));
+  background: linear-gradient(135deg, rgba(0, 120, 212, 0.2), rgba(0, 120, 212, 0.05));
   background-size: 200% 200%;
   animation: border-glow-rotate 4s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
 }
+.card-glow:hover::before { opacity: 1; }
 
-.card-glow:hover::before {
-  opacity: 1;
-}
-
-/* ─── Micro-animation: Button Press ─── */
+/* ─── Button Press ─── */
 .btn-press {
-  transition: all 300ms ease-out;
+  transition: all 150ms ease;
 }
 .btn-press:active {
-  transform: scale(0.95);
+  transform: scale(0.97);
 }
 
 /* ─── Status Indicators ─── */
@@ -425,48 +292,55 @@
   border-radius: 50%;
   display: inline-block;
 }
-
 .status-dot.online {
-  background: #10b981;
-  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+  background: #059669;
+  box-shadow: 0 0 4px rgba(5, 150, 105, 0.3);
 }
-
 .status-dot.warning {
-  background: #f59e0b;
-  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+  background: #D97706;
+  box-shadow: 0 0 4px rgba(217, 119, 6, 0.3);
+}
+.status-dot.offline {
+  background: #DC2626;
+  box-shadow: 0 0 4px rgba(220, 38, 38, 0.3);
 }
 
-.status-dot.offline {
-  background: #ef4444;
-  box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+/* ─── Corner Guides ─── */
+.corner-guide { position: absolute; width: 12px; height: 12px; border-color: rgba(0, 120, 212, 0.1); }
+.corner-tl { top: 0; left: 0; border-top: 1px solid; border-left: 1px solid; }
+.corner-tr { top: 0; right: 0; border-top: 1px solid; border-right: 1px solid; }
+.corner-bl { bottom: 0; left: 0; border-bottom: 1px solid; border-left: 1px solid; }
+.corner-br { bottom: 0; right: 0; border-bottom: 1px solid; border-right: 1px solid; }
+
+/* ─── Ambient Backgrounds ─── */
+.ambient-purple { background: none; }
+.ambient-blue { background: none; }
+.ambient-center { background: none; }
+.connected-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, #E5E7EB 50%, transparent 100%);
 }
 
 /* ─── Scrollbar ─── */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.3);
+  background: rgba(156, 163, 175, 0.25);
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 163, 255, 0.3);
+  background: rgba(107, 114, 128, 0.3);
 }
 
 /* ─── Selection ─── */
 ::selection {
-  background: rgba(0, 163, 255, 0.15);
-  color: #1E293B;
+  background: rgba(0, 120, 212, 0.12);
+  color: #111827;
 }
 
-/* ─── Data Highlight (수치 데이터 강조) ─── */
+/* ─── Data Highlight ─── */
 .data-highlight {
   font-weight: 700;
-  color: #00A3FF;
+  color: #0078D4;
 }
