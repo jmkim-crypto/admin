@@ -55,9 +55,9 @@ export function Navigation() {
             <Image
               src="/images/brand/logo.png?v=1.2"
               alt="Handy MES Logo"
-              width={280}
+              width={140}
               height={40}
-              className="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               priority
               unoptimized
             />

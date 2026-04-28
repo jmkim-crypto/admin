@@ -187,115 +187,157 @@ export function ValueProps() {
           ))}
         </div>
 
-        {/* Before / After */}
+        {/* Before / After — Section Header */}
         <div className="mt-20 lg:mt-28">
-          <div className="grid md:grid-cols-2 gap-5 relative">
-            {/* Before — 연한 웜그레이 배경 + 레드 텍스트 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <p className="text-xs font-semibold text-[#00A3FF] tracking-[0.2em] uppercase mb-4">Transformation</p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#1E293B] tracking-tight">
+              도입 전후, 현장이 달라집니다
+            </h3>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 relative">
+            {/* Center Divider Arrow (Desktop only) */}
+            <div className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+              <div className="w-12 h-12 rounded-full bg-white border border-[#E2E8F0] shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center">
+                <ArrowRight className="w-5 h-5 text-[#00A3FF]" />
+              </div>
+            </div>
+
+            {/* Before — White card with red left-accent */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-[#FEF2F2] border border-[#FECACA]/40 group transition-all duration-300"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative rounded-2xl overflow-hidden bg-white border border-[#F1F5F9] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] group hover:shadow-[0_20px_25px_-5px_rgba(239,68,68,0.06)] hover:border-[#FECACA]/60 transition-all duration-300"
             >
-              <div className="flex items-center gap-3 mb-8">
-                <XCircle className="w-5 h-5 text-[#EF4444]/60" />
-                <span className="text-xs font-bold text-[#EF4444]/70 uppercase tracking-[0.2em]">
-                  BEFORE — 기존 수동 관리
-                </span>
-              </div>
+              {/* Left color accent stripe */}
+              <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-[#FCA5A5] via-[#EF4444]/40 to-[#FCA5A5]/20" />
 
-              <ul className="space-y-5">
-                {[
-                  "현장에 직접 가야만 확인 가능한 설비 상태",
-                  "구두 지시와 종이 서류로 인한 정보 누락 및 혼선",
-                  "작업 종료 후 뒤늦게 수기 입력하는 불확실한 실적",
-                  "엑셀 수식과 씨름하는 시간 소모적 통계 작업",
-                  "사고 발생 후 한참 뒤에야 인지되는 현장 상황",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-4 text-[15px] text-[#991B1B]/70 leading-[1.8] font-medium group-hover:text-[#991B1B]/80 transition-colors duration-300">
-                    <X className="w-4 h-4 text-[#EF4444]/40 shrink-0 mt-1" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className="p-8 lg:p-10 pl-10 lg:pl-12">
+                {/* Header */}
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-8 h-8 rounded-lg bg-[#FEF2F2] flex items-center justify-center border border-[#FECACA]/30">
+                    <XCircle className="w-4 h-4 text-[#EF4444]/70" />
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-[#EF4444]/60 uppercase tracking-[0.2em] block">
+                      BEFORE
+                    </span>
+                    <span className="text-[13px] font-semibold text-[#475569]">
+                      기존 수동 관리
+                    </span>
+                  </div>
+                </div>
+
+                <ul className="space-y-4">
+                  {[
+                    "현장에 직접 가야만 확인 가능한 설비 상태",
+                    "구두 지시와 종이 서류로 인한 정보 누락 및 혼선",
+                    "작업 종료 후 뒤늦게 수기 입력하는 불확실한 실적",
+                    "엑셀 수식과 씨름하는 시간 소모적 통계 작업",
+                    "사고 발생 후 한참 뒤에야 인지되는 현장 상황",
+                  ].map((item, idx) => (
+                    <li key={item} className="flex items-start gap-3.5 group/item">
+                      <span className="shrink-0 w-5 h-5 rounded-full bg-[#FEF2F2] border border-[#FECACA]/30 flex items-center justify-center mt-0.5">
+                        <X className="w-3 h-3 text-[#EF4444]/50" />
+                      </span>
+                      <span className="text-[15px] text-[#64748B] leading-[1.8] font-medium group-hover/item:text-[#475569] transition-colors duration-200">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
 
-            {/* After — 연한 사이언 배경 + 사이언 텍스트 */}
+            {/* After — White card with cyan left-accent */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-              className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-[#F0F9FF] border border-[#00A3FF]/15 shadow-[0_4px_6px_-1px_rgba(0,163,255,0.08)] group"
+              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+              className="relative rounded-2xl overflow-hidden bg-white border border-[#F1F5F9] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] group hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.08)] hover:border-[#00A3FF]/20 transition-all duration-300"
             >
-              {/* Scanline Effect - Smoother */}
-              <motion.div
-                animate={{ y: ["-100%", "250%"] }}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#00A3FF]/5 to-transparent pointer-events-none z-0"
-              />
+              {/* Left color accent stripe */}
+              <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-[#7DD3FC] via-[#00A3FF] to-[#7DD3FC]/40" />
 
-              <div className="relative z-10 flex items-center gap-3 mb-8">
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <CheckCircle2 className="w-5 h-5 text-[#00A3FF]" />
-                </motion.div>
-                <span className="text-xs font-bold text-[#00A3FF] uppercase tracking-[0.2em]">
-                  AFTER — HANDY MES 도입 후
-                </span>
-              </div>
-
-              <motion.ul
-                className="relative z-10 space-y-5"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.15,
-                      delayChildren: 1.0
-                    }
-                  }
-                }}
-              >
-                {[
-                  { text: "24시간 어디서나 실시간 모바일 모니터링", highlights: ["24시간"] },
-                  { text: "클릭 한 번으로 끝나는 체계적 작업 지시", highlights: ["체계적"] },
-                  { text: "현장에서 즉시 등록하는 누락 없는 실적 관리", highlights: ["누락 없는"] },
-                  { text: "인사이트를 제공하는 지능형 통계 대시보드", highlights: ["지능형"] },
-                  { text: "이상 징후 즉시 대응하는 초고속 스마트 알림", highlights: ["초고속"] },
-                ].map((item, i) => (
-                  <motion.li
-                    key={i}
-                    variants={{
-                      hidden: { opacity: 0, x: 20 },
-                      visible: { opacity: 1, x: 0 }
-                    }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="flex items-start gap-4 text-base text-[#0C4A6E] leading-[1.8] font-medium hover:translate-x-1 transition-transform duration-300"
-                  >
-                    <Check className="w-4 h-4 text-[#00A3FF] shrink-0 mt-1" />
-                    <span>
-                      {item.text.split(new RegExp(`(${item.highlights.join('|')})`, 'g')).map((part, j) => (
-                        item.highlights.includes(part) ? (
-                          <span key={j} className="text-[#00A3FF] font-bold">
-                            {part}
-                          </span>
-                        ) : (part)
-                      ))}
+              <div className="p-8 lg:p-10 pl-10 lg:pl-12">
+                {/* Header */}
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-8 h-8 rounded-lg bg-[#F0F9FF] flex items-center justify-center border border-[#00A3FF]/15">
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-[#00A3FF]" />
+                    </motion.div>
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-bold text-[#00A3FF] uppercase tracking-[0.2em] block">
+                      AFTER
                     </span>
-                  </motion.li>
-                ))}
-              </motion.ul>
+                    <span className="text-[13px] font-semibold text-[#475569]">
+                      Handy MES 도입 후
+                    </span>
+                  </div>
+                </div>
 
-              {/* Ambient Glow */}
-              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#00A3FF]/5 rounded-full blur-[80px] pointer-events-none" />
+                <motion.ul
+                  className="space-y-4"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        staggerChildren: 0.12,
+                        delayChildren: 0.6
+                      }
+                    }
+                  }}
+                >
+                  {[
+                    { text: "24시간 어디서나 실시간 모바일 모니터링", highlights: ["24시간"] },
+                    { text: "클릭 한 번으로 끝나는 체계적 작업 지시", highlights: ["체계적"] },
+                    { text: "현장에서 즉시 등록하는 누락 없는 실적 관리", highlights: ["누락 없는"] },
+                    { text: "인사이트를 제공하는 지능형 통계 대시보드", highlights: ["지능형"] },
+                    { text: "이상 징후 즉시 대응하는 초고속 스마트 알림", highlights: ["초고속"] },
+                  ].map((item, i) => (
+                    <motion.li
+                      key={i}
+                      variants={{
+                        hidden: { opacity: 0, x: 16 },
+                        visible: { opacity: 1, x: 0 }
+                      }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      className="flex items-start gap-3.5 group/item hover:translate-x-1 transition-transform duration-200"
+                    >
+                      <span className="shrink-0 w-5 h-5 rounded-full bg-[#F0F9FF] border border-[#00A3FF]/15 flex items-center justify-center mt-0.5">
+                        <Check className="w-3 h-3 text-[#00A3FF]" />
+                      </span>
+                      <span className="text-[15px] text-[#1E293B] leading-[1.8] font-medium">
+                        {item.text.split(new RegExp(`(${item.highlights.join('|')})`, 'g')).map((part, j) => (
+                          item.highlights.includes(part) ? (
+                            <span key={j} className="text-[#00A3FF] font-bold">
+                              {part}
+                            </span>
+                          ) : (part)
+                        ))}
+                      </span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </div>
             </motion.div>
           </div>
         </div>
