@@ -150,66 +150,133 @@ function HardwareLineup() {
   );
 }
 
-/* ─── Use Cases ─── */
-function IndustryUseCases() {
-  const cases = [
+/* ─── Applicable Industries ─── */
+function ApplicableIndustries() {
+  const industries = [
     {
-      industry: "정밀 가공",
-      title: "CNC 머시닝 센터 실시간 관리",
-      before: "일일 수기 보고 기반, 비가동 원인 파악 불가",
-      after: "실시간 Cycle Time 측정 + 비가동 자동 분류",
-      result: "가동률 23% 향상",
+      name: "정밀 가공",
+      image: "/images/industries/cnc-machining.png",
+      pain: "Cycle Time을 수기로 기록하고 비가동 원인을 추적할 수 없는 현장",
+      features: ["실시간 Cycle Time 자동 측정", "비가동 사유 자동 분류", "설비별 가동률 대시보드"],
     },
     {
-      industry: "사출 성형",
-      title: "사출기 생산량 자동 집계",
-      before: "수작업 카운팅, 시프트 교대 시 실적 누락",
-      after: "센서 기반 자동 카운팅 + 실시간 진행률",
-      result: "실적 정확도 99.8%",
+      name: "사출 성형",
+      image: "/images/industries/injection-molding.png",
+      pain: "시프트 교대 시 생산량이 누락되고 엑셀로 취합하는 현장",
+      features: ["센서 기반 자동 카운팅", "교대별 실적 자동 비교", "Shot 수 기반 금형 수명 관리"],
     },
     {
-      industry: "프레스 타발",
-      title: "고속 프레스 모니터링",
-      before: "타발 속도 변화 감지 불가, 품질 편차 큼",
-      after: "0.001초 인터럽트로 모든 타발 신호 포착",
-      result: "불량률 42% 감소",
+      name: "프레스 타발",
+      image: "/images/industries/press-stamping.png",
+      pain: "고속 타발 신호를 놓치거나 품질 편차를 사후에야 인지하는 현장",
+      features: ["0.001초 인터럽트 신호 포착", "타발 속도 변화 실시간 감지", "이상 징후 즉시 알림"],
+    },
+    {
+      name: "전자부품 조립",
+      image: "/images/industries/electronics-assembly.png",
+      pain: "다품종 소량 생산으로 품목별 진행률 파악이 어려운 현장",
+      features: ["품목별 작업지시 실시간 관리", "바코드/RFID 연동 실적 등록", "LOT 추적 및 이력 관리"],
+    },
+    {
+      name: "다이캐스팅",
+      image: "/images/industries/die-casting.png",
+      pain: "고온·고압 환경에서 Shot 수 관리와 금형 교체 시기를 감에 의존하는 현장",
+      features: ["Shot 카운트 자동 집계", "금형 온도·압력 이상 감지", "금형 수명 기반 교체 알림"],
+    },
+    {
+      name: "도장",
+      image: "/images/industries/painting-coating.png",
+      pain: "도장 품질을 육안으로만 검사하고 환경 조건 변화를 기록할 수 없는 현장",
+      features: ["도장 부스 가동 시간 자동 기록", "컨베이어 속도 실시간 모니터링", "공정별 불량 원인 추적"],
+    },
+    {
+      name: "고무 성형",
+      image: "/images/industries/rubber-molding.png",
+      pain: "가류 시간과 온도를 수기로 관리하여 품질 편차가 발생하는 현장",
+      features: ["가류 조건 실시간 모니터링", "프레스 사이클 자동 카운팅", "배치별 품질 이력 관리"],
     },
   ];
 
   return (
-    <section className="py-24 lg:py-32 border-t border-[#E5E7EB]">
+    <section id="industries" className="py-24 lg:py-32 border-t border-[#E5E7EB]">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <div className="max-w-xl mb-14">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-[#111827]">
-            산업별 적용 사례
-          </h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-[#111827]"
+          >
+            이런 현장에 최적화되어 있습니다
+          </motion.h2>
           <p className="text-[#6B7280] text-base leading-relaxed">
-            다양한 제조 현장에서 검증된 도입 효과입니다.
+            전기 신호가 발생하는 모든 제조 현장에서
+            Handy MES의 가치를 경험할 수 있습니다.
           </p>
         </div>
 
-        <div className="space-y-4">
-          {cases.map((item, i) => (
-            <div
+        <div className="grid md:grid-cols-2 gap-5">
+          {industries.map((item, i) => (
+            <motion.div
               key={i}
-              className="grid lg:grid-cols-[1fr_1fr_160px] gap-6 p-6 rounded-xl bg-white border border-[#E5E7EB]"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06 }}
+              className="group rounded-2xl overflow-hidden border border-[#E5E7EB] bg-white hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300"
             >
-              <div>
-                <span className="text-xs text-[#9CA3AF] font-medium">{item.industry}</span>
-                <h3 className="text-base font-semibold text-[#111827] mt-1 mb-3">{item.title}</h3>
-                <div className="space-y-2">
-                  <p className="text-sm text-[#9CA3AF] line-through decoration-[#E5E7EB]">{item.before}</p>
+              {/* Photo */}
+              <div className="relative h-52 overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute bottom-4 left-5">
+                  <span className="text-lg font-bold text-white tracking-tight">{item.name}</span>
                 </div>
               </div>
-              <div className="flex items-center">
-                <p className="text-sm text-[#374151] font-medium">{item.after}</p>
+
+              {/* Content */}
+              <div className="p-6">
+                {/* Pain point */}
+                <p className="text-sm text-[#6B7280] leading-relaxed mb-5 pb-5 border-b border-[#F3F4F6]">
+                  {item.pain}
+                </p>
+
+                {/* Handy MES features for this industry */}
+                <ul className="space-y-2.5">
+                  {item.features.map((feat, j) => (
+                    <li key={j} className="flex items-center gap-2.5">
+                      <Check className="w-3.5 h-3.5 text-[#0078D4] shrink-0" />
+                      <span className="text-sm text-[#374151] font-medium">{feat}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="flex items-center lg:justify-end">
-                <span className="text-lg font-bold text-[#0078D4]">{item.result}</span>
-              </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+
+        {/* Bottom note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center text-sm text-[#9CA3AF] mt-10"
+        >
+          위 산업 외에도 전기 신호 기반의 모든 제조 설비에 적용 가능합니다.
+          <br />
+          우리 현장에 맞는 도입 방안이 궁금하시다면{" "}
+          <DemoDialog>
+            <button className="text-[#0078D4] font-semibold hover:underline">
+              무료 상담을 신청해 주세요
+            </button>
+          </DemoDialog>
+        </motion.p>
       </div>
     </section>
   );
@@ -321,7 +388,7 @@ export default function ProductPage() {
 
       <SolutionWorkflow />
       <HardwareLineup />
-      <IndustryUseCases />
+      <ApplicableIndustries />
       <InteractiveDemo />
 
       {/* Bottom CTA */}

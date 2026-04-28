@@ -5,6 +5,7 @@ import { HardwareEcosystem } from "@/components/sections/hardware-ecosystem";
 import { UIShowcase } from "@/components/sections/ui-showcase";
 import { PricingPreview } from "@/components/sections/pricing-preview";
 import { TrustSection } from "@/components/sections/trust-section";
+import { IndustryCards } from "@/components/sections/industry-cards";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <HardwareEcosystem />
       <UIShowcase />
       <TrustSection />
+      <IndustryCards />
       <PricingPreview />
 
     </>
