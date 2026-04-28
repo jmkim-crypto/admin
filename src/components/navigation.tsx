@@ -35,8 +35,8 @@ export function Navigation() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-          ? "bg-[#FAFAFA]/85 backdrop-blur-xl border-b border-black/[0.1] shadow-md shadow-black/5"
-          : "bg-transparent"
+        ? "bg-[#FAFAFA]/85 backdrop-blur-xl border-b border-black/[0.1] shadow-md shadow-black/5"
+        : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -53,12 +53,13 @@ export function Navigation() {
             }}
           >
             <Image
-              src="/images/brand/logo.png"
+              src="/images/brand/logo.png?v=1.2"
               alt="Handy MES Logo"
-              width={140}
+              width={280}
               height={40}
-              className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-7 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               priority
+              unoptimized
             />
           </Link>
 
@@ -69,8 +70,8 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={`relative px-5 py-2.5 text-[15px] font-semibold rounded-lg transition-all duration-200 ${pathname === link.href
-                    ? "text-[#111827]"
-                    : "text-[#6B7280] hover:text-[#111827]"
+                  ? "text-[#111827]"
+                  : "text-[#6B7280] hover:text-[#111827]"
                   }`}
               >
                 {link.label}
@@ -125,8 +126,8 @@ export function Navigation() {
                   key={link.href}
                   href={link.href}
                   className={`block px-5 py-4 rounded-lg text-[15px] font-semibold transition-all duration-200 ${pathname === link.href
-                      ? "bg-[#E5E7EB] text-[#111827]"
-                      : "text-[#6B7280] hover:bg-[#F3F4F6] hover:text-[#111827]"
+                    ? "bg-[#E5E7EB] text-[#111827]"
+                    : "text-[#6B7280] hover:bg-[#F3F4F6] hover:text-[#111827]"
                     }`}
                 >
                   {link.label}
