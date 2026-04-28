@@ -35,8 +35,8 @@ export function Navigation() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-        ? "bg-[#FAFAFA]/85 backdrop-blur-xl border-b border-black/[0.1] shadow-md shadow-black/5"
-        : "bg-transparent"
+          ? "bg-[#FAFAFA]/85 backdrop-blur-xl border-b border-black/[0.1] shadow-md shadow-black/5"
+          : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -69,15 +69,15 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={`relative px-5 py-2.5 text-[15px] font-semibold rounded-lg transition-all duration-200 ${pathname === link.href
-                  ? "text-[#111827]"
-                  : "text-[#6B7280] hover:text-[#111827]"
+                    ? "text-[#111827]"
+                    : "text-[#6B7280] hover:text-[#111827]"
                   }`}
               >
                 {link.label}
                 {pathname === link.href && (
                   <motion.div
                     layoutId="nav-indicator"
-                    className="absolute bottom-1 left-3 right-3 h-0.5 bg-[#00A3FF]"
+                    className="absolute bottom-1 left-3 right-3 h-px bg-gradient-to-r from-transparent via-[#00a3ff] to-transparent"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
@@ -88,7 +88,7 @@ export function Navigation() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <DemoDialog>
-              <button className="inline-flex items-center gap-1.5 px-6 py-2.5 text-[15px] font-bold bg-white text-black rounded-lg hover:bg-gray-50 active:scale-95 transition-all duration-200 border border-black/[0.05] shadow-sm">
+              <button className="inline-flex items-center gap-1.5 px-6 py-2.5 text-[15px] font-bold bg-white text-black rounded-lg hover:bg-white/90 active:scale-95 transition-all duration-200 shadow-[0_0_20px_rgba(0,0,0,0.05)] hover:shadow-[0_0_30px_rgba(0,0,0,0.08)]">
                 무료 상담 신청
               </button>
             </DemoDialog>
@@ -125,8 +125,8 @@ export function Navigation() {
                   key={link.href}
                   href={link.href}
                   className={`block px-5 py-4 rounded-lg text-[15px] font-semibold transition-all duration-200 ${pathname === link.href
-                    ? "bg-[#E5E7EB] text-[#111827]"
-                    : "text-[#6B7280] hover:bg-[#F3F4F6] hover:text-[#111827]"
+                      ? "bg-[#E5E7EB] text-[#111827]"
+                      : "text-[#6B7280] hover:bg-[#F3F4F6] hover:text-[#111827]"
                     }`}
                 >
                   {link.label}
