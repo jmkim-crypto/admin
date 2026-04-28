@@ -28,7 +28,7 @@ const trustPoints = [
 
 export function TrustSection() {
   return (
-    <section className="relative py-24 lg:py-32 bg-[#FAFAFA] overflow-hidden border-t border-black/[0.06]">
+    <section className="relative py-24 lg:py-32 bg-[#F8FAFC] overflow-hidden border-t border-[#E2E8F0]">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <motion.p
@@ -40,10 +40,10 @@ export function TrustSection() {
             Trust &amp; Reliability
           </motion.p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-8">
-            <span className="text-[#4B5563]">우리가 </span>
-            <span className="text-[#111827]">신뢰를 지키는 방식</span>
+            <span className="text-[#475569]">우리가 </span>
+            <span className="text-[#1E293B]">신뢰를 지키는 방식</span>
           </h2>
-          <p className="text-[#666666] max-w-2xl mx-auto text-lg leading-relaxed">
+          <p className="text-[#475569] max-w-2xl mx-auto text-lg leading-[1.8]">
             단순히 기능을 제공하는 것을 넘어, 현장에서 실제로 믿고 사용할 수 있는 인프라를 구축합니다.
           </p>
         </div>
@@ -56,15 +56,15 @@ export function TrustSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * idx }}
-              className="p-8 rounded-2xl bg-[#F9FAFB] border border-black/[0.05] hover:border-[#00A3FF]/20 transition-all duration-300 group"
+              className="p-8 rounded-2xl bg-white border border-[#F1F5F9] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:border-[#00A3FF]/20 hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.08)] hover:-translate-y-1 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 rounded-xl bg-[#00A3FF]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 rounded-xl bg-[#00A3FF]/8 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <point.icon className="w-6 h-6 text-[#00A3FF]" />
               </div>
-              <h3 className="text-lg font-bold text-[#111827] mb-3 tracking-tight">
+              <h3 className="text-lg font-bold text-[#1E293B] mb-3 tracking-tight">
                 {point.title}
               </h3>
-              <p className="text-[#6B7280] text-sm leading-relaxed">
+              <p className="text-[#475569] text-sm leading-[1.8]">
                 {point.description}
               </p>
             </motion.div>

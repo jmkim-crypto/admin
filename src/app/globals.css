@@ -52,41 +52,55 @@
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
 
-  /* Handy MES Master Brand Colors */
+  /* ═══ Handy MES Master Brand Colors ═══ */
   --color-cyan: #00A3FF;
-  --color-cyan-glow: rgba(0, 163, 255, 0.5);
-  --color-charcoal-deep: #0B0C10;
-  --color-charcoal-card: #16171D;
+  --color-cyan-soft: rgba(0, 163, 255, 0.08);
+  --color-cyan-hover: rgba(0, 163, 255, 0.1);
 
+  /* ═══ Typography Colors ═══ */
+  --color-heading: #1E293B;         /* 깊은 차콜 — 제목용 */
+  --color-body: #475569;            /* 슬레이트 그레이 — 본문용 */
+  --color-body-light: #64748B;      /* 연한 슬레이트 — 보조 텍스트 */
+  --color-muted-text: #94A3B8;      /* 뮤트 — 라벨/캡션 */
+
+  /* ═══ Surface & Structure ═══ */
+  --color-bg-primary: #F9FBFF;      /* 눈부심 방지 오프화이트 (미세 푸른빛) */
+  --color-bg-white: #FFFFFF;        /* 카드/팝오버용 순백 */
+  --color-bg-section-alt: #F8FAFC;  /* 섹션 교차 배경 */
+  --color-surface: rgba(255, 255, 255, 0.7);
+  --color-surface-hover: rgba(255, 255, 255, 0.9);
+
+  /* ═══ Borders ═══ */
+  --color-border-subtle: #F1F5F9;
+  --color-border-dim: #E2E8F0;
+  --color-border-card: rgba(226, 232, 240, 0.6);
+
+  /* Legacy compatibility */
   --color-blue: var(--color-cyan);
-  --color-surface: rgba(22, 23, 29, 0.5);
-  --color-surface-hover: rgba(22, 23, 29, 0.8);
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
-  --color-border-dim: rgba(255, 255, 255, 0.04);
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-text-tertiary: #94a3b8;
+  --color-text-primary: #1E293B;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #94A3B8;
 }
 
 /* ─── Default Light Theme (Clean White) ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #111827;
+  --background: #F9FBFF;
+  --foreground: #1E293B;
   --card: #ffffff;
-  --card-foreground: #111827;
+  --card-foreground: #1E293B;
   --popover: #ffffff;
-  --popover-foreground: #111827;
+  --popover-foreground: #1E293B;
   --primary: #00a3ff;
   --primary-foreground: #ffffff;
-  --secondary: #f3f4f6;
-  --secondary-foreground: #111827;
-  --muted: #f9fafb;
-  --muted-foreground: #6b7280;
+  --secondary: #F8FAFC;
+  --secondary-foreground: #1E293B;
+  --muted: #F8FAFC;
+  --muted-foreground: #64748B;
   --accent: #00a3ff;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
-  --border: rgba(0, 0, 0, 0.08);
-  --input: rgba(0, 0, 0, 0.08);
+  --border: #E2E8F0;
+  --input: #E2E8F0;
   --ring: #00a3ff;
   --chart-1: #00a3ff;
   --chart-2: #10b981;
@@ -94,13 +108,13 @@
   --chart-4: #8b5cf6;
   --chart-5: #06b6d4;
   --radius: 0.75rem;
-  --sidebar: #f9fafb;
-  --sidebar-foreground: #111827;
+  --sidebar: #F8FAFC;
+  --sidebar-foreground: #1E293B;
   --sidebar-primary: #00a3ff;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f3f4f6;
-  --sidebar-accent-foreground: #111827;
-  --sidebar-border: rgba(0, 0, 0, 0.08);
+  --sidebar-accent: #F1F5F9;
+  --sidebar-accent-foreground: #1E293B;
+  --sidebar-border: #E2E8F0;
   --sidebar-ring: #00a3ff;
 }
 
@@ -118,27 +132,36 @@
     -moz-osx-font-smoothing: grayscale;
     font-synthesis: none;
     font-feature-settings: 'cv11', 'ss01';
+    color: #475569; /* 본문 기본 = 슬레이트 그레이 */
   }
 
   html {
     @apply scroll-smooth;
   }
 
+  /* ─── Typography: 제목 — 깊은 차콜 + 정밀 자간 ─── */
   h1,
-  h2,
+  h2 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #1E293B;
+  }
+
   h3,
   h4,
   h5,
   h6 {
     font-weight: 700;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.01em;
+    color: #1E293B;
   }
 
+  /* ─── Typography: 본문 — 숨통 있는 줄간격 ─── */
   p,
   li {
     font-size: 1rem;
-    /* 16px */
-    line-height: 1.6;
+    line-height: 1.8;
+    color: #475569;
   }
   
   .text-xs { font-size: var(--font-size-xs); }
@@ -159,15 +182,15 @@
   }
 }
 
-@keyframes pulse-glow {
+@keyframes pulse-soft {
 
   0%,
   100% {
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3), 0 0 0px rgba(59, 130, 246, 0);
+    box-shadow: 0 0 0 0 rgba(0, 163, 255, 0);
   }
 
   50% {
-    box-shadow: 0 0 24px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 20px 4px rgba(0, 163, 255, 0.08);
   }
 }
 
@@ -230,8 +253,8 @@
   animation: float 6s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
 }
 
 .animate-dash-flow {
@@ -239,37 +262,36 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 163, 255, 0.04), transparent);
   background-size: 200% 100%;
   animation: shimmer 3s linear infinite;
 }
 
-/* ─── Glassmorphism ─── */
-/* Resend-style: refined, modern glass */
+/* ─── Glassmorphism (White Theme Refined) ─── */
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid #F1F5F9;
 }
 
 .glass-md {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid #E2E8F0;
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-/* ─── Dot Matrix Background (Minimalist) ─── */
+/* ─── Dot Matrix Background (Blue-Gray Dots) ─── */
 .grid-bg {
-  background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(226, 232, 240, 0.4) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -277,14 +299,13 @@
 .connected-line {
   height: 1px;
   width: 100%;
-  background: linear-gradient(90deg, transparent 0%, #00A3FF 50%, transparent 100%);
-  box-shadow: 0 0 15px rgba(0, 163, 255, 0.3);
-  opacity: 0.5;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 163, 255, 0.2) 50%, transparent 100%);
+  opacity: 0.6;
 }
 
-/* ─── Ambient Center Glow ─── */
+/* ─── Ambient Center Glow (Soft Cyan Radial) ─── */
 .ambient-center {
-  background: radial-gradient(circle at center, #f8fafc 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(0, 163, 255, 0.03) 0%, transparent 70%);
   opacity: 0.8;
 }
 
@@ -293,7 +314,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  border-color: rgba(0, 163, 255, 0.3);
+  border-color: rgba(0, 163, 255, 0.15);
 }
 
 .corner-tl {
@@ -324,19 +345,18 @@
   border-right: 1px solid;
 }
 
-/* ─── Radial ambient light (Reflect-style) ─── */
+/* ─── Radial ambient light (Subtle, white-friendly) ─── */
 .ambient-purple {
-  background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(139, 92, 246, 0.08) 0%, transparent 80%);
+  background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(139, 92, 246, 0.04) 0%, transparent 80%);
 }
 
 .ambient-blue {
-  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(59, 130, 246, 0.07) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 163, 255, 0.04) 0%, transparent 70%);
 }
 
 /* ─── Gradient Text ─── */
-/* Simplified for light theme — removal of gradients */
 .gradient-text {
-  color: inherit;
+  color: #1E293B;
 }
 
 /* Blue accent text — solid Cyan */
@@ -344,8 +364,28 @@
   color: #00a3ff;
 }
 
+/* ─── Card Soft Shadow System ─── */
+/* 기본 상태 */
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 300ms ease-out;
+}
+
+/* 호버 상태 — Cyan 틴트 소프트 쉐도우 */
+.card-shadow:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 163, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+/* ─── Card Hover Glow ─── */
+.hover-glow-cyan {
+  transition: all 300ms ease-out;
+}
+.hover-glow-cyan:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 163, 255, 0.1);
+}
+
 /* ─── Border Glow Cards ─── */
-/* Creates animated blue glow on card border */
 .card-glow {
   position: relative;
 }
@@ -356,7 +396,7 @@
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.4));
+  background: linear-gradient(135deg, rgba(0, 163, 255, 0.3), rgba(139, 92, 246, 0.1), rgba(0, 163, 255, 0.3));
   background-size: 200% 200%;
   animation: border-glow-rotate 4s linear infinite;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -370,6 +410,14 @@
   opacity: 1;
 }
 
+/* ─── Micro-animation: Button Press ─── */
+.btn-press {
+  transition: all 300ms ease-out;
+}
+.btn-press:active {
+  transform: scale(0.95);
+}
+
 /* ─── Status Indicators ─── */
 .status-dot {
   width: 6px;
@@ -380,17 +428,17 @@
 
 .status-dot.online {
   background: #10b981;
-  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
 }
 
 .status-dot.warning {
   background: #f59e0b;
-  box-shadow: 0 0 6px rgba(245, 158, 11, 0.7);
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
 }
 
 .status-dot.offline {
   background: #ef4444;
-  box-shadow: 0 0 6px rgba(239, 68, 68, 0.7);
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
 }
 
 /* ─── Scrollbar ─── */
@@ -403,16 +451,22 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(148, 163, 184, 0.3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(59, 130, 246, 0.4);
+  background: rgba(0, 163, 255, 0.3);
 }
 
 /* ─── Selection ─── */
 ::selection {
-  background: rgba(59, 130, 246, 0.25);
-  color: #ffffff;
+  background: rgba(0, 163, 255, 0.15);
+  color: #1E293B;
+}
+
+/* ─── Data Highlight (수치 데이터 강조) ─── */
+.data-highlight {
+  font-weight: 700;
+  color: #00A3FF;
 }

@@ -25,7 +25,7 @@ function LambdaA({ children }: { children: string }) {
     <span className="relative inline-block">
       {children}
       {/* Visual mask to hide the horizontal bar of 'A' */}
-      <span className="absolute inset-x-0 top-[55%] h-[12%] bg-[#FAFAFA] z-10" />
+      <span className="absolute inset-x-0 top-[55%] h-[12%] bg-[#F9FBFF] z-10" />
     </span>
   );
 }
@@ -57,23 +57,23 @@ function HeroMobileShowcase() {
       transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="relative w-full max-w-lg mx-auto mt-24 flex flex-col items-center"
     >
-      {/* Glow Effects */}
+      {/* Subtle Cyan Radial Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00A3FF]/20 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00A3FF]/8 blur-[160px] rounded-full" />
       </div>
 
       {/* Floating Particles */}
       {mounted && [...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 rounded-full bg-[#00A3FF]"
+          className="absolute w-1 h-1 rounded-full bg-[#00A3FF]/40"
           style={{
             top: `${10 + Math.random() * 80}%`,
             left: `${-20 + Math.random() * 140}%`,
           }}
           animate={{
             y: [0, -30, 0],
-            opacity: [0, 0.5, 0],
+            opacity: [0, 0.4, 0],
             scale: [0.5, 1, 0.5],
           }}
           transition={{
@@ -85,7 +85,7 @@ function HeroMobileShowcase() {
       ))}
 
       {/* Phone Mockup Frame */}
-      <div className="relative p-[8px] bg-gradient-to-b from-[#2a2a2e] to-[#1a1a1e] rounded-[42px] shadow-2xl shadow-black/20">
+      <div className="relative p-[8px] bg-gradient-to-b from-[#2a2a2e] to-[#1a1a1e] rounded-[42px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.12)]">
         {/* Inner bezel */}
         <div className="relative w-[240px] sm:w-[280px] rounded-[36px] overflow-hidden bg-white shadow-inner" style={{ aspectRatio: "9/19.5" }}>
           {/* Dynamic Island */}
@@ -122,10 +122,10 @@ function HeroMobileShowcase() {
               className="w-2.5 h-2.5 rounded-full"
               animate={{
                 scale: idx === activeSlide ? 1.2 : 1,
-                backgroundColor: idx === activeSlide ? "#00A3FF" : "rgba(0,0,0,0.1)",
+                backgroundColor: idx === activeSlide ? "#00A3FF" : "#E2E8F0",
               }}
             />
-            <span className={`text-[8px] mt-2 font-bold uppercase tracking-widest transition-colors duration-300 ${idx === activeSlide ? "text-[#00A3FF]" : "text-[#9CA3AF]"}`}>
+            <span className={`text-[8px] mt-2 font-bold uppercase tracking-widest transition-colors duration-300 ${idx === activeSlide ? "text-[#00A3FF]" : "text-[#94A3B8]"}`}>
               {slide.sub}
             </span>
           </button>
@@ -133,20 +133,20 @@ function HeroMobileShowcase() {
       </div>
 
       {/* Reflection / bottom fade */}
-      <div className="absolute -bottom-20 left-10 right-10 h-32 bg-gradient-to-t from-[#FAFAFA] to-transparent opacity-80 blur-2xl pointer-events-none" />
+      <div className="absolute -bottom-20 left-10 right-10 h-32 bg-gradient-to-t from-[#F9FBFF] to-transparent opacity-80 blur-2xl pointer-events-none" />
     </motion.div>
   );
 }
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-40 bg-[#FAFAFA]">
-      {/* Brand Grid Background */}
-      <div className="absolute inset-0 grid-bg pointer-events-none opacity-40" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-40 bg-[#F9FBFF]">
+      {/* Brand Grid Background — Blue-Gray Dots */}
+      <div className="absolute inset-0 grid-bg pointer-events-none" />
 
-      {/* Master Brand Lighting — Ambient Glows */}
+      {/* Master Brand Lighting — Subtle Cyan Radial */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[900px] ambient-center pointer-events-none" />
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-[#00A3FF]/5 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[800px] bg-[#00A3FF]/3 rounded-full blur-[200px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 w-full relative z-10">
         {/* Hero text block */}
@@ -169,9 +169,9 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.2] mb-8"
           >
-            <span className="text-[#111827]/40">1/40 비용으로 내일 당장 시작하는</span>
+            <span className="text-[#1E293B]/40">1/40 비용으로 내일 당장 시작하는</span>
             <br />
-            <span className="text-[#111827]">Handy MES 스마트 팩토리</span>
+            <span className="text-[#1E293B]">Handy MES 스마트 팩토리</span>
           </motion.h1>
 
           {/* Sub */}
@@ -179,11 +179,11 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg sm:text-2xl font-medium tracking-tight text-[#4B5563] max-w-4xl mx-auto mb-16 leading-relaxed"
+            className="text-lg sm:text-2xl font-medium tracking-tight text-[#475569] max-w-4xl mx-auto mb-16 leading-relaxed"
           >
             복잡한 대면 상담과 비싼 인건비를 걷어내고
             <br className="hidden sm:block" />
-            <span className="text-[#00A3FF]">현장의 실질적 데이터</span>
+            <span className="text-[#00A3FF] font-bold">현장의 실질적 데이터</span>
             에만 집중했습니다.
           </motion.p>
 
@@ -195,17 +195,17 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-5"
           >
             <DemoDialog>
-              <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-[#00A3FF] text-white rounded-sm hover:bg-[#0082cc] transition-all duration-300 shadow-md shadow-[#00A3FF]/20 hover:hover:shadow-lg hover:shadow-[#00A3FF]/30 hover:-translate-y-1 w-full sm:w-auto uppercase tracking-widest">
+              <button className="btn-press group inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-[#00A3FF] text-white rounded-sm hover:bg-[#0082cc] transition-all duration-300 shadow-[0_4px_6px_-1px_rgba(0,163,255,0.2)] hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.15)] hover:-translate-y-1 w-full sm:w-auto uppercase tracking-widest">
                 시작하기
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </DemoDialog>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-[#F3F4F6] text-[#111827]/80 rounded-sm border border-black/[0.1] hover:bg-[#D1D5DB] hover:border-[#00A3FF]/40 transition-all duration-300 w-full sm:w-auto uppercase tracking-widest"
+              className="btn-press inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-white text-[#1E293B] rounded-sm border border-[#E2E8F0] hover:border-[#00A3FF]/40 hover:bg-[#F8FAFC] transition-all duration-300 w-full sm:w-auto uppercase tracking-widest shadow-[0_4px_6px_-1px_rgba(0,0,0,0.03)]"
             >
               요금제 안내
-              <ArrowRight className="w-5 h-5 text-[#6B7280]" />
+              <ArrowRight className="w-5 h-5 text-[#64748B]" />
             </Link>
           </motion.div>
 

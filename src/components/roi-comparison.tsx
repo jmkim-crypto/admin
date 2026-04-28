@@ -33,21 +33,21 @@ export function ROIComparison() {
 
   return (
     <div className="w-full max-w-4xl mx-auto mt-20 mb-20">
-      <div className="relative rounded-2xl overflow-hidden border border-black/[0.05] bg-white/40 backdrop-blur-xl">
-        <div className="grid grid-cols-3 border-b border-black/[0.05] bg-[#F9FAFB]">
-          <div className="p-5 text-xs font-bold text-[#4B5563] uppercase tracking-widest">구분</div>
-          <div className="p-5 text-xs font-bold text-[#EF4444]/60 uppercase tracking-widest text-center border-x border-black/[0.05]">기존 MES</div>
+      <div className="relative rounded-2xl overflow-hidden border border-[#F1F5F9] bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)]">
+        <div className="grid grid-cols-3 border-b border-[#F1F5F9] bg-[#F8FAFC]">
+          <div className="p-5 text-xs font-bold text-[#64748B] uppercase tracking-widest">구분</div>
+          <div className="p-5 text-xs font-bold text-[#EF4444]/60 uppercase tracking-widest text-center border-x border-[#F1F5F9]">기존 MES</div>
           <div className="p-5 text-xs font-bold text-[#00A3FF] uppercase tracking-widest text-center">Handy MES</div>
         </div>
 
         {data.map((item, idx) => (
-          <div key={idx} className="grid grid-cols-3 border-b last:border-0 border-black/[0.05] group transition-colors">
-            <div className="p-5 text-sm font-medium text-[#374151] flex items-center">{item.label}</div>
-            <div className="p-5 text-sm text-[#4B5563] text-center border-x border-black/[0.05] flex items-center justify-center gap-2">
+          <div key={idx} className="grid grid-cols-3 border-b last:border-0 border-[#F1F5F9] group hover:bg-[#F8FAFC] transition-colors duration-300">
+            <div className="p-5 text-sm font-medium text-[#475569] flex items-center">{item.label}</div>
+            <div className="p-5 text-sm text-[#64748B] text-center border-x border-[#F1F5F9] flex items-center justify-center gap-2">
               <X className="w-3.5 h-3.5 text-red-500/30" />
               {item.traditional}
             </div>
-            <div className={`p-5 text-sm text-center flex items-center justify-center gap-2 font-bold ${item.highlight ? "text-[#00A3FF]" : "text-[#111827]"}`}>
+            <div className={`p-5 text-sm text-center flex items-center justify-center gap-2 font-bold ${item.highlight ? "text-[#00A3FF]" : "text-[#1E293B]"}`}>
               <Check className="w-4 h-4 text-[#00A3FF]" />
               {item.handy}
             </div>
@@ -55,7 +55,7 @@ export function ROIComparison() {
         ))}
       </div>
       
-      <p className="text-center text-[11px] text-[#6B7280] mt-6 tracking-tight">
+      <p className="text-center text-[11px] text-[#64748B] mt-6 tracking-tight">
         * 기존 MES 수치는 국내 중소 제조기업 평균 도입 비용 및 기간을 기준으로 산출되었습니다.
       </p>
     </div>

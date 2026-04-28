@@ -93,12 +93,12 @@ export default function PricingPage() {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-[#F9FBFF]">
       {/* Hero */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 grid-bg pointer-events-none" />
         <div className="absolute inset-0 ambient-blue pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#00A3FF]/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#00A3FF]/3 rounded-full blur-[160px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative text-center">
           <motion.div
@@ -110,22 +110,22 @@ export default function PricingPage() {
               Pricing
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter mb-6">
-              <span className="text-[#111827]">규모에 맞는{" "}</span>
+              <span className="text-[#1E293B]">규모에 맞는{" "}</span>
               <span className="text-[#00A3FF]">최적의 플랜</span>
-              <span className="text-[#111827]">을 선택하세요</span>
+              <span className="text-[#1E293B]">을 선택하세요</span>
             </h1>
-            <p className="text-[#666666] max-w-2xl mx-auto text-[15px] mb-10 leading-relaxed">
+            <p className="text-[#475569] max-w-2xl mx-auto text-[15px] mb-10 leading-[1.8]">
               모든 플랜에 14일 무료 체험이 포함됩니다. 언제든 취소할 수 있습니다.
             </p>
 
-            {/* Improved Toggle */}
+            {/* Toggle */}
             <div className="flex flex-col items-center gap-6 mt-4">
-              <div className="relative flex items-center p-1 bg-[#F3F4F6] border border-black/[0.1] rounded-full backdrop-blur-md">
+              <div className="relative flex items-center p-1 bg-[#F1F5F9] border border-[#E2E8F0] rounded-full">
                 {/* Sliding Background */}
                 <div className="absolute inset-0 flex p-1">
                   <div className="relative w-full h-full flex">
                     <motion.div
-                      className="h-full w-1/2 rounded-full bg-[#00a3ff] shadow-md shadow-[#00A3FF]/20"
+                      className="h-full w-1/2 rounded-full bg-[#00a3ff] shadow-[0_4px_6px_-1px_rgba(0,163,255,0.3)]"
                       initial={false}
                       animate={{
                         x: isYearly ? "100%" : "0%",
@@ -146,7 +146,7 @@ export default function PricingPage() {
                   className="relative z-10 px-6 py-2.5 text-sm font-bold min-w-[110px] outline-none transition-colors duration-300"
                 >
                   <motion.span
-                    animate={{ color: !isYearly ? "#ffffff" : "#555555" }}
+                    animate={{ color: !isYearly ? "#ffffff" : "#64748B" }}
                     transition={{ duration: 0.3 }}
                   >
                     월간 결제
@@ -159,14 +159,14 @@ export default function PricingPage() {
                   className="relative z-10 px-6 py-2.5 text-sm font-bold min-w-[110px] outline-none transition-colors duration-300"
                 >
                   <motion.span
-                    animate={{ color: isYearly ? "#ffffff" : "#555555" }}
+                    animate={{ color: isYearly ? "#ffffff" : "#64748B" }}
                     transition={{ duration: 0.3 }}
                   >
                     연간 결제
                   </motion.span>
                 </button>
 
-                {/* Discount Badge - Positioned absolutely to avoid layout shift */}
+                {/* Discount Badge */}
                 <div className="absolute left-full ml-5 hidden sm:block">
                   <AnimatePresence mode="wait">
                     {isYearly && (
@@ -175,7 +175,7 @@ export default function PricingPage() {
                         animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                         exit={{ opacity: 0, x: -12, filter: "blur(4px)" }}
                         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                        className="inline-flex items-center px-3.5 py-1 rounded-full text-[11px] font-bold bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20 whitespace-nowrap shadow-[0_0_25px_rgba(16,185,129,0.2)]"
+                        className="inline-flex items-center px-3.5 py-1 rounded-full text-[11px] font-bold bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/20 whitespace-nowrap"
                       >
                         <span className="relative flex h-2 w-2 mr-2">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10b981] opacity-75"></span>
@@ -226,13 +226,12 @@ export default function PricingPage() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  whileHover={{ y: -4 }}
                   className={`relative group ${plan.highlighted ? "md:-mt-4 md:mb-4" : ""
                     }`}
                 >
                   {plan.highlighted && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold bg-[#00a3ff] text-white shadow-lg shadow-[#00a3ff]/30">
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold bg-[#00a3ff] text-white shadow-[0_4px_6px_-1px_rgba(0,163,255,0.3)]">
                         <Star className="w-2.5 h-2.5" />
                         Most Popular
                       </span>
@@ -240,43 +239,36 @@ export default function PricingPage() {
                   )}
 
                   <div
-                    className="relative h-full rounded-2xl p-7 lg:p-8 overflow-hidden transition-all duration-300"
-                    style={plan.highlighted ? {
-                      background: "rgba(0,163,255,0.03)",
-                      border: "1px solid rgba(0,163,255,0.2)",
-                      boxShadow: "0 20px 40px rgba(0,0,0,0.05)",
-                      backdropFilter: "blur(12px)",
-                    } : {
-                      background: "white",
-                      border: "1px solid rgba(0,0,0,0.08)",
-                      backdropFilter: "blur(12px)",
-                    }}
+                    className={`relative h-full rounded-2xl p-7 lg:p-8 overflow-hidden transition-all duration-300 hover:-translate-y-1 ${plan.highlighted
+                      ? "bg-[#F0F9FF] border border-[#00A3FF]/20 shadow-[0_20px_25px_-5px_rgba(0,163,255,0.08)]"
+                      : "bg-white border border-[#F1F5F9] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.08)] hover:border-[#00A3FF]/20"
+                      }`}
                   >
                     {/* Top accent line on highlighted card */}
                     {plan.highlighted && (
-                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/40 to-transparent" />
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/30 to-transparent" />
                     )}
 
-                    <h3 className="text-[17px] font-bold text-[#111827] mb-1 tracking-tight">
+                    <h3 className="text-[17px] font-bold text-[#1E293B] mb-1 tracking-tight">
                       {plan.name}
                     </h3>
-                    <p className="text-sm text-[#6B7280] mb-7">{plan.description}</p>
+                    <p className="text-sm text-[#64748B] mb-7">{plan.description}</p>
 
                     {/* Price */}
                     <div className="mb-7">
                       {price !== null ? (
                         <div className="flex items-baseline gap-1">
-                          <span className="text-3xl lg:text-4xl font-bold text-[#111827] tracking-tighter">
+                          <span className="text-3xl lg:text-4xl font-bold text-[#1E293B] tracking-tighter">
                             ₩{formatPrice(price)}
                           </span>
-                          <span className="text-sm text-[#6B7280]">/월</span>
+                          <span className="text-sm text-[#64748B]">/월</span>
                         </div>
                       ) : (
                         <div>
-                          <span className="text-3xl lg:text-4xl font-bold text-[#111827] tracking-tighter">
+                          <span className="text-3xl lg:text-4xl font-bold text-[#1E293B] tracking-tighter">
                             문의
                           </span>
-                          <p className="text-sm text-[#6B7280] mt-1">맞춤 견적을 받아보세요</p>
+                          <p className="text-sm text-[#64748B] mt-1">맞춤 견적을 받아보세요</p>
                         </div>
                       )}
                       {isYearly && price !== null && (
@@ -290,9 +282,9 @@ export default function PricingPage() {
                     {/* CTA */}
                     <DemoDialog>
                       <button
-                        className={`w-full mb-7 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${plan.highlighted
-                          ? "bg-[#00a3ff] text-white hover:bg-[#0082cc] shadow-md shadow-[#00A3FF]/20 hover:hover:shadow-lg hover:shadow-[#00A3FF]/30"
-                          : "bg-[#F3F4F6] text-[#6B7280] border border-black/[0.05] hover:bg-[#E5E7EB] hover:text-[#111827]"
+                        className={`btn-press w-full mb-7 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${plan.highlighted
+                          ? "bg-[#00a3ff] text-white hover:bg-[#0082cc] shadow-[0_4px_6px_-1px_rgba(0,163,255,0.2)] hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.15)]"
+                          : "bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0] hover:bg-[#E2E8F0] hover:text-[#1E293B]"
                           }`}
                       >
                         {price !== null ? (
@@ -313,16 +305,16 @@ export default function PricingPage() {
                     <div className="space-y-3.5">
                       {Object.entries(plan.features).map(([key, value]) => (
                         <div key={key} className="flex items-center justify-between text-sm">
-                          <span className="text-[#6B7280]">{featureLabels[key]}</span>
+                          <span className="text-[#64748B]">{featureLabels[key]}</span>
                           <span className="font-medium">
                             {typeof value === "boolean" ? (
                               value ? (
                                 <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
                               ) : (
-                                <X className="w-4 h-4 text-[#333333]" />
+                                <X className="w-4 h-4 text-[#CBD5E1]" />
                               )
                             ) : (
-                              <span className="text-[#111827] font-medium">{value}</span>
+                              <span className="text-[#1E293B] font-medium">{value}</span>
                             )}
                           </span>
                         </div>
@@ -337,7 +329,7 @@ export default function PricingPage() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-20 lg:py-28 border-t border-black/[0.06]">
+      <section className="py-20 lg:py-28 border-t border-[#E2E8F0]">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -345,10 +337,10 @@ export default function PricingPage() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-3 text-[#111827]">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-3 text-[#1E293B]">
               상세 기능 비교
             </h2>
-            <p className="text-[#6B7280] text-[15px]">
+            <p className="text-[#64748B] text-[15px]">
               각 플랜의 기능을 한눈에 비교해 보세요.
             </p>
           </motion.div>
@@ -357,19 +349,18 @@ export default function PricingPage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="overflow-x-auto rounded-2xl"
-            style={{ background: "white", border: "1px solid rgba(0,0,0,0.08)" }}
+            className="overflow-x-auto rounded-2xl bg-white border border-[#F1F5F9] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)]"
           >
             <table className="w-full min-w-[600px]">
               <thead>
-                <tr className="border-b border-black/[0.08]">
-                  <th className="py-4 px-6 text-left text-xs font-semibold text-[#9CA3AF] uppercase tracking-[0.1em]">
+                <tr className="border-b border-[#F1F5F9]">
+                  <th className="py-4 px-6 text-left text-xs font-semibold text-[#94A3B8] uppercase tracking-[0.1em]">
                     기능
                   </th>
                   {plans.map((plan) => (
                     <th
                       key={plan.name}
-                      className={`py-4 px-6 text-center text-sm font-bold ${plan.highlighted ? "text-[#00a3ff]" : "text-[#6B7280]"
+                      className={`py-4 px-6 text-center text-sm font-bold ${plan.highlighted ? "text-[#00a3ff]" : "text-[#64748B]"
                         }`}
                     >
                       {plan.name}
@@ -381,9 +372,9 @@ export default function PricingPage() {
                 {Object.keys(featureLabels).map((key) => (
                   <tr
                     key={key}
-                    className="border-b border-black/[0.06] hover:bg-[#F9FAFB] transition-colors"
+                    className="border-b border-[#F1F5F9] hover:bg-[#F8FAFC] transition-colors duration-300"
                   >
-                    <td className="py-3.5 px-6 text-sm text-[#666666]">
+                    <td className="py-3.5 px-6 text-sm text-[#475569]">
                       {featureLabels[key]}
                     </td>
                     {plans.map((plan) => {
@@ -394,10 +385,10 @@ export default function PricingPage() {
                             value ? (
                               <CheckCircle2 className="w-4 h-4 text-[#10b981] mx-auto" />
                             ) : (
-                              <X className="w-4 h-4 text-[#2a2a2a] mx-auto" />
+                              <X className="w-4 h-4 text-[#CBD5E1] mx-auto" />
                             )
                           ) : (
-                            <span className="text-[#111827] font-medium">{value}</span>
+                            <span className="text-[#1E293B] font-medium">{value}</span>
                           )}
                         </td>
                       );
@@ -411,7 +402,7 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 border-t border-black/[0.06]">
+      <section className="py-20 lg:py-28 border-t border-[#E2E8F0]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -420,7 +411,7 @@ export default function PricingPage() {
             className="text-center mb-14"
           >
             <p className="text-xs font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-5">FAQ</p>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter text-[#111827]">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter text-[#1E293B]">
               자주 묻는 질문
             </h2>
           </motion.div>
@@ -450,21 +441,15 @@ export default function PricingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                whileHover={{ y: -4 }}
-                className="rounded-xl p-6 cursor-default transition-all duration-300"
-                style={{
-                  background: "white",
-                  border: "1px solid rgba(0,0,0,0.08)",
-                  backdropFilter: "blur(12px)",
-                }}
+                className="rounded-xl p-6 cursor-default transition-all duration-300 hover:-translate-y-1 bg-white border border-[#F1F5F9] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.08)] hover:border-[#00A3FF]/20"
               >
                 <div className="flex items-start gap-4">
                   <HelpCircle className="w-4 h-4 text-[#00a3ff] shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="text-sm font-semibold text-[#111827] mb-2 tracking-tight">
+                    <h3 className="text-sm font-semibold text-[#1E293B] mb-2 tracking-tight">
                       {item.q}
                     </h3>
-                    <p className="text-sm text-[#666666] leading-relaxed">
+                    <p className="text-sm text-[#475569] leading-[1.8]">
                       {item.a}
                     </p>
                   </div>

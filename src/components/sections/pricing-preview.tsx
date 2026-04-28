@@ -13,9 +13,9 @@ export function PricingPreview() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="relative py-28 lg:py-40 border-t border-black/[0.06] overflow-hidden bg-[#FAFAFA]">
-      {/* Ambient glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00A3FF]/[0.05] rounded-full blur-[120px] pointer-events-none" />
+    <section ref={ref} className="relative py-28 lg:py-40 border-t border-[#E2E8F0] overflow-hidden bg-[#F8FAFC]">
+      {/* Ambient glow — wide, subtle */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00A3FF]/[0.03] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
         <motion.div
@@ -28,11 +28,11 @@ export function PricingPreview() {
             Pricing & ROI
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8">
-            <span className="text-[#111827]">비용 부담을 덜어내고 </span>
+            <span className="text-[#1E293B]">비용 부담을 덜어내고 </span>
             <br className="sm:hidden" />
-            <span className="text-[#111827]">본질에만 투자하세요</span>
+            <span className="text-[#1E293B]">본질에만 투자하세요</span>
           </h2>
-          <p className="text-[#666666] max-w-xl mx-auto text-lg mb-14 leading-relaxed">
+          <p className="text-[#475569] max-w-xl mx-auto text-lg mb-14 leading-[1.8]">
             비싼 초기 구축 비용과 불필요한 유지보수 비용을 없앴습니다. <br />
             Handy MES는 정직한 구독 서비스로 현장의 성장을 지원합니다.
           </p>
@@ -45,29 +45,24 @@ export function PricingPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative max-w-lg mx-auto rounded-2xl p-10 lg:p-12 overflow-hidden"
-            style={{
-              background: "white",
-              border: "1px solid rgba(0,0,0,0.08)",
-              backdropFilter: "blur(16px)",
-            }}
+            className="relative max-w-lg mx-auto rounded-2xl p-10 lg:p-12 overflow-hidden bg-white border border-[#F1F5F9] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)]"
           >
             {/* Top accent line */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/20 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/15 to-transparent" />
 
             <div className="flex items-baseline justify-center gap-2 mb-2">
-              <span className="text-4xl lg:text-5xl font-bold tracking-tight text-[#111827]">
+              <span className="text-4xl lg:text-5xl font-bold tracking-tight text-[#1E293B]">
                 월 49만원
               </span>
-              <span className="text-[#6B7280] text-base">부터</span>
+              <span className="text-[#64748B] text-base">부터</span>
             </div>
-            <p className="text-sm text-[#6B7280] mb-10 font-medium">
+            <p className="text-sm text-[#64748B] mb-10 font-medium">
               Starter 플랜 · 설비 5대 · 기본 모니터링 포함
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <DemoDialog>
-                <button className="group inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold bg-[#00A3FF] text-white rounded-sm hover:bg-[#0082cc] transition-all duration-300 shadow-md shadow-[#00A3FF]/20 hover:hover:shadow-lg hover:shadow-[#00A3FF]/30 hover:-translate-y-0.5 w-full sm:w-auto justify-center uppercase tracking-widest">
+                <button className="btn-press group inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold bg-[#00A3FF] text-white rounded-sm hover:bg-[#0082cc] transition-all duration-300 shadow-[0_4px_6px_-1px_rgba(0,163,255,0.2)] hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.15)] hover:-translate-y-0.5 w-full sm:w-auto justify-center uppercase tracking-widest">
                   무료 상담 신청하기
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
                 </button>

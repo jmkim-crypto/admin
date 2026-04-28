@@ -84,9 +84,9 @@ export function ValueProps() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="relative py-28 lg:py-40 overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-[#00A3FF]/5 rounded-full blur-[140px] -translate-y-1/2 pointer-events-none" />
+    <section ref={ref} className="relative py-28 lg:py-40 overflow-hidden bg-white">
+      {/* Ambient glow — subtle wide cyan radial */}
+      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-[#00A3FF]/3 rounded-full blur-[160px] -translate-y-1/2 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
         {/* Section header */}
@@ -100,17 +100,17 @@ export function ValueProps() {
             Core Values
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8">
-            <span className="text-[#111827]">정직한 기술로</span>
+            <span className="text-[#1E293B]">정직한 기술로</span>
             <br />
-            <span className="text-[#111827]">현장의 가치를 증명합니다</span>
+            <span className="text-[#1E293B]">현장의 가치를 증명합니다</span>
           </h2>
-          <p className="text-[#666666] max-w-xl mx-auto text-lg leading-relaxed">
+          <p className="text-[#475569] max-w-xl mx-auto text-lg leading-relaxed">
             비싼 비용과 긴 구축 기간이라는 기존 MES의 한계를 넘어, <br />
             데이터 기반의 실무 중심 관리를 제안합니다.
           </p>
         </motion.div>
 
-        {/* Value cards — card-glow border animation */}
+        {/* Value cards — soft shadow + hover float */}
         <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
           {values.map((value, i) => (
             <motion.div
@@ -118,24 +118,23 @@ export function ValueProps() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2 + i * 0.12 }}
-              whileHover={{ y: -10 }}
               className="group relative"
             >
               <div
-                className="relative h-full flex flex-col rounded-2xl p-7 lg:p-8 overflow-hidden transition-all duration-500 bg-white/40 border border-black/[0.08] backdrop-blur-md group-hover:border-[#00A3FF]/40 group-hover:bg-white/60"
+                className="relative h-full flex flex-col rounded-2xl p-7 lg:p-8 overflow-hidden transition-all duration-300 ease-out bg-white border border-[#F1F5F9] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] group-hover:shadow-[0_20px_25px_-5px_rgba(0,163,255,0.1)] group-hover:border-[#00A3FF]/30 group-hover:-translate-y-1"
               >
                 {/* Radial glow on hover */}
                 <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-2xl pointer-events-none"
                   style={{
-                    background: `radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0, 163, 255, 0.08), transparent 70%)`,
+                    background: `radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0, 163, 255, 0.05), transparent 70%)`,
                   }}
                 />
 
                 <div className="relative">
                   {/* Icon */}
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-8 transition-transform duration-500 group-hover:scale-110 bg-[#00A3FF]/10 border border-[#00A3FF]/20"
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-8 transition-transform duration-300 group-hover:scale-110 bg-[#00A3FF]/8 border border-[#00A3FF]/15"
                   >
                     <value.icon
                       className="w-6 h-6 text-[#00A3FF]"
@@ -145,35 +144,35 @@ export function ValueProps() {
 
                   {/* Tag */}
                   <span
-                    className="inline-block text-[10px] font-black tracking-[0.2em] uppercase mb-4 px-2.5 py-1 rounded-sm bg-[#00A3FF]/10 text-[#00A3FF]"
+                    className="inline-block text-[10px] font-black tracking-[0.2em] uppercase mb-4 px-2.5 py-1 rounded-sm bg-[#00A3FF]/8 text-[#00A3FF]"
                   >
                     {value.tag}
                   </span>
 
-                  <h3 className="text-xl font-bold text-[#111827] mb-4 tracking-tight">
+                  <h3 className="text-xl font-bold text-[#1E293B] mb-4 tracking-tight">
                     {value.title}
                   </h3>
 
-                  <p className="text-[15px] text-[#6B7280] leading-relaxed mb-8 group-hover:text-[#aaaaaa] transition-colors">
+                  <p className="text-[15px] text-[#475569] leading-[1.8] mb-8 group-hover:text-[#64748B] transition-colors duration-300">
                     {value.description}
                   </p>
 
                   {/* Footer */}
-                  <div className="pt-6 border-t border-black/[0.08]">
+                  <div className="pt-6 border-t border-[#F1F5F9]">
                     <div className="flex flex-col gap-1.5">
                       {value.microCopy && (
-                        <span className="text-[10px] text-[#4B5563] font-medium">
+                        <span className="text-[10px] text-[#64748B] font-medium">
                           {value.microCopy}
                         </span>
                       )}
-                      <span className="text-[15px] font-bold text-[#111827] tracking-tight">
-                        {/* Highlight key values */}
+                      <span className="text-[15px] font-bold text-[#1E293B] tracking-tight">
+                        {/* Highlight key values — bold cyan */}
                         {value.footerHighlight.split(' ').map((word, idx) => {
                           const isHighlighted = /^[0-9/]+/.test(word) || word.includes('제로') || word.includes('24시간') || word.includes('즉시');
                           return (
                             <span
                               key={idx}
-                              className={isHighlighted ? "text-[#00A3FF]" : ""}
+                              className={isHighlighted ? "text-[#00A3FF] font-bold" : ""}
                             >
                               {word}{' '}
                             </span>
@@ -191,19 +190,17 @@ export function ValueProps() {
         {/* Before / After */}
         <div className="mt-20 lg:mt-28">
           <div className="grid md:grid-cols-2 gap-5 relative">
-            {/* Before */}
+            {/* Before — 연한 웜그레이 배경 + 레드 텍스트 */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-[#F3F4F6] border border-black/[0.05] group transition-all duration-700"
+              className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-[#FEF2F2] border border-[#FECACA]/40 group transition-all duration-300"
             >
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/[0.05] to-transparent" />
-
               <div className="flex items-center gap-3 mb-8">
-                <XCircle className="w-5 h-5 text-[#9CA3AF]" />
-                <span className="text-xs font-bold text-[#6B7280] uppercase tracking-[0.2em]">
+                <XCircle className="w-5 h-5 text-[#EF4444]/60" />
+                <span className="text-xs font-bold text-[#EF4444]/70 uppercase tracking-[0.2em]">
                   BEFORE — 기존 수동 관리
                 </span>
               </div>
@@ -216,33 +213,28 @@ export function ValueProps() {
                   "엑셀 수식과 씨름하는 시간 소모적 통계 작업",
                   "사고 발생 후 한참 뒤에야 인지되는 현장 상황",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-4 text-[15px] text-[#6B7280] leading-relaxed font-medium group-hover:text-[#4B5563] transition-colors duration-300">
-                    <X className="w-4 h-4 text-[#D1D5DB] shrink-0 mt-1" />
+                  <li key={item} className="flex items-start gap-4 text-[15px] text-[#991B1B]/70 leading-[1.8] font-medium group-hover:text-[#991B1B]/80 transition-colors duration-300">
+                    <X className="w-4 h-4 text-[#EF4444]/40 shrink-0 mt-1" />
                     {item}
                   </li>
                 ))}
               </ul>
-
-              {/* Subtle Red Ambient Glow */}
-              <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-red-500/5 rounded-full blur-[80px] pointer-events-none" />
             </motion.div>
 
-            {/* After */}
+            {/* After — 연한 사이언 배경 + 사이언 텍스트 */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-              className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-white/60 border border-[#00A3FF]/20 shadow-2xl shadow-[#00A3FF]/5 group"
+              className="relative rounded-2xl p-8 lg:p-10 overflow-hidden bg-[#F0F9FF] border border-[#00A3FF]/15 shadow-[0_4px_6px_-1px_rgba(0,163,255,0.08)] group"
             >
-              {/* Scanline Effect - Smoother and faster */}
+              {/* Scanline Effect - Smoother */}
               <motion.div
                 animate={{ y: ["-100%", "250%"] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#00A3FF]/10 to-transparent pointer-events-none z-0"
+                className="absolute inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#00A3FF]/5 to-transparent pointer-events-none z-0"
               />
-
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/20 to-transparent" />
 
               <div className="relative z-10 flex items-center gap-3 mb-8">
                 <motion.div
@@ -286,7 +278,7 @@ export function ValueProps() {
                       visible: { opacity: 1, x: 0 }
                     }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="flex items-start gap-4 text-base text-[#111827] leading-relaxed font-medium hover:translate-x-1 transition-transform duration-300"
+                    className="flex items-start gap-4 text-base text-[#0C4A6E] leading-[1.8] font-medium hover:translate-x-1 transition-transform duration-300"
                   >
                     <Check className="w-4 h-4 text-[#00A3FF] shrink-0 mt-1" />
                     <span>
@@ -303,7 +295,7 @@ export function ValueProps() {
               </motion.ul>
 
               {/* Ambient Glow */}
-              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#00A3FF]/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#00A3FF]/15 transition-colors duration-700" />
+              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-[#00A3FF]/5 rounded-full blur-[80px] pointer-events-none" />
             </motion.div>
           </div>
         </div>
