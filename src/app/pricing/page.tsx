@@ -98,7 +98,7 @@ export default function PricingPage() {
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 grid-bg pointer-events-none" />
         <div className="absolute inset-0 ambient-blue pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#1a1a2e]/40 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#00A3FF]/5 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative text-center">
           <motion.div
@@ -110,9 +110,9 @@ export default function PricingPage() {
               Pricing
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter mb-6">
-              <span className="text-[#e8e8e8]">규모에 맞는{" "}</span>
-              <span className="gradient-text">최적의 플랜</span>
-              <span className="text-[#e8e8e8]">을 선택하세요</span>
+              <span className="text-[#111827]">규모에 맞는{" "}</span>
+              <span className="text-[#00A3FF]">최적의 플랜</span>
+              <span className="text-[#111827]">을 선택하세요</span>
             </h1>
             <p className="text-[#666666] max-w-2xl mx-auto text-[15px] mb-10 leading-relaxed">
               모든 플랜에 14일 무료 체험이 포함됩니다. 언제든 취소할 수 있습니다.
@@ -120,12 +120,12 @@ export default function PricingPage() {
 
             {/* Improved Toggle */}
             <div className="flex flex-col items-center gap-6 mt-4">
-              <div className="relative flex items-center p-1 bg-white/[0.03] border border-white/[0.08] rounded-full backdrop-blur-md">
+              <div className="relative flex items-center p-1 bg-[#F3F4F6] border border-black/[0.1] rounded-full backdrop-blur-md">
                 {/* Sliding Background */}
                 <div className="absolute inset-0 flex p-1">
                   <div className="relative w-full h-full flex">
                     <motion.div
-                      className="h-full w-1/2 rounded-full bg-[#00a3ff] shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                      className="h-full w-1/2 rounded-full bg-[#00a3ff] shadow-md shadow-[#00A3FF]/20"
                       initial={false}
                       animate={{
                         x: isYearly ? "100%" : "0%",
@@ -242,41 +242,41 @@ export default function PricingPage() {
                   <div
                     className="relative h-full rounded-2xl p-7 lg:p-8 overflow-hidden transition-all duration-300"
                     style={plan.highlighted ? {
-                      background: "rgba(59,130,246,0.05)",
-                      border: "1px solid rgba(59,130,246,0.25)",
-                      boxShadow: "0 0 60px rgba(59,130,246,0.08), 0 20px 40px rgba(0,0,0,0.4)",
+                      background: "rgba(0,163,255,0.03)",
+                      border: "1px solid rgba(0,163,255,0.2)",
+                      boxShadow: "0 20px 40px rgba(0,0,0,0.05)",
                       backdropFilter: "blur(12px)",
                     } : {
-                      background: "rgba(255,255,255,0.02)",
-                      border: "1px solid rgba(255,255,255,0.06)",
+                      background: "white",
+                      border: "1px solid rgba(0,0,0,0.08)",
                       backdropFilter: "blur(12px)",
                     }}
                   >
                     {/* Top accent line on highlighted card */}
                     {plan.highlighted && (
-                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00a3ff]/80 to-transparent" />
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/40 to-transparent" />
                     )}
 
-                    <h3 className="text-[17px] font-bold text-[#e8e8e8] mb-1 tracking-tight">
+                    <h3 className="text-[17px] font-bold text-[#111827] mb-1 tracking-tight">
                       {plan.name}
                     </h3>
-                    <p className="text-sm text-[#555555] mb-7">{plan.description}</p>
+                    <p className="text-sm text-[#6B7280] mb-7">{plan.description}</p>
 
                     {/* Price */}
                     <div className="mb-7">
                       {price !== null ? (
                         <div className="flex items-baseline gap-1">
-                          <span className="text-3xl lg:text-4xl font-bold text-[#e8e8e8] tracking-tighter">
+                          <span className="text-3xl lg:text-4xl font-bold text-[#111827] tracking-tighter">
                             ₩{formatPrice(price)}
                           </span>
-                          <span className="text-sm text-[#555555]">/월</span>
+                          <span className="text-sm text-[#6B7280]">/월</span>
                         </div>
                       ) : (
                         <div>
-                          <span className="text-3xl lg:text-4xl font-bold text-[#e8e8e8] tracking-tighter">
+                          <span className="text-3xl lg:text-4xl font-bold text-[#111827] tracking-tighter">
                             문의
                           </span>
-                          <p className="text-sm text-[#555555] mt-1">맞춤 견적을 받아보세요</p>
+                          <p className="text-sm text-[#6B7280] mt-1">맞춤 견적을 받아보세요</p>
                         </div>
                       )}
                       {isYearly && price !== null && (
@@ -291,8 +291,8 @@ export default function PricingPage() {
                     <DemoDialog>
                       <button
                         className={`w-full mb-7 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${plan.highlighted
-                          ? "bg-[#00a3ff] text-white hover:bg-[#2563eb] shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]"
-                          : "bg-white/[0.04] text-[#888888] border border-white/[0.07] hover:bg-white/[0.07] hover:text-[#e8e8e8]"
+                          ? "bg-[#00a3ff] text-white hover:bg-[#0082cc] shadow-md shadow-[#00A3FF]/20 hover:hover:shadow-lg hover:shadow-[#00A3FF]/30"
+                          : "bg-[#F3F4F6] text-[#6B7280] border border-black/[0.05] hover:bg-[#E5E7EB] hover:text-[#111827]"
                           }`}
                       >
                         {price !== null ? (
@@ -313,7 +313,7 @@ export default function PricingPage() {
                     <div className="space-y-3.5">
                       {Object.entries(plan.features).map(([key, value]) => (
                         <div key={key} className="flex items-center justify-between text-sm">
-                          <span className="text-[#555555]">{featureLabels[key]}</span>
+                          <span className="text-[#6B7280]">{featureLabels[key]}</span>
                           <span className="font-medium">
                             {typeof value === "boolean" ? (
                               value ? (
@@ -322,7 +322,7 @@ export default function PricingPage() {
                                 <X className="w-4 h-4 text-[#333333]" />
                               )
                             ) : (
-                              <span className="text-[#e8e8e8] font-medium">{value}</span>
+                              <span className="text-[#111827] font-medium">{value}</span>
                             )}
                           </span>
                         </div>
@@ -337,7 +337,7 @@ export default function PricingPage() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-20 lg:py-28 border-t border-white/[0.04]">
+      <section className="py-20 lg:py-28 border-t border-black/[0.06]">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -345,10 +345,10 @@ export default function PricingPage() {
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-3 text-[#e8e8e8]">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-3 text-[#111827]">
               상세 기능 비교
             </h2>
-            <p className="text-[#555555] text-[15px]">
+            <p className="text-[#6B7280] text-[15px]">
               각 플랜의 기능을 한눈에 비교해 보세요.
             </p>
           </motion.div>
@@ -358,18 +358,18 @@ export default function PricingPage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="overflow-x-auto rounded-2xl"
-            style={{ background: "rgba(255,255,255,0.015)", border: "1px solid rgba(255,255,255,0.06)" }}
+            style={{ background: "white", border: "1px solid rgba(0,0,0,0.08)" }}
           >
             <table className="w-full min-w-[600px]">
               <thead>
-                <tr className="border-b border-white/[0.06]">
-                  <th className="py-4 px-6 text-left text-xs font-semibold text-[#444444] uppercase tracking-[0.1em]">
+                <tr className="border-b border-black/[0.08]">
+                  <th className="py-4 px-6 text-left text-xs font-semibold text-[#9CA3AF] uppercase tracking-[0.1em]">
                     기능
                   </th>
                   {plans.map((plan) => (
                     <th
                       key={plan.name}
-                      className={`py-4 px-6 text-center text-sm font-bold ${plan.highlighted ? "text-[#00a3ff]" : "text-[#888888]"
+                      className={`py-4 px-6 text-center text-sm font-bold ${plan.highlighted ? "text-[#00a3ff]" : "text-[#6B7280]"
                         }`}
                     >
                       {plan.name}
@@ -381,7 +381,7 @@ export default function PricingPage() {
                 {Object.keys(featureLabels).map((key) => (
                   <tr
                     key={key}
-                    className="border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors"
+                    className="border-b border-black/[0.06] hover:bg-[#F9FAFB] transition-colors"
                   >
                     <td className="py-3.5 px-6 text-sm text-[#666666]">
                       {featureLabels[key]}
@@ -397,7 +397,7 @@ export default function PricingPage() {
                               <X className="w-4 h-4 text-[#2a2a2a] mx-auto" />
                             )
                           ) : (
-                            <span className="text-[#e8e8e8] font-medium">{value}</span>
+                            <span className="text-[#111827] font-medium">{value}</span>
                           )}
                         </td>
                       );
@@ -411,7 +411,7 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 border-t border-white/[0.04]">
+      <section className="py-20 lg:py-28 border-t border-black/[0.06]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -420,7 +420,7 @@ export default function PricingPage() {
             className="text-center mb-14"
           >
             <p className="text-xs font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-5">FAQ</p>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter text-[#e8e8e8]">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter text-[#111827]">
               자주 묻는 질문
             </h2>
           </motion.div>
@@ -453,15 +453,15 @@ export default function PricingPage() {
                 whileHover={{ y: -4 }}
                 className="rounded-xl p-6 cursor-default transition-all duration-300"
                 style={{
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid rgba(255,255,255,0.06)",
+                  background: "white",
+                  border: "1px solid rgba(0,0,0,0.08)",
                   backdropFilter: "blur(12px)",
                 }}
               >
                 <div className="flex items-start gap-4">
                   <HelpCircle className="w-4 h-4 text-[#00a3ff] shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="text-sm font-semibold text-[#e8e8e8] mb-2 tracking-tight">
+                    <h3 className="text-sm font-semibold text-[#111827] mb-2 tracking-tight">
                       {item.q}
                     </h3>
                     <p className="text-sm text-[#666666] leading-relaxed">

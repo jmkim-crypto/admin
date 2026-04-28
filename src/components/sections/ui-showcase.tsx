@@ -55,7 +55,7 @@ const platformFeatures = [
 /* ── Mobile Mockup ──────────────────────────────────────────────────────── */
 function MobileMockup({ activeFeature }: { activeFeature: typeof platformFeatures[0] }) {
   return (
-    <div className="relative w-[220px] sm:w-[260px] lg:w-[280px] rounded-[36px] p-[6px] bg-gradient-to-b from-[#2a2a2e] to-[#1a1a1e] shadow-[0_40px_100px_rgba(0,0,0,0.8),0_0_50px_rgba(0,163,255,0.15)] ring-1 ring-white/10">
+    <div className="relative w-[220px] sm:w-[260px] lg:w-[280px] rounded-[36px] p-[6px] bg-black shadow-2xl shadow-black/20 ring-1 ring-black/5">
       {/* Dynamic Island Area */}
       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-[60px] h-[18px] bg-black rounded-full z-30" />
 
@@ -82,7 +82,7 @@ export function UIShowcase() {
   const [activeTab, setActiveTab] = useState(platformFeatures[0]);
 
   return (
-    <section className="relative py-32 lg:py-48 bg-[#0B0C10] overflow-hidden">
+    <section className="relative py-32 lg:py-48 bg-[#FAFAFA] overflow-hidden">
       {/* Background Effects - Cleaned up */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00A3FF]/[0.01] blur-[140px]" />
@@ -108,11 +108,11 @@ export function UIShowcase() {
               >
                 ui feature
               </motion.p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#111827] mb-6">
                 현장과 손안을 잇는 <br />
-                <span className="gradient-text">데이터 인프라</span>
+                <span className="text-[#111827]">데이터 인프라</span>
               </h2>
-              <p className="text-[#888888] text-lg leading-relaxed max-w-xl">
+              <p className="text-[#6B7280] text-lg leading-relaxed max-w-xl">
                 하드웨어 센서가 포착한 현장의 모든 신호가 클라우드를 거쳐 스마트폰으로 즉시 전송됩니다.
               </p>
             </motion.div>
@@ -123,16 +123,16 @@ export function UIShowcase() {
                   key={feature.id}
                   onClick={() => setActiveTab(feature)}
                   className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 group flex items-start gap-5 ${activeTab.id === feature.id
-                    ? "bg-[#16171D] border-[#00A3FF]/40 shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
-                    : "bg-transparent border-white/5 hover:bg-white/[0.02]"
+                    ? "bg-white border-[#00A3FF]/40 shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
+                    : "bg-transparent border-black/[0.05] hover:bg-[#F9FAFB]"
                     }`}
                 >
-                  <div className={`p-3 rounded-xl transition-colors ${activeTab.id === feature.id ? "bg-[#00A3FF] text-white shadow-[0_0_20px_rgba(0,163,255,0.4)]" : "bg-white/5 text-white/40"
+                  <div className={`p-3 rounded-xl transition-colors ${activeTab.id === feature.id ? "bg-[#00A3FF] text-white shadow-md shadow-[#00A3FF]/20" : "bg-[#F3F4F6] text-[#4B5563]"
                     }`}>
                     <feature.icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className={`text-lg font-bold mb-1 transition-colors ${activeTab.id === feature.id ? "text-white" : "text-white/40"
+                    <h3 className={`text-lg font-bold mb-1 transition-colors ${activeTab.id === feature.id ? "text-[#111827]" : "text-[#4B5563]"
                       }`}>
                       {feature.title}
                     </h3>
@@ -140,7 +140,7 @@ export function UIShowcase() {
                       <motion.p
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
-                        className="text-white/50 text-sm leading-relaxed mt-2"
+                        className="text-[#374151] text-sm leading-relaxed mt-2"
                       >
                         {feature.desc}
                       </motion.p>

@@ -28,7 +28,7 @@ const trustPoints = [
 
 export function TrustSection() {
   return (
-    <section className="relative py-24 lg:py-32 bg-[#0B0C10] overflow-hidden border-t border-white/[0.04]">
+    <section className="relative py-24 lg:py-32 bg-[#FAFAFA] overflow-hidden border-t border-black/[0.06]">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <motion.p
@@ -40,8 +40,8 @@ export function TrustSection() {
             Trust &amp; Reliability
           </motion.p>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-8">
-            <span className="text-white/40">우리가 </span>
-            <span className="text-[#e8e8e8]">신뢰를 지키는 방식</span>
+            <span className="text-[#4B5563]">우리가 </span>
+            <span className="text-[#111827]">신뢰를 지키는 방식</span>
           </h2>
           <p className="text-[#666666] max-w-2xl mx-auto text-lg leading-relaxed">
             단순히 기능을 제공하는 것을 넘어, 현장에서 실제로 믿고 사용할 수 있는 인프라를 구축합니다.
@@ -56,15 +56,15 @@ export function TrustSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * idx }}
-              className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-[#00A3FF]/20 transition-all duration-300 group"
+              className="p-8 rounded-2xl bg-[#F9FAFB] border border-black/[0.05] hover:border-[#00A3FF]/20 transition-all duration-300 group"
             >
               <div className="w-12 h-12 rounded-xl bg-[#00A3FF]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <point.icon className="w-6 h-6 text-[#00A3FF]" />
               </div>
-              <h3 className="text-lg font-bold text-white mb-3 tracking-tight">
+              <h3 className="text-lg font-bold text-[#111827] mb-3 tracking-tight">
                 {point.title}
               </h3>
-              <p className="text-[#888888] text-sm leading-relaxed">
+              <p className="text-[#6B7280] text-sm leading-relaxed">
                 {point.description}
               </p>
             </motion.div>

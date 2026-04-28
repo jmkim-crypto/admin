@@ -55,7 +55,7 @@ function SectionHeader({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
-        className="text-3xl sm:text-4xl lg:text-[48px] font-bold text-[#e8e8e8] mb-6 tracking-tighter leading-tight"
+        className="text-3xl sm:text-4xl lg:text-[48px] font-bold text-[#111827] mb-6 tracking-tighter leading-tight"
       >
         {title}
       </motion.h2>
@@ -88,7 +88,7 @@ function PhoneMockup({ src, alt, delay = 0 }: { src: string; alt: string; delay?
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#00a3ff]/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
       {/* Phone Frame */}
-      <div className="relative p-2 bg-white/[0.02] border border-white/[0.06] backdrop-blur-xl rounded-[42px] shadow-2xl">
+      <div className="relative p-2 bg-[#F9FAFB] border border-black/[0.08] backdrop-blur-xl rounded-[42px] shadow-2xl">
         <div className="relative rounded-[36px] overflow-hidden bg-black aspect-[9/19.5]">
           <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-full z-30" />
           <Image
@@ -111,7 +111,7 @@ function PhoneMockup({ src, alt, delay = 0 }: { src: string; alt: string; delay?
 function VisualWidget({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={`rounded-2xl p-7 lg:p-8 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] transition-all duration-300 hover:border-[#00a3ff]/20 shadow-2xl ${className}`}
+      className={`rounded-2xl p-7 lg:p-8 backdrop-blur-xl border border-black/[0.08] bg-[#F9FAFB] transition-all duration-300 hover:border-[#00a3ff]/20 shadow-2xl ${className}`}
     >
       {children}
     </div>
@@ -127,12 +127,12 @@ function RealTimeFlowVisual() {
       <VisualWidget>
         <div className="flex justify-between items-center mb-6">
           <div>
-            <p className="text-base font-bold text-[#555555] uppercase tracking-widest mb-1">Live Efficiency</p>
-            <h4 className="text-xl font-bold text-[#e8e8e8]">Shift A-1 Output</h4>
+            <p className="text-base font-bold text-[#6B7280] uppercase tracking-widest mb-1">Live Efficiency</p>
+            <h4 className="text-xl font-bold text-[#111827]">Shift A-1 Output</h4>
           </div>
           <Activity className="w-5 h-5 text-[#00a3ff] animate-pulse" />
         </div>
-        <div className="relative h-2.5 bg-white/[0.05] rounded-full overflow-hidden mb-4">
+        <div className="relative h-2.5 bg-[#E5E7EB] rounded-full overflow-hidden mb-4">
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: "84.2%" }}
@@ -141,22 +141,22 @@ function RealTimeFlowVisual() {
             className="absolute inset-y-0 left-0 bg-[#00a3ff]"
           />
         </div>
-        <div className="flex justify-between items-center text-base font-semibold text-[#555555] uppercase tracking-wider">
+        <div className="flex justify-between items-center text-base font-semibold text-[#6B7280] uppercase tracking-wider">
           <span>Target: 10,000</span>
           <span className="text-[#00a3ff]">Current: 8,420 (84.2%)</span>
         </div>
       </VisualWidget>
 
       <VisualWidget>
-        <span className="text-base font-bold text-[#555555] uppercase tracking-widest mb-6 block">Equipment Status</span>
+        <span className="text-base font-bold text-[#6B7280] uppercase tracking-widest mb-6 block">Equipment Status</span>
         <div className="space-y-3.5">
           {[
             { name: "CNC-A01", status: "Running", color: "#10b981" },
             { name: "Press-B04", status: "Maintenance", color: "#ef4444" },
             { name: "Robot-C12", status: "Idle", color: "#f59e0b" },
           ].map((m) => (
-            <div key={m.name} className="flex items-center justify-between py-2 border-b border-white/[0.03] last:border-0">
-              <span className="text-base font-medium text-[#e8e8e8]">{m.name}</span>
+            <div key={m.name} className="flex items-center justify-between py-2 border-b border-black/[0.05] last:border-0">
+              <span className="text-base font-medium text-[#111827]">{m.name}</span>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: m.color }} />
                 <span className="text-base font-bold uppercase tracking-widest" style={{ color: m.color }}>{m.status}</span>
@@ -174,10 +174,10 @@ function RealTimeFlowVisual() {
  */
 function AdvancedAnalysisVisual() {
   return (
-    <div className="w-full max-w-2xl mx-auto rounded-2xl p-8 lg:p-10 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] shadow-2xl relative group">
+    <div className="w-full max-w-2xl mx-auto rounded-2xl p-8 lg:p-10 backdrop-blur-xl border border-black/[0.08] bg-[#F9FAFB] shadow-2xl relative group">
       <div className="mb-10">
         <p className="text-base font-semibold text-[#00a3ff] tracking-[0.2em] uppercase mb-4">Analytics Dashboard</p>
-        <h4 className="text-3xl font-bold text-[#e8e8e8] tracking-tighter">Production vs Revenue</h4>
+        <h4 className="text-3xl font-bold text-[#111827] tracking-tighter">Production vs Revenue</h4>
       </div>
 
       <div className="flex items-end justify-between h-48 gap-3 px-2 relative mb-12">
@@ -196,15 +196,15 @@ function AdvancedAnalysisVisual() {
         ))}
       </div>
 
-      <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/[0.06]">
+      <div className="grid grid-cols-3 gap-8 pt-8 border-t border-black/[0.08]">
         {[
           { label: "Revenue", value: "₩1.2B" },
           { label: "Yield Rate", value: "99.8%" },
           { label: "Efficiency", value: "94.2%" },
         ].map((stat, i) => (
           <div key={i}>
-            <p className="text-base font-bold text-[#555555] uppercase tracking-widest mb-1.5">{stat.label}</p>
-            <p className="text-2xl font-bold text-[#e8e8e8] tracking-tight">{stat.value}</p>
+            <p className="text-base font-bold text-[#6B7280] uppercase tracking-widest mb-1.5">{stat.label}</p>
+            <p className="text-2xl font-bold text-[#111827] tracking-tight">{stat.value}</p>
           </div>
         ))}
       </div>
@@ -216,14 +216,14 @@ function AdvancedAnalysisVisual() {
 
 export default function FeaturesPage() {
   return (
-    <div className="bg-[#0B0C10] text-[#e8e8e8] min-h-screen">
+    <div className="bg-[#FAFAFA] text-[#111827] min-h-screen">
       {/* Background Elements */}
       <div className="fixed inset-0 grid-bg opacity-30 pointer-events-none" />
 
       {/* Hero Section (Unified with Pricing Hero) */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 ambient-blue pointer-events-none opacity-40" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#00a3ff]/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#00A3FF]/5 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative text-center">
           <motion.div
@@ -235,8 +235,8 @@ export default function FeaturesPage() {
               Features
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter mb-8 leading-tight">
-              <span className="text-[#e8e8e8]">현장의 목소리를 담은{" "}</span>
-              <span className="gradient-text">본질적 기능의 집약</span>
+              <span className="text-[#111827]">현장의 목소리를 담은{" "}</span>
+              <span className="text-[#00A3FF]">본질적 기능의 집약</span>
             </h1>
             <p className="text-[#666666] max-w-3xl mx-auto text-[16px] md:text-lg mb-12 leading-relaxed">
               화려함 뒤에 숨겨진 복잡함을 걷어내고, 경영에 확신을 줄 수 있는 <br className="hidden md:block" />
@@ -250,7 +250,7 @@ export default function FeaturesPage() {
       <div className="relative z-10">
 
         {/* Section 1: Real-time Flow */}
-        <section className="py-20 lg:py-32 relative border-t border-white/[0.04]">
+        <section className="py-20 lg:py-32 relative border-t border-black/[0.06]">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
               <div>
@@ -265,20 +265,20 @@ export default function FeaturesPage() {
                     "이상 징후 발생 시 즉각적인 알림 및 시각화",
                     "표준 공정 대비 진행률 실시간 트래킹",
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3.5 text-base font-medium text-[#888888]">
+                    <div key={i} className="flex items-center gap-3.5 text-base font-medium text-[#6B7280]">
                       <CheckCircle2 className="w-4 h-4 text-[#10b981] shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
                 </div>
-                <div className="flex gap-10 pt-8 border-t border-white/[0.06]">
+                <div className="flex gap-10 pt-8 border-t border-black/[0.08]">
                   <div>
-                    <p className="text-xs font-bold text-[#555555] uppercase tracking-widest mb-1">Latency</p>
-                    <p className="text-xl font-bold text-[#e8e8e8]">&lt; 0.001s</p>
+                    <p className="text-xs font-bold text-[#6B7280] uppercase tracking-widest mb-1">Latency</p>
+                    <p className="text-xl font-bold text-[#111827]">&lt; 0.001s</p>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-[#555555] uppercase tracking-widest mb-1">Sync Rate</p>
-                    <p className="text-xl font-bold text-[#e8e8e8]">100%</p>
+                    <p className="text-xs font-bold text-[#6B7280] uppercase tracking-widest mb-1">Sync Rate</p>
+                    <p className="text-xl font-bold text-[#111827]">100%</p>
                   </div>
                 </div>
               </div>
@@ -288,7 +288,7 @@ export default function FeaturesPage() {
         </section>
 
         {/* Section 2: Work Order Management */}
-        <section className="py-20 lg:py-32 relative border-t border-white/[0.04] bg-white/[0.01]">
+        <section className="py-20 lg:py-32 relative border-t border-black/[0.06] bg-white/[0.01]">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
               <div className="lg:order-2">
@@ -303,14 +303,14 @@ export default function FeaturesPage() {
                     "작업 진행 상태의 투명한 관리",
                     "도면 및 작업 가이드 실시간 참조",
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3.5 text-base font-medium text-[#888888]">
+                    <div key={i} className="flex items-center gap-3.5 text-base font-medium text-[#6B7280]">
                       <CheckCircle2 className="w-4 h-4 text-[#10b981] shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
                 </div>
                 <DemoDialog>
-                  <button className="inline-flex items-center gap-2 text-base font-bold text-[#e8e8e8] hover:text-[#00a3ff] transition-colors group">
+                  <button className="inline-flex items-center gap-2 text-base font-bold text-[#111827] hover:text-[#00a3ff] transition-colors group">
                     View Workflow Guide
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -324,7 +324,7 @@ export default function FeaturesPage() {
         </section>
 
         {/* Section 3: Digital Management */}
-        <section className="py-20 lg:py-32 relative border-t border-white/[0.04]">
+        <section className="py-20 lg:py-32 relative border-t border-black/[0.06]">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
               <div>
@@ -339,18 +339,18 @@ export default function FeaturesPage() {
                     "비가동 사유 실시간 선택 및 분석 연동",
                     "작업자와 관리자 간의 실시간 피드백",
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3.5 text-base font-medium text-[#888888]">
+                    <div key={i} className="flex items-center gap-3.5 text-base font-medium text-[#6B7280]">
                       <CheckCircle2 className="w-4 h-4 text-[#10b981] shrink-0" />
                       <span>{item}</span>
                     </div>
                   ))}
                 </div>
-                <div className="p-6 rounded-xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-md">
+                <div className="p-6 rounded-xl bg-white border border-black/[0.08] shadow-sm">
                   <div className="flex items-center gap-3 mb-3">
                     <Clock className="w-4 h-4 text-[#00a3ff]" />
-                    <p className="text-base font-bold text-[#e8e8e8]">현장 보고 시간 74% 단축</p>
+                    <p className="text-base font-bold text-[#111827]">현장 보고 시간 74% 단축</p>
                   </div>
-                  <p className="text-base text-[#555555] leading-relaxed">
+                  <p className="text-base text-[#6B7280] leading-relaxed">
                     수기 보고서 작성 및 취합에 소요되던 시간을 걷어내고, <br />
                     실제 생산 활동에 집중할 수 있는 환경을 제공합니다.
                   </p>
@@ -362,7 +362,7 @@ export default function FeaturesPage() {
         </section>
 
         {/* Section 4: Advanced Analysis */}
-        <section className="py-24 lg:py-32 relative border-t border-white/[0.04] bg-white/[0.01]">
+        <section className="py-24 lg:py-32 relative border-t border-black/[0.06] bg-white/[0.01]">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-20">
               <SectionHeader
@@ -387,10 +387,10 @@ export default function FeaturesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="rounded-xl p-7 lg:p-8 backdrop-blur-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300"
+                  className="rounded-xl p-7 lg:p-8 backdrop-blur-xl border border-black/[0.08] bg-[#F9FAFB] hover:bg-[#E5E7EB] transition-all duration-300"
                 >
                   <box.icon className="w-4 h-4 text-[#00a3ff] mb-5" />
-                  <h5 className="text-base font-bold text-[#e8e8e8] mb-3 tracking-tight">{box.title}</h5>
+                  <h5 className="text-base font-bold text-[#111827] mb-3 tracking-tight">{box.title}</h5>
                   <p className="text-base text-[#666666] leading-relaxed font-medium">{box.desc}</p>
                 </motion.div>
               ))}
@@ -400,7 +400,7 @@ export default function FeaturesPage() {
       </div>
 
       {/* FAQ Section (Added to match Pricing page structure) */}
-      <section className="py-20 lg:py-32 border-t border-white/[0.04]">
+      <section className="py-20 lg:py-32 border-t border-black/[0.06]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <SectionHeader
             badge="Common Questions"
@@ -415,9 +415,9 @@ export default function FeaturesPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="rounded-xl p-6 bg-white/[0.02] border border-white/[0.06] backdrop-blur-md"
+                className="rounded-xl p-6 bg-[#F9FAFB] border border-black/[0.08] backdrop-blur-md"
               >
-                <h3 className="text-base font-bold text-[#e8e8e8] mb-3">{item.q}</h3>
+                <h3 className="text-base font-bold text-[#111827] mb-3">{item.q}</h3>
                 <p className="text-[15px] text-[#666666] leading-relaxed">{item.a}</p>
               </div>
             ))}

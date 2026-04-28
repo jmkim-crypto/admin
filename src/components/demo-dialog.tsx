@@ -37,7 +37,7 @@ export function DemoDialog({ children }: { children: React.ReactElement }) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger render={children} />
-      <DialogContent className="sm:max-w-[440px] bg-[#111111]/95 backdrop-blur-3xl border-white/10 text-white shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+      <DialogContent className="sm:max-w-[440px] bg-white/95 backdrop-blur-3xl border-black/[0.08] text-[#111827] shadow-2xl shadow-black/10">
         <AnimatePresence mode="wait">
           {!isSuccess ? (
             <motion.div
@@ -68,7 +68,7 @@ export function DemoDialog({ children }: { children: React.ReactElement }) {
                     id="name"
                     placeholder="홍길동"
                     required
-                    className="bg-white/5 border-white/10 focus:border-[#0ea5e9]/50"
+                    className="bg-[#F3F4F6] border-black/[0.08] focus:border-[#0ea5e9]/50"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -79,7 +79,7 @@ export function DemoDialog({ children }: { children: React.ReactElement }) {
                     id="company"
                     placeholder="(주)팩토리펄스"
                     required
-                    className="bg-white/5 border-white/10 focus:border-[#0ea5e9]/50"
+                    className="bg-[#F3F4F6] border-black/[0.08] focus:border-[#0ea5e9]/50"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -91,7 +91,7 @@ export function DemoDialog({ children }: { children: React.ReactElement }) {
                     type="email"
                     placeholder="contact@company.com"
                     required
-                    className="bg-white/5 border-white/10 focus:border-[#0ea5e9]/50"
+                    className="bg-[#F3F4F6] border-black/[0.08] focus:border-[#0ea5e9]/50"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -102,13 +102,13 @@ export function DemoDialog({ children }: { children: React.ReactElement }) {
                     id="phone"
                     placeholder="010-0000-0000"
                     required
-                    className="bg-white/5 border-white/10 focus:border-[#0ea5e9]/50"
+                    className="bg-[#F3F4F6] border-black/[0.08] focus:border-[#0ea5e9]/50"
                   />
                 </div>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-[#0ea5e9] to-[#003366] text-white font-semibold mt-2"
+                  className="w-full bg-gradient-to-r from-[#0ea5e9] to-[#0072ce] text-white font-semibold mt-2"
                 >
                   {isSubmitting ? (
                     <>

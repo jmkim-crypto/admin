@@ -115,7 +115,7 @@ function DataStreamBg() {
 function AmbientGlow() {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#1a1a2e]/20 rounded-full blur-[140px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[#00A3FF]/5 rounded-full blur-[140px]" />
       <div className="absolute -top-[10%] left-1/2 -translate-x-1/2 w-[50%] h-[50%] bg-[#00A3FF]/5 rounded-full blur-[120px]" />
     </div>
   );
@@ -187,21 +187,21 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
       {/* Card Content */}
       <div
         className={`relative flex flex-col min-h-[750px] p-8 lg:p-10 rounded-2xl transition-all duration-500 cursor-pointer overflow-hidden border backdrop-blur-md glass hover-glow-cyan ${isExpanded
-          ? "bg-[#16171D]/90 border-[#00A3FF]/40 shadow-[0_32px_64px_rgba(0,163,255,0.2)]"
-          : "bg-[#16171D]/40 border-white/[0.08] hover:border-[#00A3FF]/40 hover:bg-[#16171D]/60"
+          ? "bg-white/90 border-[#00A3FF]/40 shadow-2xl shadow-[#00A3FF]/10"
+          : "bg-white/40 border-black/[0.1] hover:border-[#00A3FF]/40 hover:bg-white/60"
           }`}
         onClick={() => setIsExpanded(!isExpanded)}
         style={{
           boxShadow: isHovered && !isExpanded
-            ? `0 20px 40px rgba(0,0,0,0.4)`
+            ? `0 20px 40px rgba(0,0,0,0.05)`
             : undefined,
         }}
       >
         {/* Title */}
         <div className="mb-2">
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight uppercase whitespace-nowrap">{device.name}</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-[#111827] tracking-tight uppercase whitespace-nowrap">{device.name}</h3>
         </div>
-        <p className="text-sm text-white/40 mb-10 font-bold uppercase tracking-widest">{device.tagline}</p>
+        <p className="text-sm text-[#4B5563] mb-10 font-bold uppercase tracking-widest">{device.tagline}</p>
 
         {/* Visual Area */}
         <DeviceVisual device={device} isHovered={isHovered} />
@@ -209,14 +209,14 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
         {/* Description & Specs */}
         <div className="flex-grow flex flex-col">
           <div className="min-h-[100px] mb-8">
-            <p className="text-[17px] text-white/70 font-medium leading-[1.7]">
+            <p className="text-[17px] text-[#6B7280] font-medium leading-[1.7]">
               {device.description}
             </p>
           </div>
 
           <ul className="space-y-3 mb-10">
             {device.specs.map((spec, i) => (
-              <li key={i} className="flex items-center gap-3 text-sm text-white/80 font-bold tracking-tight">
+              <li key={i} className="flex items-center gap-3 text-sm text-[#111827]/80 font-bold tracking-tight">
                 <ChevronRight className="w-3 h-3 text-[#00A3FF]" />
                 {spec}
               </li>
@@ -225,11 +225,11 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
 
           <div
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between text-xs uppercase tracking-[0.2em] font-bold cursor-pointer group/spec"
+            className="mt-auto pt-6 border-t border-black/[0.05] flex items-center justify-between text-xs uppercase tracking-[0.2em] font-bold cursor-pointer group/spec"
           >
             <div className="flex items-center gap-3">
               <span className="text-[#00A3FF]">Engineering Specs</span>
-              <span className="text-white/20 tracking-normal font-medium normal-case transition-colors group-hover/spec:text-white/40">Actual Device Data</span>
+              <span className="text-[#6B7280] tracking-normal font-medium normal-case transition-colors group-hover/spec:text-[#4B5563]">Actual Device Data</span>
             </div>
             <ChevronDown className={`w-4 h-4 text-[#00A3FF] transition-transform duration-500 ${isExpanded ? "rotate-180" : ""}`} />
           </div>
@@ -246,9 +246,9 @@ function HardwareCard({ device, index }: { device: typeof devices[0]; index: num
               className="mt-6 space-y-4"
             >
               {device.ports.map((port, i) => (
-                <div key={i} className="p-4 rounded-lg bg-white/[0.03] border border-white/5">
-                  <p className="text-[13px] font-bold text-white uppercase mb-1.5 tracking-wider">{port.name}</p>
-                  <p className="text-[13px] text-white/50 leading-relaxed font-medium">{port.desc}</p>
+                <div key={i} className="p-4 rounded-lg bg-[#F3F4F6] border border-black/[0.05]">
+                  <p className="text-[13px] font-bold text-[#111827] uppercase mb-1.5 tracking-wider">{port.name}</p>
+                  <p className="text-[13px] text-[#374151] leading-relaxed font-medium">{port.desc}</p>
                 </div>
               ))}
             </motion.div>
@@ -268,7 +268,7 @@ export function HardwareEcosystem() {
     <section
       id="hardware-ecosystem"
       ref={containerRef}
-      className="relative py-32 lg:py-52 bg-[#0B0C10] overflow-hidden"
+      className="relative py-32 lg:py-52 bg-[#FAFAFA] overflow-hidden"
     >
       <SectionBoundary />
 
@@ -296,8 +296,8 @@ export function HardwareEcosystem() {
             transition={{ delay: 0.1, duration: 0.8 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-8"
           >
-            <span className="text-[#e8e8e8]">현장의 본질을 </span>
-            <span className="gradient-text">왜곡 없이 전달하는 하드웨어</span>
+            <span className="text-[#111827]">현장의 본질을 </span>
+            <span className="text-[#111827]">왜곡 없이 전달하는 하드웨어</span>
           </motion.h2>
 
           <motion.p

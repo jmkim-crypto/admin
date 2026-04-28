@@ -25,7 +25,7 @@ function LambdaA({ children }: { children: string }) {
     <span className="relative inline-block">
       {children}
       {/* Visual mask to hide the horizontal bar of 'A' */}
-      <span className="absolute inset-x-0 top-[55%] h-[12%] bg-[#0B0C10] z-10" />
+      <span className="absolute inset-x-0 top-[55%] h-[12%] bg-[#FAFAFA] z-10" />
     </span>
   );
 }
@@ -85,7 +85,7 @@ function HeroMobileShowcase() {
       ))}
 
       {/* Phone Mockup Frame */}
-      <div className="relative p-[8px] bg-gradient-to-b from-[#2a2a2e] to-[#1a1a1e] rounded-[42px] shadow-[0_40px_100px_rgba(0,0,0,0.8),0_0_50px_rgba(0,163,255,0.15)]">
+      <div className="relative p-[8px] bg-gradient-to-b from-[#2a2a2e] to-[#1a1a1e] rounded-[42px] shadow-2xl shadow-black/20">
         {/* Inner bezel */}
         <div className="relative w-[240px] sm:w-[280px] rounded-[36px] overflow-hidden bg-white shadow-inner" style={{ aspectRatio: "9/19.5" }}>
           {/* Dynamic Island */}
@@ -122,11 +122,10 @@ function HeroMobileShowcase() {
               className="w-2.5 h-2.5 rounded-full"
               animate={{
                 scale: idx === activeSlide ? 1.2 : 1,
-                backgroundColor: idx === activeSlide ? "#00A3FF" : "rgba(255,255,255,0.15)",
-                boxShadow: idx === activeSlide ? "0 0 15px #00A3FF" : "none",
+                backgroundColor: idx === activeSlide ? "#00A3FF" : "rgba(0,0,0,0.1)",
               }}
             />
-            <span className={`text-[8px] mt-2 font-bold uppercase tracking-widest transition-colors duration-300 ${idx === activeSlide ? "text-[#00A3FF]" : "text-white/20"}`}>
+            <span className={`text-[8px] mt-2 font-bold uppercase tracking-widest transition-colors duration-300 ${idx === activeSlide ? "text-[#00A3FF]" : "text-[#9CA3AF]"}`}>
               {slide.sub}
             </span>
           </button>
@@ -134,14 +133,14 @@ function HeroMobileShowcase() {
       </div>
 
       {/* Reflection / bottom fade */}
-      <div className="absolute -bottom-20 left-10 right-10 h-32 bg-gradient-to-t from-[#0B0C10] to-transparent opacity-80 blur-2xl pointer-events-none" />
+      <div className="absolute -bottom-20 left-10 right-10 h-32 bg-gradient-to-t from-[#FAFAFA] to-transparent opacity-80 blur-2xl pointer-events-none" />
     </motion.div>
   );
 }
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-40 bg-[#0B0C10]">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-32 pb-40 bg-[#FAFAFA]">
       {/* Brand Grid Background */}
       <div className="absolute inset-0 grid-bg pointer-events-none opacity-40" />
 
@@ -170,9 +169,9 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.2] mb-8"
           >
-            <span className="text-white/30">1/40 비용으로 내일 당장 시작하는</span>
+            <span className="text-[#111827]/40">1/40 비용으로 내일 당장 시작하는</span>
             <br />
-            <span className="gradient-text">Handy MES 스마트 팩토리</span>
+            <span className="text-[#111827]">Handy MES 스마트 팩토리</span>
           </motion.h1>
 
           {/* Sub */}
@@ -180,16 +179,11 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg sm:text-2xl font-medium tracking-tight text-[#d1d5db]/70 max-w-4xl mx-auto mb-16 leading-relaxed"
+            className="text-lg sm:text-2xl font-medium tracking-tight text-[#4B5563] max-w-4xl mx-auto mb-16 leading-relaxed"
           >
             복잡한 대면 상담과 비싼 인건비를 걷어내고
             <br className="hidden sm:block" />
-            <span
-              className="text-[#00A3FF]"
-              style={{ textShadow: "0 0 8px rgba(0, 163, 255, 0.4)" }}
-            >
-              현장의 실질적 데이터
-            </span>
+            <span className="text-[#00A3FF]">현장의 실질적 데이터</span>
             에만 집중했습니다.
           </motion.p>
 
@@ -201,17 +195,17 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-5"
           >
             <DemoDialog>
-              <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-[#00A3FF] text-white rounded-sm hover:bg-[#0082cc] transition-all duration-300 shadow-[0_0_25px_rgba(0,163,255,0.3)] hover:shadow-[0_0_45px_rgba(0,163,255,0.6)] hover:-translate-y-1 w-full sm:w-auto uppercase tracking-widest">
+              <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-[#00A3FF] text-white rounded-sm hover:bg-[#0082cc] transition-all duration-300 shadow-md shadow-[#00A3FF]/20 hover:hover:shadow-lg hover:shadow-[#00A3FF]/30 hover:-translate-y-1 w-full sm:w-auto uppercase tracking-widest">
                 시작하기
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </DemoDialog>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-white/[0.03] text-white/80 rounded-sm border border-white/[0.08] hover:bg-white/[0.06] hover:border-[#00A3FF]/40 transition-all duration-300 w-full sm:w-auto uppercase tracking-widest"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 text-base font-bold bg-[#F3F4F6] text-[#111827]/80 rounded-sm border border-black/[0.1] hover:bg-[#D1D5DB] hover:border-[#00A3FF]/40 transition-all duration-300 w-full sm:w-auto uppercase tracking-widest"
             >
               요금제 안내
-              <ArrowRight className="w-5 h-5 text-white/20" />
+              <ArrowRight className="w-5 h-5 text-[#6B7280]" />
             </Link>
           </motion.div>
 

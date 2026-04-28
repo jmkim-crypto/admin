@@ -23,7 +23,7 @@ const steps = [
 
 export function ProcessFlow() {
   return (
-    <section className="relative py-24 lg:py-32 bg-[#0B0C10] overflow-hidden">
+    <section className="relative py-24 lg:py-32 bg-[#FAFAFA] overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center mb-20">
           <motion.p
@@ -41,9 +41,9 @@ export function ProcessFlow() {
             transition={{ delay: 0.1 }}
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-6"
           >
-            <span className="text-white/40">도입부터 가동까지 </span>
+            <span className="text-[#4B5563]">도입부터 가동까지 </span>
             <br className="sm:hidden" />
-            <span className="text-[#e8e8e8]">단 3단계면 충분합니다</span>
+            <span className="text-[#111827]">단 3단계면 충분합니다</span>
           </motion.h2>
         </div>
 
@@ -62,7 +62,7 @@ export function ProcessFlow() {
                 className="relative flex flex-col items-center text-center group"
               >
                 {/* Icon Container */}
-                <div className="relative w-24 h-24 rounded-full bg-[#16171D] border border-white/5 flex items-center justify-center mb-8 transition-all duration-500 group-hover:border-[#00A3FF]/40 group-hover:shadow-[0_0_30px_rgba(0,163,255,0.1)] z-10">
+                <div className="relative w-24 h-24 rounded-full bg-white border border-black/[0.05] flex items-center justify-center mb-8 transition-all duration-500 group-hover:border-[#00A3FF]/40 group-hover:shadow-xl shadow-[#00A3FF]/5 z-10">
                   <step.icon className="w-10 h-10 text-[#00A3FF]" strokeWidth={1.5} />
                   
                   {/* Step Number Badge */}
@@ -72,14 +72,14 @@ export function ProcessFlow() {
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <h3 className="text-xl font-bold text-white mb-2 tracking-tight">
+                  <h3 className="text-xl font-bold text-[#111827] mb-2 tracking-tight">
                     {step.title}
                   </h3>
                   {/* Connecting Line Style Decoration */}
-                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/40 to-transparent mb-4" />
+                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-[#00A3FF]/20 to-transparent mb-4" />
                 </div>
                 
-                <p className="text-[#888888] text-[15px] leading-relaxed whitespace-pre-line">
+                <p className="text-[#6B7280] text-[15px] leading-relaxed whitespace-pre-line">
                   {step.description}
                 </p>
 
