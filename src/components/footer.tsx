@@ -4,13 +4,11 @@ import Image from "next/image";
 
 const footerLinks = {
   제품: [
-    { label: "기능 소개", href: "/features" },
+    { label: "제품소개", href: "/product" },
+    { label: "기능", href: "/features" },
     { label: "요금제", href: "/pricing" },
-    { label: "업데이트 노트", href: "#" },
   ],
   리소스: [
-    { label: "기술 문서", href: "#" },
-    { label: "API 가이드", href: "#" },
     { label: "FAQ", href: "/support" },
   ],
   회사: [
@@ -21,19 +19,6 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="bg-white border-t border-[#E5E7EB]">
-      {/* Security Banner */}
-      <div className="border-b border-[#F3F4F6]">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8 py-5">
-          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-14 text-sm text-[#9CA3AF]">
-            <span>ISO 27001 인증</span>
-            <span className="hidden sm:block text-[#E5E7EB]">·</span>
-            <span>AES-256 암호화</span>
-            <span className="hidden sm:block text-[#E5E7EB]">·</span>
-            <span>ISMS 인증</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main */}
       <div className="max-w-5xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">

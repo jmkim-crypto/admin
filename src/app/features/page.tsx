@@ -82,21 +82,21 @@ function PhoneMockup({ src, alt, delay = 0 }: { src: string; alt: string; delay?
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="relative w-[280px] sm:w-[320px] mx-auto group"
+      className="relative w-[280px] sm:w-[320px] mx-auto group flex justify-center"
     >
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#0078D4]/3 blur-[140px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#0078D4]/5 blur-[140px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
 
-      {/* Phone Frame */}
-      <div className="relative p-2 bg-white border border-[#E5E7EB] backdrop-blur-xl rounded-[42px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.08)]">
-        <div className="relative rounded-[36px] overflow-hidden bg-black aspect-[9/19.5]">
+      {/* Phone Frame — Unified Black Style */}
+      <div className="relative p-[6px] bg-[#1D1D1F] rounded-[40px] shadow-[0_20px_25px_-5px_rgba(0,0,0,0.12)]">
+        <div className="relative w-[240px] sm:w-[270px] rounded-[34px] overflow-hidden bg-white" style={{ aspectRatio: "9/19.5" }}>
           <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-full z-30" />
           <Image
             src={src}
             alt={alt}
             fill
             className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 768px) 280px, 320px"
+            sizes="(max-width: 768px) 240px, 270px"
             priority
           />
         </div>

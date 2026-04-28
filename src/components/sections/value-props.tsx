@@ -96,80 +96,97 @@ export function ValueProps() {
           ))}
         </div>
 
-        {/* Before / After */}
-        <div className="mt-20 lg:mt-24">
+        {/* Before / After — High Contrast Comparison */}
+        <div className="mt-20 lg:mt-32">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-10"
+            className="text-center mb-16"
           >
             <h3 className="text-xl sm:text-2xl font-bold text-[#111827] tracking-tight">
-              도입 전후, 현장이 달라집니다
+              현장의 고질적인 문제, Handy MES가 해결합니다
             </h3>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-px bg-[#E5E7EB] rounded-xl overflow-hidden">
-            {/* Before */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white p-8 lg:p-10"
-            >
-              <div className="flex items-center gap-2.5 mb-6">
-                <span className="text-sm font-semibold text-[#EF4444]/70">Before</span>
-                <span className="text-xs text-[#9CA3AF]">기존 수동 관리</span>
-              </div>
-              <ul className="space-y-3.5">
-                {[
-                  "현장에 직접 가야만 확인 가능한 설비 상태",
-                  "구두 지시와 종이 서류로 인한 정보 누락",
-                  "작업 종료 후 뒤늦게 수기 입력하는 실적",
-                  "엑셀 수식과 씨름하는 시간 소모적 통계",
-                  "사고 발생 후 한참 뒤에야 인지되는 상황",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="shrink-0 w-1 h-1 rounded-full bg-[#D1D5DB] mt-2.5" />
-                    <span className="text-[15px] text-[#9CA3AF] leading-relaxed line-through decoration-[#E5E7EB]">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+          <div className="relative max-w-5xl mx-auto">
+            {/* Central Arrow Indicator (Desktop) */}
+            <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full border border-[#E5E7EB] shadow-sm items-center justify-center">
+              <ArrowRight className="w-5 h-5 text-[#0078D4]" />
+            </div>
 
-            {/* After */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white p-8 lg:p-10"
-            >
-              <div className="flex items-center gap-2.5 mb-6">
-                <span className="text-sm font-semibold text-[#0078D4]">After</span>
-                <span className="text-xs text-[#9CA3AF]">Handy MES 도입 후</span>
+            <div className="grid md:grid-cols-2 gap-0 border border-[#E5E7EB] rounded-3xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] bg-white">
+              {/* Before Section */}
+              <div className="bg-[#F9FAFB] p-8 lg:p-12 border-b md:border-b-0 md:border-r border-[#E5E7EB]">
+                <div className="flex items-center gap-3 mb-10">
+                  <div className="px-3 py-1 rounded-full bg-[#FEE2E2] text-[#EF4444] text-[11px] font-bold uppercase tracking-wider">
+                    Before
+                  </div>
+                  <span className="text-sm font-medium text-[#9CA3AF]">기존 수동 관리 방식</span>
+                </div>
+
+                <div className="space-y-8">
+                  {[
+                    "현장에 직접 가야만 확인 가능한 설비 상태",
+                    "구두 지시와 종이 서류로 인한 정보 누락",
+                    "작업 종료 후 뒤늦게 수기 입력하는 실적",
+                    "엑셀 수식과 씨름하는 시간 소모적 통계",
+                    "사고 발생 후 한참 뒤에야 인지되는 상황",
+                  ].map((text, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.05 }}
+                      className="flex items-start gap-4 opacity-50"
+                    >
+                      <X className="w-4 h-4 text-[#EF4444] mt-1 shrink-0" />
+                      <p className="text-[15px] text-[#6B7280] line-through decoration-[#D1D5DB] leading-relaxed">
+                        {text}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              <ul className="space-y-3.5">
-                {[
-                  { text: "24시간 어디서나 실시간 모바일 모니터링" },
-                  { text: "클릭 한 번으로 끝나는 체계적 작업 지시" },
-                  { text: "현장에서 즉시 등록하는 누락 없는 실적" },
-                  { text: "인사이트를 제공하는 통계 대시보드" },
-                  { text: "이상 징후 즉시 대응하는 스마트 알림" },
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-4 h-4 text-[#0078D4] shrink-0 mt-0.5" />
-                    <span className="text-[15px] text-[#374151] leading-relaxed">
-                      {item.text}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+
+              {/* After Section */}
+              <div className="p-8 lg:p-12 relative overflow-hidden">
+                {/* Subtle Brand Glow */}
+                <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#0078D4]/[0.03] rounded-full blur-[80px] pointer-events-none" />
+
+                <div className="flex items-center gap-3 mb-10">
+                  <div className="px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0078D4] text-[11px] font-bold uppercase tracking-wider">
+                    After
+                  </div>
+                  <span className="text-sm font-medium text-[#4B5563]">Handy MES 도입 효과</span>
+                </div>
+
+                <div className="space-y-8">
+                  {[
+                    "24시간 어디서나 실시간 모바일 모니터링",
+                    "클릭 한 번으로 끝나는 체계적 작업 지시",
+                    "현장에서 즉시 등록하는 누락 없는 실적",
+                    "인사이트를 제공하는 통계 대시보드",
+                    "이상 징후 즉시 대응하는 스마트 알림",
+                  ].map((text, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: 10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.05 + 0.2 }}
+                      className="flex items-start gap-4"
+                    >
+                      <Check className="w-5 h-5 text-[#0078D4] mt-0.5 shrink-0" />
+                      <p className="text-[15px] text-[#111827] font-semibold leading-relaxed">
+                        {text}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
