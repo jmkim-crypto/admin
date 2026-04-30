@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Wrench, Wifi, BarChart3, ClipboardList, Settings, Bell } from "lucide-react";
 import { DemoDialog } from "@/components/demo-dialog";
 import {
   DashboardScreen,
@@ -145,6 +145,123 @@ function HardwareLineup() {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Hardware Installation Guide ─── */
+function HardwareInstallGuide() {
+  const steps = [
+    {
+      num: "01",
+      icon: Wrench,
+      title: "센서 부착",
+      duration: "약 30분 / 설비 1대",
+      desc: "설비의 전기 신호 출력단에 Wizter-5100 센서를 부착합니다. 기존 배선을 건드리지 않으므로 생산 중단 없이 작업이 가능합니다.",
+      details: [
+        "설비 전원 차단 불필요",
+        "양면테이프 또는 자석 고정",
+        "신호선 1개만 연결",
+      ],
+    },
+    {
+      num: "02",
+      icon: Wifi,
+      title: "무선 중계기 설치",
+      duration: "약 20분",
+      desc: "공장 내 적절한 위치에 SHAP-1000 무선 중계기를 설치합니다. 전원만 연결하면 센서와 자동으로 페어링됩니다.",
+      details: [
+        "DC 12V 전원 어댑터 제공",
+        "센서와 자동 페어링",
+        "최대 1:N 다중 연결",
+      ],
+    },
+    {
+      num: "03",
+      icon: BarChart3,
+      title: "서버 연동 확인",
+      duration: "약 10분",
+      desc: "중계기가 클라우드 서버와 정상 연결되면 설치가 완료됩니다. 관리자 앱에서 데이터 수신 상태를 즉시 확인할 수 있습니다.",
+      details: [
+        "자동 서버 등록",
+        "앱에서 실시간 연결 상태 표시",
+        "설치 완료까지 총 약 1시간",
+      ],
+    },
+  ];
+
+  return (
+    <section className="py-24 lg:py-32 border-t border-[#E5E7EB]">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="max-w-xl mb-14">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-[#111827]"
+          >
+            하드웨어 설치, 이렇게 간단합니다
+          </motion.h2>
+          <p className="text-[#6B7280] text-base leading-relaxed">
+            전문 기술자 없이도 현장 담당자가 직접 설치할 수 있습니다.
+            설비 가동을 멈추지 않아도 됩니다.
+          </p>
+        </div>
+
+        <div className="space-y-5">
+          {steps.map((step, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06 }}
+              className="grid lg:grid-cols-[80px_1fr_280px] gap-6 p-6 lg:p-8 rounded-xl bg-white border border-[#E5E7EB]"
+            >
+              {/* Step indicator */}
+              <div className="flex lg:flex-col items-center lg:items-start gap-3">
+                <div className="w-12 h-12 rounded-xl bg-[#F3F4F6] flex items-center justify-center">
+                  <step.icon className="w-5 h-5 text-[#0078D4]" />
+                </div>
+                <span className="text-2xl font-bold text-[#E5E7EB]">{step.num}</span>
+              </div>
+
+              {/* Main content */}
+              <div>
+                <div className="flex items-baseline gap-3 mb-2">
+                  <h3 className="text-lg font-semibold text-[#111827]">{step.title}</h3>
+                  <span className="text-xs text-[#9CA3AF] font-medium">{step.duration}</span>
+                </div>
+                <p className="text-sm text-[#6B7280] leading-relaxed">{step.desc}</p>
+              </div>
+
+              {/* Detail checklist */}
+              <div className="flex flex-col justify-center gap-2.5 lg:border-l lg:border-[#F3F4F6] lg:pl-6">
+                {step.details.map((detail, j) => (
+                  <div key={j} className="flex items-center gap-2">
+                    <Check className="w-3.5 h-3.5 text-[#0078D4] shrink-0" />
+                    <span className="text-sm text-[#374151] font-medium">{detail}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center text-sm text-[#9CA3AF] mt-8"
+        >
+          설치에 어려움이 있으신가요?{" "}
+          <DemoDialog>
+            <button className="text-[#0078D4] font-semibold hover:underline">
+              전문 엔지니어 출장 설치를 요청하세요
+            </button>
+          </DemoDialog>
+        </motion.p>
       </div>
     </section>
   );
@@ -345,6 +462,105 @@ function InteractiveDemo() {
   );
 }
 
+/* ─── App Usage Guide ─── */
+function AppUsageGuide() {
+  const steps = [
+    {
+      num: "01",
+      icon: Settings,
+      title: "기준 정보 등록",
+      desc: "관리 메뉴에서 설비, 제품, 작업자 정보를 등록합니다. 엑셀 일괄 업로드도 지원합니다.",
+      screen: "관리 → 설비 관리 / 제품 관리",
+    },
+    {
+      num: "02",
+      icon: ClipboardList,
+      title: "작업지시 생성",
+      desc: "등록된 기준 정보를 바탕으로 작업지시를 생성합니다. 설비, 제품, 목표 수량을 지정하면 현장에 즉시 전달됩니다.",
+      screen: "작업지시 → + 작지 추가",
+    },
+    {
+      num: "03",
+      icon: BarChart3,
+      title: "실시간 모니터링",
+      desc: "대시보드에서 전체 설비의 가동 현황과 작업 진행률을 실시간으로 확인합니다. 이상 발생 시 즉시 원인을 파악할 수 있습니다.",
+      screen: "대시보드 → 설비별 상태 / 진행률",
+    },
+    {
+      num: "04",
+      icon: Bell,
+      title: "알림 수신 및 대응",
+      desc: "설비 이상이나 작업 완료 시 모바일 푸시 알림을 받습니다. 현장에 가지 않아도 상황을 인지하고 신속하게 대응할 수 있습니다.",
+      screen: "설정 → 알림 관리",
+    },
+  ];
+
+  return (
+    <section className="py-24 lg:py-32 border-t border-[#E5E7EB] bg-white">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="max-w-xl mb-14">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-[#111827]"
+          >
+            앱으로 관리하는 스마트 팩토리
+          </motion.h2>
+          <p className="text-[#6B7280] text-base leading-relaxed">
+            설치가 끝나면 바로 앱에서 현장을 관리할 수 있습니다.
+            복잡한 교육 없이 4단계로 시작하세요.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {steps.map((step, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06 }}
+              className="rounded-xl p-7 border border-[#E5E7EB] bg-[#FAFAFA] hover:bg-white hover:shadow-sm transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-5">
+                <div className="w-10 h-10 rounded-lg bg-[#0078D4]/10 flex items-center justify-center">
+                  <step.icon className="w-4.5 h-4.5 text-[#0078D4]" />
+                </div>
+                <div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-xs font-bold text-[#D1D5DB]">STEP {step.num}</span>
+                    <h3 className="text-base font-semibold text-[#111827]">{step.title}</h3>
+                  </div>
+                </div>
+              </div>
+              <p className="text-sm text-[#6B7280] leading-relaxed mb-4">{step.desc}</p>
+              <div className="px-3 py-2 rounded-lg bg-[#F3F4F6] inline-flex items-center gap-1.5">
+                <span className="text-xs text-[#9CA3AF] font-medium">{step.screen}</span>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-10 text-center"
+        >
+          <Link
+            href="/features"
+            className="btn-press group inline-flex items-center gap-2 text-sm font-semibold text-[#0078D4] hover:text-[#106EBE] transition-colors"
+          >
+            기능 상세 보기
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── Main ─── */
 export default function ProductPage() {
   return (
@@ -388,8 +604,10 @@ export default function ProductPage() {
 
       <SolutionWorkflow />
       <HardwareLineup />
+      <HardwareInstallGuide />
       <ApplicableIndustries />
       <InteractiveDemo />
+      <AppUsageGuide />
 
       {/* Bottom CTA */}
       <section className="py-24 lg:py-32 border-t border-[#E5E7EB] bg-white">
