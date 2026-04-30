@@ -1,18 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 /* ── Helper: Full-bleed screen image that fills the iPhone mockup ──────── */
 function ScreenImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="w-full h-full relative bg-[#F3F4F6]">
+    <div className="w-full h-full relative bg-white overflow-hidden">
       <Image
         src={src}
         alt={alt}
         fill
-        className="object-cover object-top"
-        sizes="260px"
+        className="object-cover object-top scale-[1.02] transition-transform duration-500"
+        sizes="280px"
         priority
+        unoptimized
       />
     </div>
   );
@@ -43,4 +45,7 @@ export function SettingsScreen() {
   return <ScreenImage src="/images/mobile-screens/setting.png" alt="Handy MES 설정" />;
 }
 
-
+/* -- Screen 6: Data -------------------------------------------------- */
+export function DataScreen() {
+  return <ScreenImage src="/images/mobile-screens/data.png" alt="Handy MES 데이터 통계" />;
+}

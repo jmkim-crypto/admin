@@ -9,16 +9,18 @@ import {
   BarChart3,
   ClipboardList,
   Layers,
+  TrendingUp,
 } from "lucide-react";
 import {
   DashboardScreen,
   TaskListScreen,
   ManagementScreen,
   TaskDetailScreen,
+  DataScreen
 } from "./mobile-screens";
 import { DemoDialog } from "@/components/demo-dialog";
 
-/* ── Feature Data ───────────────────────────────────────────────────────── */
+/* -- Feature Data --------------------------------------------------------- */
 const platformFeatures = [
   {
     id: "monitoring",
@@ -48,18 +50,29 @@ const platformFeatures = [
     icon: Layers,
     mobileComponent: ManagementScreen,
   },
+  {
+    id: "data",
+    title: "데이터 통계 분석",
+    desc: "현장의 누적 데이터를 분석하여 생산성 지표와 설비 효율을 시각화합니다.",
+    icon: TrendingUp,
+    mobileComponent: DataScreen,
+  },
 ];
 
 
 
-/* ── Mobile Mockup ──────────────────────────────────────────────────────── */
+/* -- Mobile Mockup -------------------------------------------------------- */
 function MobileMockup({ activeFeature }: { activeFeature: typeof platformFeatures[0] }) {
   return (
     <div className="relative w-[220px] sm:w-[260px] lg:w-[280px] rounded-[36px] p-[6px] bg-black shadow-[0_20px_25px_-5px_rgba(0,0,0,0.12)] ring-1 ring-black/5">
       {/* Dynamic Island Area */}
       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-[60px] h-[18px] bg-black rounded-full z-30" />
 
-      <div className="relative rounded-[30px] overflow-hidden bg-white aspect-[9/19.5]">
+      <div className="relative rounded-[30px] overflow-hidden bg-white aspect-[9/19.5] shadow-inner">
+        {/* Glass Reflection Effect */}
+        <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-tr from-white/10 via-transparent to-white/5 opacity-50" />
+        <div className="absolute top-0 left-1/4 w-1/2 h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 z-20 pointer-events-none" />
+        
         <AnimatePresence mode="wait">
           <motion.div
             key={activeFeature.id}
@@ -77,7 +90,7 @@ function MobileMockup({ activeFeature }: { activeFeature: typeof platformFeature
   );
 }
 
-/* ── Main Export ───────────────────────────────────────────────────────── */
+/* -- Main Export --------------------------------------------------------- */
 export function UIShowcase() {
   const [activeTab, setActiveTab] = useState(platformFeatures[0]);
 
