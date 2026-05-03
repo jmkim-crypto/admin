@@ -8,13 +8,11 @@ import {
   Smartphone,
   BarChart3,
   ClipboardList,
-  Layers,
   TrendingUp,
 } from "lucide-react";
 import {
   DashboardScreen,
   TaskListScreen,
-  ManagementScreen,
   TaskDetailScreen,
   DataScreen
 } from "./mobile-screens";
@@ -43,13 +41,7 @@ const platformFeatures = [
     icon: Activity,
     mobileComponent: TaskDetailScreen,
   },
-  {
-    id: "management",
-    title: "기준 정보 관리",
-    desc: "설비, 제품 정보를 앱에서 수정하면 현장 전체 시스템에 즉시 동기화됩니다.",
-    icon: Layers,
-    mobileComponent: ManagementScreen,
-  },
+
   {
     id: "data",
     title: "데이터 통계 분석",
