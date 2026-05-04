@@ -17,7 +17,7 @@ import {
 function SolutionWorkflow() {
   const steps = [
     { num: "01", title: "현장 신호 포착", desc: "Wizter-5100이 0.001초 단위로 설비의 상태 변화를 감지합니다.", label: "Sensor" },
-    { num: "02", title: "무선 중계", desc: "SHAP-1000이 수집 데이터를 서버로 안정적으로 전송합니다.", label: "Relay" },
+    { num: "02", title: "서버 전송", desc: "포착된 데이터를 Wi-Fi를 통해 클라우드 서버로 실시간 전송합니다.", label: "Network" },
     { num: "03", title: "클라우드 처리", desc: "AES-256 암호화 후 안전하게 데이터를 분석·저장합니다.", label: "Cloud" },
     { num: "04", title: "모바일 앱 전달", desc: "관리자의 스마트폰에서 실시간으로 현장을 확인·제어합니다.", label: "App" },
   ];
@@ -65,86 +65,102 @@ function SolutionWorkflow() {
 
 /* ─── Hardware Lineup ─── */
 function HardwareLineup() {
-  const devices = [
-    {
-      name: "SHAP-1000",
-      role: "무선 중계기",
-      image: "/images/hardware/shap-1000.png",
-      desc: "공장 내 다수의 무선 단말기를 통합 관리하는 네트워크 허브",
-      specs: [
-        ["통신 방식", "1:N 무선 네트워크"],
-        ["데이터 방향", "양방향 릴레이"],
-        ["서버 동기화", "실시간"],
-        ["전원", "DC 12V"],
-      ],
-    },
-    {
-      name: "WIT-1000",
-      role: "데이터 단말기",
-      image: "/images/hardware/wit-1000.png",
-      desc: "전기 신호를 디지털 데이터로 변환하여 생산량·설비 상태를 기록",
-      specs: [
-        ["신호 취득", "생산 수량 / 상태"],
-        ["측정 정밀도", "고속 Cycle Time"],
-        ["외부 연동", "RS-232 (바코드/RFID)"],
-        ["전원", "DC 12V"],
-      ],
-    },
-    {
-      name: "Wizter-5100",
-      role: "지능형 센서 노드",
-      image: "/images/hardware/wizter-5100.png",
-      desc: "CPU 인터럽트 기술로 0.001초 단위 설비 상태 변화를 포착",
-      specs: [
-        ["인지 방식", "CPU 인터럽트"],
-        ["데이터 전송", "상태값 + 누적 Count"],
-        ["센서 지원", "디지털 / 아날로그"],
-        ["반응 속도", "0.001초"],
-      ],
-    },
+  const specs = [
+    ["인지 방식", "CPU 인터럽트 (0.001초 응답)"],
+    ["데이터 전송", "상태값 + 누적 Count"],
+    ["센서 지원", "디지털 / 아날로그 통합"],
+    ["반응 속도", "0.001초 이하"],
+    ["네트워크", "Wi-Fi 기반 서버 직접 전송"],
+    ["전원", "DC 5V (USB-C)"],
+  ];
+
+  const capabilities = [
+    "설비 상태 변화를 CPU 인터럽트로 즉각 인지",
+    "디지털·아날로그 센서 동시 모니터링",
+    "누적 카운트 데이터로 정확한 실적 근거 확보",
+    "Wi-Fi를 통한 서버 직접 전송으로 단순한 구성",
   ];
 
   return (
     <section className="py-24 lg:py-32 bg-[#F5F5F5] border-t border-[#E5E7EB]">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <div className="max-w-xl mb-14">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-[#111827]">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-[#111827]"
+          >
             하드웨어 상세 스펙
-          </h2>
+          </motion.h2>
           <p className="text-[#6B7280] text-base leading-relaxed">
-            현장에 설치되는 모든 장비의 사양을 확인하세요.
+            현장에 설치되는 핵심 장비의 사양을 확인하세요.
           </p>
         </div>
 
-        <div className="space-y-4">
-          {devices.map((device, i) => (
-            <div
-              key={device.name}
-              className="grid lg:grid-cols-[200px_1fr] gap-6 rounded-xl p-6 lg:p-8 bg-white border border-[#E5E7EB]"
-            >
-              <div className="flex items-center justify-center">
-                <div className="relative w-40 h-40">
-                  <Image src={device.image} alt={device.name} fill className="object-contain" />
-                </div>
+        {/* Single Product Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-2xl bg-white border border-[#E5E7EB] overflow-hidden"
+        >
+          <div className="grid lg:grid-cols-[320px_1fr]">
+            {/* Left: Device Image */}
+            <div className="relative flex flex-col items-center justify-center p-10 lg:p-12 bg-[#F9FAFB] lg:border-r border-b lg:border-b-0 border-[#E5E7EB]">
+              <div className="relative w-40 h-56 sm:w-48 sm:h-64 mb-6">
+                <Image
+                  src="/images/hardware/wizter-5100.png"
+                  alt="WIZTER-5100"
+                  fill
+                  className="object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+                  priority
+                />
               </div>
-              <div>
-                <div className="flex items-baseline gap-3 mb-1">
-                  <h3 className="text-lg font-semibold text-[#111827]">{device.name}</h3>
-                  <span className="text-xs text-[#9CA3AF]">{device.role}</span>
-                </div>
-                <p className="text-sm text-[#6B7280] mb-5">{device.desc}</p>
-                <div className="rounded-lg overflow-hidden border border-[#E5E7EB]">
-                  {device.specs.map(([label, value], j) => (
-                    <div key={j} className={`grid grid-cols-2 text-sm ${j < device.specs.length - 1 ? "border-b border-[#F3F4F6]" : ""}`}>
-                      <div className="px-4 py-2.5 bg-[#F9FAFB] text-[#6B7280]">{label}</div>
-                      <div className="px-4 py-2.5 text-[#111827] font-medium">{value}</div>
-                    </div>
-                  ))}
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-[#111827] tracking-tight">WIZTER-5100</h3>
+                <p className="text-xs text-[#6B7280] font-semibold uppercase tracking-[0.2em] mt-1">
+                  Intelligent Sensing
+                </p>
+                <div className="inline-flex items-center gap-1.5 mt-4 px-3 py-1.5 rounded-full bg-[#10b981]/10">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
+                  <span className="text-xs font-semibold text-[#10b981]">Active</span>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+
+            {/* Right: Specs & Capabilities */}
+            <div className="p-8 lg:p-10">
+              <p className="text-[15px] text-[#4B5563] leading-[1.8] mb-8">
+                CPU 인터럽트 기술로 0.001초 단위의 설비 상태 변화를 포착합니다.
+                센서의 물리적 신호를 실시간 데이터화하여 설비의 상태값과 이상 징후를 지연 없이 서버로 전송합니다.
+              </p>
+
+              {/* Spec Table */}
+              <div className="rounded-xl overflow-hidden border border-[#E5E7EB] mb-8">
+                {specs.map(([label, value], j) => (
+                  <div key={j} className={`grid grid-cols-2 text-sm ${j < specs.length - 1 ? "border-b border-[#F3F4F6]" : ""}`}>
+                    <div className="px-5 py-3 bg-[#F9FAFB] text-[#6B7280] font-medium">{label}</div>
+                    <div className="px-5 py-3 text-[#111827] font-semibold">{value}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Capabilities List */}
+              <div>
+                <p className="text-xs text-[#9CA3AF] font-semibold uppercase tracking-wider mb-4">Key Capabilities</p>
+                <ul className="space-y-3">
+                  {capabilities.map((cap, j) => (
+                    <li key={j} className="flex items-start gap-3">
+                      <Check className="w-4 h-4 text-[#0078D4] shrink-0 mt-0.5" />
+                      <span className="text-sm text-[#374151] font-medium leading-relaxed">{cap}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -168,13 +184,13 @@ function HardwareInstallGuide() {
     {
       num: "02",
       icon: Wifi,
-      title: "무선 중계기 설치",
-      duration: "약 20분",
-      desc: "공장 내 적절한 위치에 SHAP-1000 무선 중계기를 설치합니다. 전원만 연결하면 센서와 자동으로 페어링됩니다.",
+      title: "Wi-Fi 네트워크 연결",
+      duration: "약 10분",
+      desc: "Wizter-5100을 현장 Wi-Fi 네트워크에 연결합니다. 앱에서 QR코드를 스캔하면 자동으로 네트워크 설정이 완료됩니다.",
       details: [
-        "DC 12V 전원 어댑터 제공",
-        "센서와 자동 페어링",
-        "최대 1:N 다중 연결",
+        "QR코드 기반 간편 설정",
+        "기존 Wi-Fi 인프라 활용",
+        "서버 자동 연결",
       ],
     },
     {
