@@ -11,10 +11,10 @@ function ScreenImage({ src, alt }: { src: string; alt: string }) {
         src={src}
         alt={alt}
         fill
-        className="object-cover object-top scale-[1.02] transition-transform duration-500"
-        sizes="280px"
+        className="object-cover object-top"
+        sizes="(max-width: 640px) 220px, (max-width: 1024px) 260px, 280px"
+        quality={90}
         priority
-        unoptimized
       />
     </div>
   );

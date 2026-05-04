@@ -53,13 +53,13 @@ export function Navigation() {
             }}
           >
             <Image
-              src="/images/brand/logo.png?v=1.2"
+              src="/images/brand/logo.png"
               alt="Handy MES"
-              width={130}
-              height={36}
+              width={390}
+              height={84}
               className="h-8 w-auto object-contain"
+              quality={90}
               priority
-              unoptimized
             />
           </Link>
 

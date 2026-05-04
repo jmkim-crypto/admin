@@ -282,6 +282,7 @@ export function HardwareEcosystem() {
                     alt={device.name}
                     fill
                     className="object-contain drop-shadow-[0_16px_32px_rgba(0,0,0,0.10)]"
+                    sizes="(max-width: 640px) 192px, (max-width: 1024px) 224px, 256px"
                     priority
                   />
                 </motion.div>

@@ -114,6 +114,7 @@ function HardwareLineup() {
                   alt="WIZTER-5100"
                   fill
                   className="object-contain drop-shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+                  sizes="(max-width: 640px) 160px, 192px"
                   priority
                 />
               </div>
