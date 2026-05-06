@@ -177,7 +177,7 @@ function AdvancedAnalysisVisual() {
     <div className="w-full max-w-2xl mx-auto rounded-2xl p-8 lg:p-10 border border-[#F3F4F6] bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] relative group">
       <div className="mb-10">
         <p className="text-base font-semibold text-[#0078D4] tracking-[0.2em] uppercase mb-4">Analytics Dashboard</p>
-        <h4 className="text-3xl font-bold text-[#111827] tracking-tighter">Production vs Revenue</h4>
+        <h4 className="text-3xl font-bold text-[#111827] tracking-tighter">Production & Operation Trend</h4>
       </div>
 
       <div className="flex items-end justify-between h-48 gap-3 px-2 relative mb-12">
@@ -198,9 +198,9 @@ function AdvancedAnalysisVisual() {
 
       <div className="grid grid-cols-3 gap-8 pt-8 border-t border-[#F3F4F6]">
         {[
-          { label: "Revenue", value: "₩1.2B" },
-          { label: "Yield Rate", value: "99.8%" },
-          { label: "Efficiency", value: "94.2%" },
+          { label: "Total Output", value: "12,400" },
+          { label: "Operation Rate", value: "87.5%" },
+          { label: "Target Achieved", value: "94.2%" },
         ].map((stat, i) => (
           <div key={i}>
             <p className="text-base font-bold text-[#6B7280] uppercase tracking-widest mb-1.5">{stat.label}</p>
@@ -366,10 +366,10 @@ export default function FeaturesPage() {
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-20">
               <SectionHeader
-                badge="04. Intelligence"
+                badge="04. Analytics"
                 centered
-                title={<>데이터가 제시하는 성장의 인사이트</>}
-                description="단순한 수치를 넘어 생산량, 가동률, 매출액 등 핵심 지표를 체계적으로 분석합니다. 우리 공장의 현재 위치를 정확한 통계로 확인하고 미래를 설계하세요."
+                title={<>직관적인 데이터 통계 분석</>}
+                description="현장에서 수집된 누적 데이터를 바탕으로 생산성 지표와 설비 효율을 시각화합니다. 직관적인 통계 화면을 통해 공정의 흐름을 한눈에 파악하세요."
               />
             </div>
             <AdvancedAnalysisVisual />
@@ -377,9 +377,9 @@ export default function FeaturesPage() {
             {/* Unified FAQ-style grid */}
             <div className="mt-20 grid md:grid-cols-3 gap-5 lg:gap-6">
               {[
-                { title: "정밀한 원가 분석", desc: "생산량 대비 자원 소모량을 분석하여 정확한 제품별 원가를 산출합니다.", icon: BarChart3 },
-                { title: "병목 구간 탐지", desc: "공정 간 리드 타임을 분석하여 생산성을 저해하는 병목 구간을 자동으로 탐지합니다.", icon: Activity },
-                { title: "가동률 최적화", desc: "비가동 사유 빈도 분석을 통해 설비 가동률을 극대화할 수 있는 인사이트를 제공합니다.", icon: Zap },
+                { title: "생산 실적 추이 분석", desc: "누적된 생산량 데이터를 기간별로 조회하여 전체적인 생산 흐름을 파악합니다.", icon: BarChart3 },
+                { title: "비가동 원인 통계", desc: "설비의 멈춤 사유와 빈도를 통계로 확인하여 주요 비가동 원인을 도출합니다.", icon: Activity },
+                { title: "작업 효율 시각화", desc: "목표 대비 달성률과 시간당 생산량을 그래프로 제공하여 직관적인 성과 확인이 가능합니다.", icon: Zap },
               ].map((box, i) => (
                 <motion.div
                   key={i}
