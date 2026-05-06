@@ -100,7 +100,7 @@ export function HeroSection() {
             transition={{ duration: 0.6 }}
             className="text-[2rem] sm:text-[2.75rem] md:text-[3.25rem] lg:text-[3.75rem] font-bold tracking-tight leading-[1.15] mb-6"
           >
-            <span className="text-[#9CA3AF]">1/40 비용으로 내일 당장 시작하는</span>
+            <span className="text-[#0078D4]">1/40 비용으로 내일 당장 시작하는</span>
             <br />
             <span className="text-[#111827]">Handy MES 스마트 팩토리</span>
           </motion.h1>
